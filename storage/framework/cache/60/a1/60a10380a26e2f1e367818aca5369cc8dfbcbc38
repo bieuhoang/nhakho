@@ -1,0 +1,124 @@
+1536182128a:1:{s:16:"nhakholayout.htm";a:6:{s:8:"fileName";s:16:"nhakholayout.htm";s:7:"content";s:2359:"description = "Default layout nha kho"
+==
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<title>Đồng hồ cổ Nhà kho - {{ this.page.title }}</title>
+	<meta name="title" content="{{ this.page.meta_title }}">
+	<meta name="description" content="{{ this.page.meta_description }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="OctoberCMS">
+	<meta name="generator" content="OctoberCMS">
+	<link rel="icon" type="image/png" href="{{ 'assets/nhakho/image/logo.png'|theme }}">
+	{% styles %}
+	<link href="{{ [
+	'assets/nhakho/css/vendor.bundle.css'
+	]|theme }}" rel="stylesheet">
+	<link href="{{ [
+	'assets/nhakho/css/style.css'
+	]|theme }}" rel="stylesheet">
+
+
+
+
+	<style type="text/css">
+	/* Only Demo Purpose */
+	.colorPanel {margin: 0;padding: 5px;position: fixed;z-index: 100;min-width: 20px; border-radius: 3px 0 0 3px; background-color: #EDC63C;right:0;top: 35%;} .colorPanel ul {margin:0px;padding:0px;list-style: none;display:none;} .colorPanel ul li {display: block;margin-top: 10px;} .colorPanel ul a {display: block;width: 20px;height: 20px;border: #fff 1px solid;} .colorPanel a.cart {border-bottom: 1px solid rgba(255,255,255,.3); margin-bottom: 6px; padding-bottom: 8px;display: block;} #cpToggle{display:block;height:30px; width:20px; line-height:30px; background-size:cover;}.cp-custom{padding: 12px;}.cp-custom #cpToggle{background: none;}.cp-custom i{font-size: 15px;color:#3C4DFF;}
+</style>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-107043957-2', 'auto');
+	ga('send', 'pageview');
+</script>
+</head>
+<body class="site-body style-v1">
+	<!-- Header -->
+	<header class="site-header header-s1 is-sticky">
+		{% partial "nhakho/header" %}
+	</header>
+	<!-- Content -->
+	<div id="layout-content">
+		{% page %}
+	</div>
+	<!-- Footer -->
+	{% partial 'nhakho/footer' %}
+	<!-- End footer -->
+
+
+
+
+	<!-- JavaScript Bundle -->
+	<script src="{{ [
+	'assets/nhakho/js/jquery.bundle.js',
+	'assets/nhakho/js/script.js'
+	]|theme }}"></script>
+	<!-- End script -->
+
+</body>
+</html>
+";s:5:"mtime";i:1534988764;s:6:"markup";s:2316:"<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<title>Đồng hồ cổ Nhà kho - {{ this.page.title }}</title>
+	<meta name="title" content="{{ this.page.meta_title }}">
+	<meta name="description" content="{{ this.page.meta_description }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="OctoberCMS">
+	<meta name="generator" content="OctoberCMS">
+	<link rel="icon" type="image/png" href="{{ 'assets/nhakho/image/logo.png'|theme }}">
+	{% styles %}
+	<link href="{{ [
+	'assets/nhakho/css/vendor.bundle.css'
+	]|theme }}" rel="stylesheet">
+	<link href="{{ [
+	'assets/nhakho/css/style.css'
+	]|theme }}" rel="stylesheet">
+
+
+
+
+	<style type="text/css">
+	/* Only Demo Purpose */
+	.colorPanel {margin: 0;padding: 5px;position: fixed;z-index: 100;min-width: 20px; border-radius: 3px 0 0 3px; background-color: #EDC63C;right:0;top: 35%;} .colorPanel ul {margin:0px;padding:0px;list-style: none;display:none;} .colorPanel ul li {display: block;margin-top: 10px;} .colorPanel ul a {display: block;width: 20px;height: 20px;border: #fff 1px solid;} .colorPanel a.cart {border-bottom: 1px solid rgba(255,255,255,.3); margin-bottom: 6px; padding-bottom: 8px;display: block;} #cpToggle{display:block;height:30px; width:20px; line-height:30px; background-size:cover;}.cp-custom{padding: 12px;}.cp-custom #cpToggle{background: none;}.cp-custom i{font-size: 15px;color:#3C4DFF;}
+</style>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-107043957-2', 'auto');
+	ga('send', 'pageview');
+</script>
+</head>
+<body class="site-body style-v1">
+	<!-- Header -->
+	<header class="site-header header-s1 is-sticky">
+		{% partial "nhakho/header" %}
+	</header>
+	<!-- Content -->
+	<div id="layout-content">
+		{% page %}
+	</div>
+	<!-- Footer -->
+	{% partial 'nhakho/footer' %}
+	<!-- End footer -->
+
+
+
+
+	<!-- JavaScript Bundle -->
+	<script src="{{ [
+	'assets/nhakho/js/jquery.bundle.js',
+	'assets/nhakho/js/script.js'
+	]|theme }}"></script>
+	<!-- End script -->
+
+</body>
+</html>";s:4:"code";N;s:11:"description";s:22:"Default layout nha kho";}}
