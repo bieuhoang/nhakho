@@ -1,0 +1,6 @@
+plugin:
+    name: 'bieuhv.nhakho::lang.plugin.name'
+    description: 'bieuhv.nhakho::lang.plugin.description'
+    author: bieuhv
+    icon: oc-icon-adjust
+    homepage: ''
