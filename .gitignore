@@ -1,4 +1,5 @@
 config/database.php
 bootstrap
-storage
+storage/*
 vendor
+storage

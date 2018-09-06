@@ -1,7 +1,0 @@
-1536267533a:1:{s:18:"hoang-van-bieu.htm";a:7:{s:8:"fileName";s:18:"hoang-van-bieu.htm";s:7:"content";s:260:"[viewBag]
-title = "Hoang van Bieu"
-url = "/hoang-van-bieu"
-is_hidden = 0
-navigation_hidden = 0
-==
-<p><strong><img src="/storage/app/media/uploaded-files/2.jpg" style="width: 300px;" class="fr-fic fr-dib" data-result="success">Toi la Hoang Van Bieu</strong></p>";s:5:"mtime";i:1536266929;s:6:"markup";s:162:"<p><strong><img src="/storage/app/media/uploaded-files/2.jpg" style="width: 300px;" class="fr-fic fr-dib" data-result="success">Toi la Hoang Van Bieu</strong></p>";s:4:"code";N;s:7:"viewBag";a:4:{s:5:"title";s:14:"Hoang van Bieu";s:3:"url";s:15:"/hoang-van-bieu";s:9:"is_hidden";s:1:"0";s:17:"navigation_hidden";s:1:"0";}s:12:"parsedMarkup";s:162:"<p><strong><img src="/storage/app/media/uploaded-files/2.jpg" style="width: 300px;" class="fr-fic fr-dib" data-result="success">Toi la Hoang Van Bieu</strong></p>";}}
