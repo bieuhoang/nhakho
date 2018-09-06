@@ -1,1 +1,4 @@
-
+config/database.php
+bootstrap
+storage
+vendor
