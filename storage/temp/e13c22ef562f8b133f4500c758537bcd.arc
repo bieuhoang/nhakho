@@ -1,0 +1,1 @@
+Authority to provide plugin "Jiri.JKShop" could not be found
