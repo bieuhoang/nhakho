@@ -59,34 +59,34 @@ displayEmpty = 0
 							<li class="products-list-home">
 								<div class="col-md-4 image-list-products">
 									{% if product.images.count %}
-										{% for image in product.images|slice(0, 1) %}
-										<img data-src="{{ image.filename }}"
-										src="{{ image.path }}"
-										title="{{ product.title }}"
-										alt="{{ product.title }}"/>
-										{% endfor %}
-										{% else %}
+									{% for image in product.images|slice(0, 1) %}
+									<img data-src="{{ image.filename }}"
+									src="{{ image.path }}"
+									title="{{ product.title }}"
+									alt="{{ product.title }}"/>
+									{% endfor %}
+									{% else %}
 
-										<img src="{{ 'assets/nhakho/image/logo.png'|theme }}" title="{{ product.title }}" alt="{{ product.title }}"/>
-										{% endif %}
-									</div>
-<div class="col-md-8">
+									<img src="{{ 'assets/nhakho/image/logo.png'|theme }}" title="{{ product.title }}" alt="{{ product.title }}"/>
+									{% endif %}
+								</div>
+								<div class="col-md-8">
 
 									<a href="san-pham/{{product.slug}}">
 										<h2 class="products-title-list">{{product.title}}</h2>
 										<i class="price">{{product.price}}</i>
 										{% for category in product.categories %}
-												<a href="{{ category.url }}">{{ category.title }}</a>
-												{% if not loop.last %},
-												{% endif %}
-												{% endfor %}
+										<a href="{{ category.url }}">{{ category.title }}</a>
+										{% if not loop.last %},
+										{% endif %}
+										{% endfor %}
 										
 										
 									</a></div>
-										<p>{{ product.excerpt|striptags[:100] ~ '...' }}</p>
-										<a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
-							</li>
-										
+									<p>{{ product.excerpt|striptags[:100] ~ '...' }}</p>
+									<a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
+								</li>
+
 								{% endfor %}
 							</ul>
 						</div>
@@ -163,11 +163,10 @@ displayEmpty = 0
 								</div>
 								<div class="wgs-box boxed bg-secondary light boxed-flat">
 									<div class="wgs-content">
-										<h5>THÔNG ĐIỆP TỪ NHÀ KHO</h5>
-										<p>Bằng tất cả nhiệt huyết và đam mê của tuổi trẻ, đội ngũ Nhà kho mong muốn xây dựng môi trường giao lưu CỞI MỞ, TRUNG THỰC, LÀNH MẠNH.<br>
-											Trong khuôn khổ kiến thức và hiểu biết còn hạn chế không tránh khỏi thiếu sót.<br>Kính mong nhận được sự ủng hộ, chia sẻ, chung tay đóng góp ý kiến và baì viết từ các anh, chị, các bác trên mọi miền tổ quốc để chúng ta có sân chơi ĐỦ TÂM, ĐỦ TẦM, ĐỦ HIỂU BIẾT về đam mê mà mình đang từng ngày chinh phục.
-											<br>
-										TRÂN TRỌNG CẢM ƠN</p>
+										<H5>Chính sách bảo hành</H5>
+										<p>- Toàn bộ sản phẩm do Nhà kho bán ra cam kết đúng hình ảnh, chủng loại như đã mô tả với khách hàng.</p>
+										<p>Trong trường hợp có sai sót, Nhà kho xin hoàn lại 100% giá trị sản phẩm.</p>
+										<p>- Đồng hồ bản ra bảo hành 1 năm. Miễn phí bảo trì, bảo dưỡng trong 2 năm đầu sử dụng.</p>
 										<a class="btn btn-outline" href="request-service.html">Liên hệ với Nhà kho</a>
 
 									</div>
@@ -182,4 +181,6 @@ displayEmpty = 0
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
 	<!-- End Content -->

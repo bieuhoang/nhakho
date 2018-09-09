@@ -1,0 +1,77 @@
+title = "sửa chữa đồng hồ cổ"
+url = "/sua-chua-dong-ho-co"
+layout = "nhakholayout"
+description = "Chuyên trang kiến thức sửa chữa đồng hồ"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+==
+<div class="section section-services section-pad">
+	    <div class="container">
+	        <div class="content row">
+				
+	        	<!-- Feature Row  -->
+				<div class="row row-feature row-column mt-x5">
+
+					{% for blogPost in posts %}
+
+			
+					<div class="col-md-4 col-sm-6" style="height: 650px;overflow: auto;">
+						<!-- feature box -->
+						<div class="feature boxed feature-s6">
+							<a href="san-pham/{{blogPost.slug}}">
+								<div class="fbox-photo">
+									{% if blogPost.images.count %}
+									{% for image in blogPost.images|slice(0, 1) %}
+									<img data-src="{{ image.filename }}"
+									src="{{ image.path }}"
+									title="{{ blogPost.title }}"
+									alt="{{ blogPost.title }}"/>
+									{% endfor %}
+									{% else %}
+
+									<img src="{{ 'assets/nhakho/image/logo.png'|theme }}" title="{{ blogPost.title }}" alt="{{ blogPost.title }}"/>
+									{% endif %}
+								</div>
+							
+							<div class="fbox-content">
+								<h3>{{blogPost.title}}</h3>
+								<i class="price">{{blogPost.price}}</i>
+								{% for category in blogPost.categories %}
+										<a href="{{ category.url }}">{{ category.title }}</a>
+										{% if not loop.last %},
+										{% endif %}
+										{% endfor %}
+								<p>{{ blogPost.excerpt|striptags[:100] ~ '...' }}</p>
+								<p><a href="san-pham/{{blogPost.slug}}" class="btn-link link-arrow-sm">Xem thêm</a></p>
+							</div>
+							</a>
+						</div>
+						<!-- End Feature box -->
+					</div>
+
+
+
+		
+
+								{% endfor %}
+
+
+
+					
+				</div>
+				<!-- Feture Row  #end -->
+	        	<div class="gaps size-lg"></div>
+	        	<div class="wide-md center">
+	        		<p class="lead">We Provide <strong>24/7 Emergency</strong> Service, please call us at 800-123-4567.<br>We're here for you any plumbing / installation / replacement.</p>
+	        	</div>
+
+	        </div>
+	    </div>
+	</div>

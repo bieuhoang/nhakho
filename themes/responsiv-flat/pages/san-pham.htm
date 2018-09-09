@@ -12,6 +12,7 @@ pageNumber = "{{ :page }}"
 productsPerPage = 10
 noProductsMessage = "No products found"
 sortOrder = "created_at desc"
+bieu="Bieu la toi"
 ==
 <!-- Content -->
 <div class="section section-blog section-pad">
@@ -25,6 +26,15 @@ sortOrder = "created_at desc"
 					<!-- Gallery -->
 					<div class="gallery gallery-col4 gallery-filled gallery-lightbox hover-zoom">
 						<ul class="gallery-list">
+							{%if product.video%}
+						{%set url=product.video |replace({'youtu.be': 'youtube.com/embed'})%}
+<li><iframe width="100%"
+src="{{url}}">
+</iframe>
+</li>
+				{%endif%}
+
+
 							{% if product.images.count %}
 							{% for image in product.images %}
 							<li>
@@ -36,7 +46,7 @@ sortOrder = "created_at desc"
 							{% else %}
 							{% endif %}
 						</ul>
-					</div>
+				</div>
 				</div>
 			</div>
 			<div class="col-md-4">

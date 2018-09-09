@@ -1,0 +1,76 @@
+title = "mua bán đồng hồ cổ"
+url = "/mua-ban-dong-ho-co"
+layout = "nhakholayout"
+description = "Trang mua bán trao đổi"
+is_hidden = 0
+
+[products]
+pageNumber = "{{ :page }}"
+productsPerPage = 20
+noProductsMessage = "No products found"
+sortOrder = "updated_at-desc"
+promote = 0
+==
+<div class="section section-services section-pad">
+	    <div class="container">
+	        <div class="content row">
+				
+	        	<!-- Feature Row  -->
+				<div class="row row-feature row-column mt-x5">
+
+					{% for product in products %}
+
+			
+					<div class="col-md-4 col-sm-6" style="height: 650px;overflow: auto;">
+						<!-- feature box -->
+						<div class="feature boxed feature-s6">
+							<a href="san-pham/{{product.slug}}">
+								<div class="fbox-photo">
+									{% if product.images.count %}
+									{% for image in product.images|slice(0, 1) %}
+									<img data-src="{{ image.filename }}"
+									src="{{ image.path }}"
+									title="{{ product.title }}"
+									alt="{{ product.title }}"/>
+									{% endfor %}
+									{% else %}
+
+									<img src="{{ 'assets/nhakho/image/logo.png'|theme }}" title="{{ product.title }}" alt="{{ product.title }}"/>
+									{% endif %}
+								</div>
+							
+							<div class="fbox-content">
+								<h3>{{product.title}}</h3>
+								<i class="price">{{product.price}}</i>
+								{% for category in product.categories %}
+										<a href="{{ category.url }}">{{ category.title }}</a>
+										{% if not loop.last %},
+										{% endif %}
+										{% endfor %}
+								<p>{{ product.excerpt|striptags[:100] ~ '...' }}</p>
+								<p><a href="san-pham/{{product.slug}}" class="btn-link link-arrow-sm">Xem thêm</a></p>
+							</div>
+							</a>
+						</div>
+						<!-- End Feature box -->
+					</div>
+
+
+
+		
+
+								{% endfor %}
+
+
+
+					
+				</div>
+				<!-- Feture Row  #end -->
+	        	<div class="gaps size-lg"></div>
+	        	<div class="wide-md center">
+	        		<p class="lead">We Provide <strong>24/7 Emergency</strong> Service, please call us at 800-123-4567.<br>We're here for you any plumbing / installation / replacement.</p>
+	        	</div>
+
+	        </div>
+	    </div>
+	</div>
