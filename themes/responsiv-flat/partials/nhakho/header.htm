@@ -1,3 +1,9 @@
+[viewBag]
+
+[categories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+==
 <!-- Navbar -->
 <div class="navbar navbar-primary">
 	<div class="container">
@@ -47,11 +53,9 @@
 				<li>
 					<a href="mua-ban-dong-ho-co">Góc mua bán trao đổi</a>
 					<ul>
+						{%for category in categories%}
 						<li><a href="about.html">Đồng hồ treo tường</a></li>
-						<li><a href="about-modern.html">Đồng hồ để bàn</a></li>
-						<li><a href="teams.html">Vai bò, tạ lê</a></li>
-						<li><a href="testimonial.html">Đồng hồ tủ đứng</a></li>
-						<li><a href="testimonial.html">Các loại khác</a></li>
+						{%endfor%}
 					</ul>
 				</li>
 				<li><a href="sua-chua-dong-ho-co">Cẩm nang, kinh nghiệm</a></li>
@@ -61,3 +65,22 @@
 		<!-- #end Navbar -->
 	</div>	
 </div>
+{% for category in categories %}
+Hoang van bieu
+    {% set productCount = category.product_count %}
+    <li {% if category.slug == currentCategorySlug %}class="active"{% endif %}>
+        <a href="{{ category.url }}">{{ category.title }}</a>
+        {% if productCount %}
+            <span class="badge">{{ productCount }}</span>
+        {% endif %}
+
+        {% if category.children.count %}
+            <ul>
+                {% partial __SELF__ ~ "::items"
+                    categories=category.children
+                    currentCategorySlug=currentCategorySlug
+                %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}
