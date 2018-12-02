@@ -12,12 +12,16 @@ description = "Default layout nha kho"
 	<meta name="generator" content="OctoberCMS">
 	<link rel="icon" type="image/png" href="{{ 'assets/nhakho/image/logo.png'|theme }}">
 	{% styles %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link href="{{ [
 	'assets/nhakho/css/vendor.bundle.css'
 	]|theme }}" rel="stylesheet">
 	<link href="{{ [
 	'assets/nhakho/css/style.css'
 	]|theme }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ [
+	'assets/nhakho/images-grid.css'
+	]|theme }}">
 </head>
 <body class="site-body style-v1">
 	<!-- Header -->
@@ -39,9 +43,27 @@ description = "Default layout nha kho"
 	<script src="{{ [
 	'assets/nhakho/js/jquery.bundle.js',
 	'assets/nhakho/js/script.js',
-	'assets/nhakho/js/nhakho.js'	
+	'assets/nhakho/js/nhakho.js',
+	'assets/nhakho/images-grid.js'
 	]|theme }}"></script>
 	<!-- End script -->
+<script>
 
+            var images = [
+                'https://unsplash.it/1300/800?image=875',
+                'https://unsplash.it/1300/800?image=874',
+                'https://unsplash.it/1300/800?image=872',
+                'https://unsplash.it/1300/800?image=868',
+                'https://unsplash.it/1300/800?image=839',
+                'https://unsplash.it/1300/800?image=838'
+            ];
+
+            $(function() {
+                $('#gallery1').imagesGrid({
+                    images: images
+                });
+            });
+
+        </script>
 </body>
 </html>
