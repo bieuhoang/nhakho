@@ -22,6 +22,10 @@ fields:
             field: title
             type: slug
         type: text
+    ma:
+        label: Mã
+        span: auto
+        type: text
     xuatxu:
         label: 'Xuất xứ'
         span: auto
@@ -39,15 +43,6 @@ fields:
         label: 'Thương hiệu'
         span: auto
         type: text
-    namsx:
-        label: 'Năm sản xuất'
-        span: auto
-        type: text
-    mota:
-        label: 'Mô tả ngắn gọn'
-        span: auto
-        size: small
-        type: textarea
     categories:
         tab: 'xeor.octocart::lang.product.tab_categories'
         type: relation
@@ -60,34 +55,6 @@ fields:
         label: 'xeor.octocart::lang.product.published'
         type: checkbox
         span: auto
-    weight:
-        tab: 'xeor.octocart::lang.product.tab_shipping'
-        label: 'xeor.octocart::lang.product.weight'
-        comment: 'xeor.octocart::lang.product.weight_description'
-        type: number
-        placeholder: 'xeor.octocart::lang.product.weight'
-        span: auto
-        cssClass: text-left
-    length:
-        tab: 'xeor.octocart::lang.product.tab_shipping'
-        label: 'xeor.octocart::lang.product.dimensions'
-        type: number
-        placeholder: 'xeor.octocart::lang.product.length'
-        span: auto
-        cssClass: text-left
-    width:
-        tab: 'xeor.octocart::lang.product.tab_shipping'
-        type: number
-        placeholder: 'xeor.octocart::lang.product.width'
-        span: auto
-        cssClass: text-left
-    height:
-        tab: 'xeor.octocart::lang.product.tab_shipping'
-        type: number
-        placeholder: 'xeor.octocart::lang.product.height'
-        comment: 'xeor.octocart::lang.product.dimensions_description'
-        span: auto
-        cssClass: text-left
     price:
         tab: 'xeor.octocart::lang.product.tab_edit'
         label: 'xeor.octocart::lang.product.price'
@@ -96,12 +63,6 @@ fields:
         default: '0.00'
         cssClass: text-left
         required: true
-    excerpt:
-        tab: 'xeor.octocart::lang.product.tab_edit'
-        label: 'xeor.octocart::lang.product.excerpt'
-        type: textarea
-        size: small
-        span: auto
     description:
         tab: 'xeor.octocart::lang.product.tab_edit'
         type: Backend\FormWidgets\RichEditor
