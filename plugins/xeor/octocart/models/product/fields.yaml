@@ -68,6 +68,10 @@ fields:
         type: Backend\FormWidgets\RichEditor
         size: huge
         span: auto
+    video:
+        label: video
+        span: auto
+        type: text
 tabs:
     fields:
         cross_sells:

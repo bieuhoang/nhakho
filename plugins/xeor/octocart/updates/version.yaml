@@ -62,3 +62,6 @@
 2018.8.5:
     - 'Updated table xeor_octocart_products'
     - builder_table_update_xeor_octocart_products_5.php
+2018.8.6:
+    - 'Updated table xeor_octocart_products'
+    - builder_table_update_xeor_octocart_products_6.php
