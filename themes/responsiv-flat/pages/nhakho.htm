@@ -76,7 +76,11 @@ displayEmpty = 0
 								<div style="float: right;">Ngày đăng: {{product.created_at}}</div>
 								<div>Giá bán:<i class="price">{{product.price}}</i>
 								</div>
+<<<<<<< HEAD
 								<div>{{ product.description|raw }}</div>
+=======
+								<div class="product-details">{{ product.description|raw}}</div>
+>>>>>>> 82b6df90eae480ead0e499588d8c105bc2039c59
 								<div id="gallery{{product.id}}"></div>
 									{% if product.images.count %}
 									{% for image in product.images %}
