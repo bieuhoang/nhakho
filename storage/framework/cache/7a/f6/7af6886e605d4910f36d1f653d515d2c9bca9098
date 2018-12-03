@@ -1,0 +1,361 @@
+1543842271a:1:{s:10:"nhakho.htm";a:13:{s:8:"fileName";s:10:"nhakho.htm";s:7:"content";s:6401:"title = "nhakho"
+url = "/"
+layout = "nhakholayout"
+is_hidden = 0
+
+[products]
+pageNumber = "{{ :page }}"
+productsPerPage = 25
+noProductsMessage = "No products found"
+sortOrder = "updated_at-desc"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/category"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "blog/post"
+
+[categories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+==
+<script>
+	var thisPage = "";
+	var imagesArray = new Array();
+	var idList = new Array();
+</script>
+<div class="banner banner-static banner-medium has-bg lighter-filter">
+	<div class="banner-cpn">
+		<div class="container">
+			<div class="content row">
+				<div class="top-contact banner-text light style-modern ">
+					<h1 class="page-title">MINH BẠCH - CHẤT LƯỢNG - UY TÍN</h1>
+					<p class=""><i class="bgwhite fa fa-balance-scale"></i>Mô tả trung thực.</p>
+					<p><i class="bgwhite fa fa-battery-full"></i>Chỉ bán hàng Nguyên zin.</p>
+					<p><i class="bgwhite fa fa-ambulance"></i>Hỗ trợ tối đa sửa chữa, bảo trì sau bán hàng.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="banner-bg imagebg">
+		<img src="{{ 'assets/nhakho/image/banner-inner.jpg'|theme }}" alt="">
+	</div>
+</div>
+<!-- Content -->
+<div class="section section-blog section-pad">
+	<div class="container">
+		<div class="content row">
+
+			<div class="row">
+				<div class="col-md-8">
+					<!-- Blog Post Loop -->
+						<ul class="blog-posts post-col2">
+        
+							{% for product in products %}
+							<script type="text/javascript">
+								var thisImages = new Array();
+								idList.push({{product.id}});
+							</script>
+							<li class="products-list-home">
+								<h2 style="display: initial;">
+								{% for category in product.categories|slice(0, 1) %}			
+									<a href="{{ category.url }}">{{ category.title }}</a>
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %} =>
+								{{product.title}}
+								</h2><br>
+								<div style="float: right;">Ngày đăng: {{product.created_at}}</div>
+								<div>Giá bán:<i class="price"><b>{{product.price}}</b> (Đồng)</i>
+								</div>
+								<div class="product-details">{{ product.description|raw}}</div>
+								<div id="gallery{{product.id}}"></div>
+									{% if product.images.count %}
+									{% for image in product.images %}
+									<script>
+										thisImages.push("{{image.path}}");
+        							</script>
+									{% endfor %}
+									{% endif %}
+									<a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
+									{% if product.video %}
+										<iframe width="100%" height="315" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}">
+										</iframe>
+								 {% endif %}
+								</li>
+								<script>
+									imagesArray[{{product.id}}] = thisImages
+								</script>			 
+								{% endfor %}
+							</ul>
+								
+						<div class="clear"></div>
+						<!-- End Blog Post -->
+					</div>
+					<!-- Sidebar -->
+					<div class="col-md-4">
+						<div class="sidebar-right">
+							<div class="wgs-box wgs-search">
+								<div class="wgs-content">
+									<div class="form-group">
+										<input type="text" class="form-control"  placeholder="Nhập từ khoá tìm kiếm...">
+										<button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<div class="wgs-box wgs-recents">
+								<h3 class="wgs-heading">Bài viết mới nhất</h3>
+								<div class="wgs-content">
+									<ul class="blog-recent">
+										{% for code, post in posts %}
+										<li>
+											<a href="{{ post.slug }}">
+												<img alt="" src="{{ post.image|media }}">
+												<p>{{ post.title }}-{{ post.category.name}}</p>
+											</a>
+										</li>       
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+
+							<div class="wgs-box wgs-tags">
+								<h3 class="wgs-heading">Tags</h3>
+								<div class="wgs-content">
+									<ul class="tag-list clearfix">
+										<li><a href="news.html#">Commercial</a></li>
+										<li><a href="news.html#">Install</a></li>
+										<li><a href="news.html#">Repair</a></li>
+										<li><a href="news.html#">Plumbing</a></li>
+										<li><a href="news.html#">Service</a></li>
+										<li><a href="news.html#">Drain</a></li>
+									</ul>
+								</div>
+							</div>
+							
+							<div class="wgs-box boxed boxed-flat">
+								<div class="wgs-content">
+									<h5>Thông tin liên hệ</h5>
+									<p><strong>Đồng hồ cổ Nhà kho</strong><br>
+										Số 1 ngách 65 ngõ 217 <br>Đường Trần Phú, quận Hà Đông, HN</p>
+										<p><strong>Điện thoại</strong> <br>
+											Tư vấn: 0888-001-500<br>
+										Kỹ thuật: 0886-509-500</p>
+										<p><strong>Thời gian làm việc</strong><br>
+											Thứ hai đến thứ sáu<br>
+										8:00 đến 21:00</p>
+										Thứ bảy, chủ nhật<br>
+										9:00 đến 19:00
+
+										<p></p>
+									</div>
+								</div>
+								<div class="wgs-box boxed bg-secondary light boxed-flat">
+									<div class="wgs-content">
+										<H5>Chính sách bảo hành</H5>
+										<p>- Toàn bộ sản phẩm do Nhà kho bán ra cam kết đúng hình ảnh, chủng loại như đã mô tả với khách hàng.</p>
+										<p>Trong trường hợp có sai sót, Nhà kho xin hoàn lại 100% giá trị sản phẩm.</p>
+										<p>- Đồng hồ bản ra bảo hành 1 năm. Miễn phí bảo trì, bảo dưỡng trong 2 năm đầu sử dụng.</p>
+										<a class="btn btn-outline" href="request-service.html">Liên hệ với Nhà kho</a>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Sidebar #end -->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- End Content -->
+
+	<script>
+            $(function() {
+            	$.each(idList, function(pnum, pid){
+  					$('#gallery'+pid).imagesGrid({
+                    	images: imagesArray[pid],align: true
+                	});
+				});
+                
+            });
+    </script>";s:5:"mtime";i:1543834736;s:6:"markup";s:5886:"<script>
+	var thisPage = "";
+	var imagesArray = new Array();
+	var idList = new Array();
+</script>
+<div class="banner banner-static banner-medium has-bg lighter-filter">
+	<div class="banner-cpn">
+		<div class="container">
+			<div class="content row">
+				<div class="top-contact banner-text light style-modern ">
+					<h1 class="page-title">MINH BẠCH - CHẤT LƯỢNG - UY TÍN</h1>
+					<p class=""><i class="bgwhite fa fa-balance-scale"></i>Mô tả trung thực.</p>
+					<p><i class="bgwhite fa fa-battery-full"></i>Chỉ bán hàng Nguyên zin.</p>
+					<p><i class="bgwhite fa fa-ambulance"></i>Hỗ trợ tối đa sửa chữa, bảo trì sau bán hàng.</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="banner-bg imagebg">
+		<img src="{{ 'assets/nhakho/image/banner-inner.jpg'|theme }}" alt="">
+	</div>
+</div>
+<!-- Content -->
+<div class="section section-blog section-pad">
+	<div class="container">
+		<div class="content row">
+
+			<div class="row">
+				<div class="col-md-8">
+					<!-- Blog Post Loop -->
+						<ul class="blog-posts post-col2">
+        
+							{% for product in products %}
+							<script type="text/javascript">
+								var thisImages = new Array();
+								idList.push({{product.id}});
+							</script>
+							<li class="products-list-home">
+								<h2 style="display: initial;">
+								{% for category in product.categories|slice(0, 1) %}			
+									<a href="{{ category.url }}">{{ category.title }}</a>
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %} =>
+								{{product.title}}
+								</h2><br>
+								<div style="float: right;">Ngày đăng: {{product.created_at}}</div>
+								<div>Giá bán:<i class="price"><b>{{product.price}}</b> (Đồng)</i>
+								</div>
+								<div class="product-details">{{ product.description|raw}}</div>
+								<div id="gallery{{product.id}}"></div>
+									{% if product.images.count %}
+									{% for image in product.images %}
+									<script>
+										thisImages.push("{{image.path}}");
+        							</script>
+									{% endfor %}
+									{% endif %}
+									<a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
+									{% if product.video %}
+										<iframe width="100%" height="315" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}">
+										</iframe>
+								 {% endif %}
+								</li>
+								<script>
+									imagesArray[{{product.id}}] = thisImages
+								</script>			 
+								{% endfor %}
+							</ul>
+								
+						<div class="clear"></div>
+						<!-- End Blog Post -->
+					</div>
+					<!-- Sidebar -->
+					<div class="col-md-4">
+						<div class="sidebar-right">
+							<div class="wgs-box wgs-search">
+								<div class="wgs-content">
+									<div class="form-group">
+										<input type="text" class="form-control"  placeholder="Nhập từ khoá tìm kiếm...">
+										<button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<div class="wgs-box wgs-recents">
+								<h3 class="wgs-heading">Bài viết mới nhất</h3>
+								<div class="wgs-content">
+									<ul class="blog-recent">
+										{% for code, post in posts %}
+										<li>
+											<a href="{{ post.slug }}">
+												<img alt="" src="{{ post.image|media }}">
+												<p>{{ post.title }}-{{ post.category.name}}</p>
+											</a>
+										</li>       
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+
+							<div class="wgs-box wgs-tags">
+								<h3 class="wgs-heading">Tags</h3>
+								<div class="wgs-content">
+									<ul class="tag-list clearfix">
+										<li><a href="news.html#">Commercial</a></li>
+										<li><a href="news.html#">Install</a></li>
+										<li><a href="news.html#">Repair</a></li>
+										<li><a href="news.html#">Plumbing</a></li>
+										<li><a href="news.html#">Service</a></li>
+										<li><a href="news.html#">Drain</a></li>
+									</ul>
+								</div>
+							</div>
+							
+							<div class="wgs-box boxed boxed-flat">
+								<div class="wgs-content">
+									<h5>Thông tin liên hệ</h5>
+									<p><strong>Đồng hồ cổ Nhà kho</strong><br>
+										Số 1 ngách 65 ngõ 217 <br>Đường Trần Phú, quận Hà Đông, HN</p>
+										<p><strong>Điện thoại</strong> <br>
+											Tư vấn: 0888-001-500<br>
+										Kỹ thuật: 0886-509-500</p>
+										<p><strong>Thời gian làm việc</strong><br>
+											Thứ hai đến thứ sáu<br>
+										8:00 đến 21:00</p>
+										Thứ bảy, chủ nhật<br>
+										9:00 đến 19:00
+
+										<p></p>
+									</div>
+								</div>
+								<div class="wgs-box boxed bg-secondary light boxed-flat">
+									<div class="wgs-content">
+										<H5>Chính sách bảo hành</H5>
+										<p>- Toàn bộ sản phẩm do Nhà kho bán ra cam kết đúng hình ảnh, chủng loại như đã mô tả với khách hàng.</p>
+										<p>Trong trường hợp có sai sót, Nhà kho xin hoàn lại 100% giá trị sản phẩm.</p>
+										<p>- Đồng hồ bản ra bảo hành 1 năm. Miễn phí bảo trì, bảo dưỡng trong 2 năm đầu sử dụng.</p>
+										<a class="btn btn-outline" href="request-service.html">Liên hệ với Nhà kho</a>
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- Sidebar #end -->
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- End Content -->
+
+	<script>
+            $(function() {
+            	$.each(idList, function(pnum, pid){
+  					$('#gallery'+pid).imagesGrid({
+                    	images: imagesArray[pid],align: true
+                	});
+				});
+                
+            });
+    </script>";s:4:"code";N;s:5:"title";s:6:"nhakho";s:3:"url";s:1:"/";s:6:"layout";s:12:"nhakholayout";s:9:"is_hidden";s:1:"0";s:8:"products";a:4:{s:10:"pageNumber";s:11:"{{ :page }}";s:15:"productsPerPage";s:2:"25";s:17:"noProductsMessage";s:17:"No products found";s:9:"sortOrder";s:15:"updated_at-desc";}s:14:"blogCategories";a:3:{s:4:"slug";s:11:"{{ :slug }}";s:12:"displayEmpty";s:1:"0";s:12:"categoryPage";s:13:"blog/category";}s:9:"blogPosts";a:6:{s:10:"pageNumber";s:11:"{{ :page }}";s:12:"postsPerPage";s:2:"10";s:14:"noPostsMessage";s:14:"No posts found";s:9:"sortOrder";s:17:"published_at desc";s:12:"categoryPage";s:13:"blog/category";s:8:"postPage";s:9:"blog/post";}s:10:"categories";a:2:{s:4:"slug";s:11:"{{ :slug }}";s:12:"displayEmpty";s:1:"0";}}}
