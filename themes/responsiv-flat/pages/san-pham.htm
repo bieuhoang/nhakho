@@ -12,42 +12,47 @@ pageNumber = "{{ :page }}"
 productsPerPage = 10
 noProductsMessage = "No products found"
 sortOrder = "created_at desc"
-bieu="Bieu la toi"
 ==
 <!-- Content -->
+<script>
+	var thisPage = "";
+	var imagesArray = new Array();
+</script>
 <div class="section section-blog section-pad">
 	<div class="container">
 		<div class="content row">
 			<div class="col-md-8 res-m-bttm">
-				<h2>{{product.title}}</h2>
-				<i class="price">{{product.price}}</i>
-				<i class="price">{{product.xuatxu}}</i>
-				<div class="row">
-					<!-- Gallery -->
-					<div class="gallery gallery-col4 gallery-filled gallery-lightbox hover-zoom">
-						<ul class="gallery-list">
-							{%if product.video%}
-						{%set url=product.video |replace({'youtu.be': 'youtube.com/embed'})%}
-<li><iframe width="100%"
-src="{{url}}">
-</iframe>
-</li>
-				{%endif%}
+				
+				<h2 style="display: initial;">
+								{% for category in product.categories|slice(0, 1) %}			
+									<a href="{{ category.url }}">{{ category.title }}</a>
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %} =>
+								{{product.title}}
+								</h2>
+								<div class="clear"></div>
+								<div>Ngày đăng: {{ product.created_at|date('d/m/Y') }}</div>
+								
+								<div>Giá bán:<i class="price"><b>{{product.price}}</b> (Đồng)</i>
+								</div>
+								<div class="product-details">{{ product.description|raw}}</div>
+								
+									{% if product.images.count %}
+									{% for image in product.images %}
+									<script>
+										imagesArray.push("{{image.path}}");
+        							</script>
+									{% endfor %}
+									{% endif %}
+									<div id="gallery{{product.id}}"></div>
+									{% if product.video %}
+										
+										<iframe width="100%" height="360" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
 
-
-							{% if product.images.count %}
-							{% for image in product.images %}
-							<li>
-								<a href="{{ image.path }}">
-									<div class="gallery-item"><img src="{{ image.path }}" alt="{{ image.filename }}"></div>
-								</a>
-							</li>
-							{% endfor %}
-							{% else %}
-							{% endif %}
-						</ul>
-				</div>
-				</div>
+								 {% endif %}									
+								 <div class="clear"></div>
+								 
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar-right">
@@ -94,4 +99,12 @@ src="{{url}}">
 			</div>
 		</div>
 	</div>
-</div>		
+</div>
+<script>
+            $(function() {
+  					$('#gallery{{product.id}}').imagesGrid({
+                    	images: imagesArray,align: true
+                	});
+                
+            });
+    </script>

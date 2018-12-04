@@ -18,10 +18,7 @@ displayEmpty = 1
 		<div class="header-top">
 			<ul class="top-contact">
 				<li class="t-phone t-phone1 t-phone-s2">
-					<span><em class="color-secondary">Số 1 ngách 65 ngõ 217 đường Trần Phú,Q. Hà Đông, Hà Nội</em></span>
-				</li>
-				<li class="t-phone t-phone1 t-phone-s2">
-					<span><small>Điện thoại</small> <em class="fa fa-phone" aria-hidden="true"></em> <a href="news.html#">0888.001.500 </a></span>
+					<span><em class="color-secondary"><i class="far fa-compass"></i>Số 1 ngách 65 ngõ 217 đường Trần Phú,Q. Hà Đông, Hà Nội</em><span style="display:inline-block;"><i class="fas fa-phone-volume"></i>0888.001.500</span></span>
 				</li>
 				<li class="quote-btn">
 
@@ -42,16 +39,17 @@ displayEmpty = 1
 				<span class="icon-bar"></span>
 			</button>
 			<!-- Q-Button for Mobile -->		
-			<div class="quote-btn"><a class="btn"><span>Chuyển đến Facebook</span></a></div>
+			<div class="quote-btn">
+			<a class="btn" href="fb://myfacepage/page/1804960209744498" target="_blank" rel="alternate">Chuyển sang Facebook</a></p>
 		</div>
 		<!-- #end Trigger -->
 		<!-- MainNav -->
 		<nav class="navbar-collapse collapse" id="mainnav">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" style="margin: 0;">
 				<li><a href="{{ url('/') }}">Trang chủ</a></li>
-				<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu và Dịch vụ Nhà kho</a></li>
+				<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu Nhà kho</a></li>
 				<li>
-					<a href="mua-ban-dong-ho-co">Góc mua bán trao đổi</a>
+					<a href="{{ url('mua-ban-dong-ho-co') }}">Góc mua bán trao đổi</a>
 					<ul>
 						{%for category in categories%}
 						<li><a href="about.html">Đồng hồ treo tường</a></li>

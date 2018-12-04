@@ -65,19 +65,47 @@ displayEmpty = 0
 								idList.push({{product.id}});
 							</script>
 							<li class="products-list-home">
-								<h2 style="display: initial;">
-								{% for category in product.categories|slice(0, 1) %}			
+								<h3 style="display: initial;">
+								{{product.title}}
+								</h3>
+								<div class="clear"></div>
+								<div class="col-md-4">
+									<div id="gallery{{product.id}}"></div>
+									
+									</div>
+								<div class="col-md-4">
+								<i class="fas fa-calendar-alt"></i>Ngày đăng: {{ product.created_at|date('d/m/Y') }}
+								</div>		
+								<div class="col-md-4">
+								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price|number_format(0, ',', '.') }}</b> (VNĐ)</i>
+								</div>
+								{% if product.ma %}
+								<div class="col-md-4">
+								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.ma}}
+								</div>
+								{% endif %}
+                                 {% if product.xuatxu %}
+								<div class="col-md-4">
+								<i class="fas fa-globe-americas"></i>Xuất xứ: {{product.xuatxu}}
+								</div>
+								{% endif %}
+								{% if product.thuonghieu %}
+								<div class="col-md-4">
+								<i class="fas fa-hourglass-start"></i>Thương hiệu: {{product.thuonghieu}}
+								</div>
+								{% endif %}
+								
+								{% if product.categories.count %}
+								<div class="col-md-4"><i class="fas fa-sitemap"></i>Thể loại:
+								{% for category in product.categories%}			
 									<a href="{{ category.url }}">{{ category.title }}</a>
 									{% if not loop.last %},
 									{% endif %}
-								{% endfor %} =>
-								{{product.title}}
-								</h2><br>
-								<div style="float: right;">Ngày đăng: {{product.created_at}}</div>
-								<div>Giá bán:<i class="price"><b>{{product.price}}</b> (Đồng)</i>
+								{% endfor %}
 								</div>
+								{% endif %}
 								<div class="product-details">{{ product.description|raw}}</div>
-								<div id="gallery{{product.id}}"></div>
+								
 									{% if product.images.count %}
 									{% for image in product.images %}
 									<script>
@@ -85,11 +113,8 @@ displayEmpty = 0
         							</script>
 									{% endfor %}
 									{% endif %}
-									<a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
-									{% if product.video %}
-										<iframe width="100%" height="315" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}">
-										</iframe>
-								 {% endif %}
+								 <div class="clear"></div>
+								 <a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
 								</li>
 								<script>
 									imagesArray[{{product.id}}] = thisImages
