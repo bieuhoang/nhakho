@@ -1,122 +1,161 @@
-1536266635a:1:{s:17:"nhakho/header.htm";a:5:{s:8:"fileName";s:17:"nhakho/header.htm";s:7:"content";s:2787:"		<!-- Navbar -->
-		<div class="navbar navbar-primary">
-			<div class="container">
-				<!-- Logo -->
-				<!-- Logo -->
-				<a class="navbar-brand" href="{{ url('/') }}">
-					<img class="logo logo-dark" alt="" src="{{ 'assets/nhakho/image/logo.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
-					<img class="logo logo-light" alt="" src="{{ 'assets/nhakho/image/logo-white.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
-				</a>
-				<!-- #end Logo -->
-				<!-- HeaderTop -->
-				<div class="header-top">
-					<ul class="top-contact">
-						<li class="t-phone t-phone1 t-phone-s2">
-							<span><small><em class="color-secondary">24/7</em> HOTLINE tư vấn</small> <em class="fa fa-phone" aria-hidden="true"></em> <a href="news.html#">0888-001-500</a></span>
-						</li>
-						<li class="t-phone t-phone1 t-phone-s2">
-							<span><small>Hỗ trợ kỹ thuật</small> <em class="fa fa-phone" aria-hidden="true"></em> <a href="news.html#">0886-509-500</a></span>
-						</li>
-						<li class="quote-btn">
+1544195340a:1:{s:17:"nhakho/header.htm";a:7:{s:8:"fileName";s:17:"nhakho/header.htm";s:7:"content";s:3195:"[viewBag]
 
-							<a href="https://www.facebook.com/donghocotreotuong/" class="btn" target="_blank">
-								<i class="fa fab fa-facebook-square" style="background: white;
-								color: #4366b2;"></i>
-							Chuyển sang trang Facebook</a></li>
-						</ul>
-					</div>
-					<!-- #end HeaderTop -->
-					<!-- NavBar Trigger -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav"
-						aria-expanded="false">
-						<span class="sr-only">Menu</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Q-Button for Mobile -->
-					<div class="quote-btn"><a class="btn" href="request-service.html"><span>Request Service</span></a></div>
-				</div>
-				<!-- #end Trigger -->
-				<!-- MainNav -->
-				<nav class="navbar-collapse collapse" id="mainnav">
-					<ul class="nav navbar-nav">
-						<li><a href="{{ url('/') }}">Trang chủ</a></li>
-						<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu và Dịch vụ Nhà kho</a></li>
-						<li>
-							<a href="about.html">Góc mua bán trao đổi</a>
-							<ul>
-								<li><a href="about.html">Đồng hồ treo tường</a></li>
-								<li><a href="about-modern.html">Đồng hồ để bàn</a></li>
-								<li><a href="teams.html">Vai bò, tạ lê</a></li>
-								<li><a href="testimonial.html">Đồng hồ tủ đứng</a></li>
-								<li><a href="testimonial.html">Các loại khác</a></li>
-							</ul>
-						</li>
-						<li><a href="service-alter.html">Cẩm nang, kinh nghiệm</a></li>
-						<li><a href="contact.html">Liên hệ</a></li>
-					</ul>
-				</nav>
-				<!-- #end Navbar -->
-";s:5:"mtime";i:1536266010;s:6:"markup";s:2784:"<!-- Navbar -->
-		<div class="navbar navbar-primary">
-			<div class="container">
-				<!-- Logo -->
-				<!-- Logo -->
-				<a class="navbar-brand" href="{{ url('/') }}">
-					<img class="logo logo-dark" alt="" src="{{ 'assets/nhakho/image/logo.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
-					<img class="logo logo-light" alt="" src="{{ 'assets/nhakho/image/logo-white.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
-				</a>
-				<!-- #end Logo -->
-				<!-- HeaderTop -->
-				<div class="header-top">
-					<ul class="top-contact">
-						<li class="t-phone t-phone1 t-phone-s2">
-							<span><small><em class="color-secondary">24/7</em> HOTLINE tư vấn</small> <em class="fa fa-phone" aria-hidden="true"></em> <a href="news.html#">0888-001-500</a></span>
-						</li>
-						<li class="t-phone t-phone1 t-phone-s2">
-							<span><small>Hỗ trợ kỹ thuật</small> <em class="fa fa-phone" aria-hidden="true"></em> <a href="news.html#">0886-509-500</a></span>
-						</li>
-						<li class="quote-btn">
+[categories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+==
+<!-- Navbar -->
+<div class="navbar navbar-primary">
+	<div class="container">
+		<!-- Logo -->
+		<!-- Logo -->
+		<a class="navbar-brand" href="{{ url('/') }}">
+			<img class="logo logo-dark" alt="" src="{{ 'assets/nhakho/image/logo.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
+			<img class="logo logo-light" alt="" src="{{ 'assets/nhakho/image/logo-white.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
+		</a>
+		<!-- #end Logo -->
+		<!-- HeaderTop -->
+		<div class="header-top">
+			<ul class="top-contact">
+				<li class="t-phone t-phone1 t-phone-s2">
+					<span><em class="color-secondary"><i class="far fa-compass"></i>Số 1 ngách 65 ngõ 217 đường Trần Phú,Q. Hà Đông, Hà Nội</em><span style="display:inline-block;"><i class="fas fa-phone-volume"></i>0888.001.500</span></span>
+				</li>
+				<li class="quote-btn">
 
-							<a href="https://www.facebook.com/donghocotreotuong/" class="btn" target="_blank">
-								<i class="fa fab fa-facebook-square" style="background: white;
-								color: #4366b2;"></i>
-							Chuyển sang trang Facebook</a></li>
-						</ul>
-					</div>
-					<!-- #end HeaderTop -->
-					<!-- NavBar Trigger -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav"
-						aria-expanded="false">
-						<span class="sr-only">Menu</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Q-Button for Mobile -->
-					<div class="quote-btn"><a class="btn" href="request-service.html"><span>Request Service</span></a></div>
-				</div>
-				<!-- #end Trigger -->
-				<!-- MainNav -->
-				<nav class="navbar-collapse collapse" id="mainnav">
-					<ul class="nav navbar-nav">
-						<li><a href="{{ url('/') }}">Trang chủ</a></li>
-						<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu và Dịch vụ Nhà kho</a></li>
-						<li>
-							<a href="about.html">Góc mua bán trao đổi</a>
-							<ul>
-								<li><a href="about.html">Đồng hồ treo tường</a></li>
-								<li><a href="about-modern.html">Đồng hồ để bàn</a></li>
-								<li><a href="teams.html">Vai bò, tạ lê</a></li>
-								<li><a href="testimonial.html">Đồng hồ tủ đứng</a></li>
-								<li><a href="testimonial.html">Các loại khác</a></li>
-							</ul>
-						</li>
-						<li><a href="service-alter.html">Cẩm nang, kinh nghiệm</a></li>
-						<li><a href="contact.html">Liên hệ</a></li>
+					<a href="https://www.facebook.com/donghocotreotuong/" class="btn" target="_blank">
+						<i class="fa fab fa-facebook-square" style="background: white;
+						color: #4366b2;"></i>
+					Chuyển sang trang Facebook</a></li>
+				</ul>
+			</div>
+			<!-- #end HeaderTop -->
+			<!-- NavBar Trigger -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav"
+				aria-expanded="false">
+				<span class="sr-only">Menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- Q-Button for Mobile -->		
+			<div class="quote-btn">
+			<a class="btn" href="fb://myfacepage/page/1804960209744498" target="_blank" rel="alternate">Chuyển sang Facebook</a></p>
+		</div>
+		<!-- #end Trigger -->
+		<!-- MainNav -->
+		<nav class="navbar-collapse collapse" id="mainnav">
+			<ul class="nav navbar-nav" style="margin: 0;">
+				<li><a href="{{ url('/') }}">Trang chủ</a></li>
+				<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu Nhà kho</a></li>
+				<li>
+					<a href="{{ url('mua-ban-dong-ho-co') }}">Góc mua bán trao đổi</a>
+					<ul>
+						{%for category in categories%}
+						<li><a href="about.html">Đồng hồ treo tường</a></li>
+						{%endfor%}
 					</ul>
-				</nav>
-				<!-- #end Navbar -->";s:4:"code";N;}}
+				</li>
+				<li><a href="sua-chua-dong-ho-co">Cẩm nang, kinh nghiệm</a></li>
+				<li><a href="lien-he">Liên hệ</a></li>
+			</ul>
+		</nav>
+		<!-- #end Navbar -->
+	</div>	
+</div>
+{% for category in categories %}
+Hoang van bieu
+    {% set productCount = category.product_count %}
+    <li {% if category.slug == currentCategorySlug %}class="active"{% endif %}>
+        <a href="{{ category.url }}">{{ category.title }}</a>
+        {% if productCount %}
+            <span class="badge">{{ productCount }}</span>
+        {% endif %}
+
+        {% if category.children.count %}
+            <ul>
+                {% partial __SELF__ ~ "::items"
+                    categories=category.children
+                    currentCategorySlug=currentCategorySlug
+                %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}";s:5:"mtime";i:1543952940;s:6:"markup";s:3130:"<!-- Navbar -->
+<div class="navbar navbar-primary">
+	<div class="container">
+		<!-- Logo -->
+		<!-- Logo -->
+		<a class="navbar-brand" href="{{ url('/') }}">
+			<img class="logo logo-dark" alt="" src="{{ 'assets/nhakho/image/logo.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
+			<img class="logo logo-light" alt="" src="{{ 'assets/nhakho/image/logo-white.png'|theme }}" srcset="{{ 'assets/nhakho/image/logo2x.png'|theme }} 2x">
+		</a>
+		<!-- #end Logo -->
+		<!-- HeaderTop -->
+		<div class="header-top">
+			<ul class="top-contact">
+				<li class="t-phone t-phone1 t-phone-s2">
+					<span><em class="color-secondary"><i class="far fa-compass"></i>Số 1 ngách 65 ngõ 217 đường Trần Phú,Q. Hà Đông, Hà Nội</em><span style="display:inline-block;"><i class="fas fa-phone-volume"></i>0888.001.500</span></span>
+				</li>
+				<li class="quote-btn">
+
+					<a href="https://www.facebook.com/donghocotreotuong/" class="btn" target="_blank">
+						<i class="fa fab fa-facebook-square" style="background: white;
+						color: #4366b2;"></i>
+					Chuyển sang trang Facebook</a></li>
+				</ul>
+			</div>
+			<!-- #end HeaderTop -->
+			<!-- NavBar Trigger -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav"
+				aria-expanded="false">
+				<span class="sr-only">Menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<!-- Q-Button for Mobile -->		
+			<div class="quote-btn">
+			<a class="btn" href="fb://myfacepage/page/1804960209744498" target="_blank" rel="alternate">Chuyển sang Facebook</a></p>
+		</div>
+		<!-- #end Trigger -->
+		<!-- MainNav -->
+		<nav class="navbar-collapse collapse" id="mainnav">
+			<ul class="nav navbar-nav" style="margin: 0;">
+				<li><a href="{{ url('/') }}">Trang chủ</a></li>
+				<li><a href="{{ url('gioi-thieu-dong-ho-nha-kho') }}">Giới thiệu Nhà kho</a></li>
+				<li>
+					<a href="{{ url('mua-ban-dong-ho-co') }}">Góc mua bán trao đổi</a>
+					<ul>
+						{%for category in categories%}
+						<li><a href="about.html">Đồng hồ treo tường</a></li>
+						{%endfor%}
+					</ul>
+				</li>
+				<li><a href="sua-chua-dong-ho-co">Cẩm nang, kinh nghiệm</a></li>
+				<li><a href="lien-he">Liên hệ</a></li>
+			</ul>
+		</nav>
+		<!-- #end Navbar -->
+	</div>	
+</div>
+{% for category in categories %}
+Hoang van bieu
+    {% set productCount = category.product_count %}
+    <li {% if category.slug == currentCategorySlug %}class="active"{% endif %}>
+        <a href="{{ category.url }}">{{ category.title }}</a>
+        {% if productCount %}
+            <span class="badge">{{ productCount }}</span>
+        {% endif %}
+
+        {% if category.children.count %}
+            <ul>
+                {% partial __SELF__ ~ "::items"
+                    categories=category.children
+                    currentCategorySlug=currentCategorySlug
+                %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}";s:4:"code";N;s:7:"viewBag";a:0:{}s:10:"categories";a:2:{s:4:"slug";s:11:"{{ :slug }}";s:12:"displayEmpty";s:1:"1";}}}

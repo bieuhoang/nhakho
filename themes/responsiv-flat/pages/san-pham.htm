@@ -3,15 +3,11 @@ url = "/san-pham/:slug"
 layout = "nhakholayout"
 description = "Trang mô tả chi tiết sản phẩm"
 is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
 
 [product]
-slug = "{{ :slug }}"
-
-[products]
-pageNumber = "{{ :page }}"
-productsPerPage = 10
-noProductsMessage = "No products found"
-sortOrder = "created_at desc"
+productSlug = "{{ :slug }}"
 ==
 <!-- Content -->
 <script>
@@ -22,20 +18,45 @@ sortOrder = "created_at desc"
 	<div class="container">
 		<div class="content row">
 			<div class="col-md-8 res-m-bttm">
-				
-				<h2 style="display: initial;">
-								{% for category in product.categories|slice(0, 1) %}			
-									<a href="{{ category.url }}">{{ category.title }}</a>
+				<h3 style="display: initial;">
+								{{product.name}}
+								</h3>
+								<div class="clear"></div>
+								<div class="col-md-2">
+									<img src="{{product.main_image.path}}">
+									</div>
+								<div class="col-md-5">
+								<i class="fas fa-calendar-alt"></i>Ngày đăng: {{ product.created_at|date('d/m/Y') }}
+								</div>		
+								<div class="col-md-5">
+								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price[0].price|number_format(0, ',', '.') }}</b> ({{product.price[0].currency}})</i>
+								</div>
+								{% if product.user_defined_id %}
+								<div class="col-md-5">
+								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.user_defined_id}}
+								</div>
+								{% endif %}
+                                 {% if product.xuatxu %}
+								<div class="col-md-5">
+								<i class="fas fa-globe-americas"></i>Xuất xứ: {{product.xuatxu}}
+								</div>
+								{% endif %}
+								{% if product.thuonghieu %}
+								<div class="col-md-5">
+								<i class="fas fa-hourglass-start"></i>Thương hiệu: {{product.thuonghieu}}
+								</div>
+								{% endif %}
+								
+								{% if product.categories.count %}
+								<div class="col-md-5"><i class="fas fa-sitemap"></i>Thể loại:
+								{% for category in product.categories%}			
+									<a href="{{ category.url }}">{{ category.name }}</a>
 									{% if not loop.last %},
 									{% endif %}
-								{% endfor %} =>
-								{{product.title}}
-								</h2>
-								<div class="clear"></div>
-								<div>Ngày đăng: {{ product.created_at|date('d/m/Y') }}</div>
-								
-								<div>Giá bán:<i class="price"><b>{{product.price}}</b> (Đồng)</i>
+								{% endfor %}
 								</div>
+								{% endif %}
+								
 								<div class="product-details">{{ product.description|raw}}</div>
 								
 									{% if product.images.count %}

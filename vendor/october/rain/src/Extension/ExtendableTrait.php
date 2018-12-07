@@ -21,9 +21,10 @@ trait ExtendableTrait
      * @var array Class reflection information, including behaviors.
      */
     protected $extensionData = [
-        'extensions'     => [],
-        'methods'        => [],
-        'dynamicMethods' => []
+        'extensions'        => [],
+        'methods'           => [],
+        'dynamicMethods'    => [],
+        'dynamicProperties' => []
     ];
 
     /**
@@ -150,7 +151,7 @@ trait ExtendableTrait
     }
 
     /**
-     * Programatically adds a method to the extendable class
+     * Programmatically adds a method to the extendable class
      * @param string   $dynamicName
      * @param callable $method
      * @param string   $extension
@@ -169,7 +170,7 @@ trait ExtendableTrait
     }
 
     /**
-     * Programatically adds a property to the extendable class
+     * Programmatically adds a property to the extendable class
      * @param string   $dynamicName
      * @param string   $value
      */
@@ -180,6 +181,8 @@ trait ExtendableTrait
         if (!property_exists($this, $dynamicName)) {
             $this->{$dynamicName} = $value;
         }
+
+        $this->extensionData['dynamicProperties'][] = $dynamicName;
 
         self::$extendableGuardProperties = true;
     }
@@ -232,9 +235,7 @@ trait ExtendableTrait
     public function getClassExtension($name)
     {
         $name = str_replace('.', '\\', trim($name));
-        return (isset($this->extensionData['extensions'][$name]))
-            ? $this->extensionData['extensions'][$name]
-            : null;
+        return $this->extensionData['extensions'][$name] ?? null;
     }
 
     /**
@@ -275,6 +276,21 @@ trait ExtendableTrait
         );
     }
 
+
+    /**
+     * Returns all dynamic properties and their values
+     * @return array ['property' => 'value']
+     */
+    public function getDynamicProperties()
+    {
+        $result = [];
+        $propertyNames = $this->extensionData['dynamicProperties'];
+        foreach($propertyNames as $propName) {
+            $result[$propName] = $this->{$propName};
+        }
+        return $result;
+    }
+
     /**
      * Checks if a property exists, extension equivalent of `property_exists()`
      * @param  string $name
@@ -299,7 +315,7 @@ trait ExtendableTrait
     }
 
     /**
-     * Checks if a property is accessible, property equivalent of `is_callabe()`
+     * Checks if a property is accessible, property equivalent of `is_callable()`
      * @param  mixed  $class
      * @param  string $propertyName
      * @return boolean

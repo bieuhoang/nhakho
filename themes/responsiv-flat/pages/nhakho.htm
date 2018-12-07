@@ -4,33 +4,11 @@ layout = "nhakholayout"
 is_hidden = 0
 
 [products]
-pageNumber = "{{ :page }}"
-productsPerPage = 25
-noProductsMessage = "No products found"
-sortOrder = "updated_at-desc"
-
-[blogCategories]
-slug = "{{ :slug }}"
-displayEmpty = 0
-categoryPage = "blog/category"
-
-[blogPosts]
-pageNumber = "{{ :page }}"
-postsPerPage = 10
-noPostsMessage = "No posts found"
+categoryFilter = all
+productsPerPage = 9
+noProductsMessage = "No Products found."
 sortOrder = "published_at desc"
-categoryPage = "blog/category"
-postPage = "blog/post"
-
-[categories]
-slug = "{{ :slug }}"
-displayEmpty = 0
 ==
-<script>
-	var thisPage = "";
-	var imagesArray = new Array();
-	var idList = new Array();
-</script>
 <div class="banner banner-static banner-medium has-bg lighter-filter">
 	<div class="banner-cpn">
 		<div class="container">
@@ -60,65 +38,49 @@ displayEmpty = 0
 						<ul class="blog-posts post-col2">
         
 							{% for product in products %}
-							<script type="text/javascript">
-								var thisImages = new Array();
-								idList.push({{product.id}});
-							</script>
 							<li class="products-list-home">
 								<h3 style="display: initial;">
-								{{product.title}}
+								{{product.name}}
 								</h3>
 								<div class="clear"></div>
-								<div class="col-md-4">
-									<div id="gallery{{product.id}}"></div>
-									
+								<div class="col-md-2">
+									<img src="{{product.main_image.path}}">
 									</div>
-								<div class="col-md-4">
+								<div class="col-md-5">
 								<i class="fas fa-calendar-alt"></i>Ngày đăng: {{ product.created_at|date('d/m/Y') }}
 								</div>		
-								<div class="col-md-4">
-								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price|number_format(0, ',', '.') }}</b> (VNĐ)</i>
+								<div class="col-md-5">
+								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price[0].price|number_format(0, ',', '.') }}</b> ({{product.price[0].currency}})</i>
 								</div>
-								{% if product.ma %}
-								<div class="col-md-4">
-								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.ma}}
+								{% if product.user_defined_id %}
+								<div class="col-md-5">
+								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.user_defined_id}}
 								</div>
 								{% endif %}
                                  {% if product.xuatxu %}
-								<div class="col-md-4">
+								<div class="col-md-5">
 								<i class="fas fa-globe-americas"></i>Xuất xứ: {{product.xuatxu}}
 								</div>
 								{% endif %}
 								{% if product.thuonghieu %}
-								<div class="col-md-4">
+								<div class="col-md-5">
 								<i class="fas fa-hourglass-start"></i>Thương hiệu: {{product.thuonghieu}}
 								</div>
 								{% endif %}
 								
 								{% if product.categories.count %}
-								<div class="col-md-4"><i class="fas fa-sitemap"></i>Thể loại:
+								<div class="col-md-5"><i class="fas fa-sitemap"></i>Thể loại:
 								{% for category in product.categories%}			
-									<a href="{{ category.url }}">{{ category.title }}</a>
+									<a href="{{ category.url }}">{{ category.name }}</a>
 									{% if not loop.last %},
 									{% endif %}
 								{% endfor %}
 								</div>
 								{% endif %}
-								<div class="product-details">{{ product.description|raw}}</div>
-								
-									{% if product.images.count %}
-									{% for image in product.images %}
-									<script>
-										thisImages.push("{{image.path}}");
-        							</script>
-									{% endfor %}
-									{% endif %}
+								<div class="product-details">{{ product.description|slice(0, 50) ~ '...' }}</div>
 								 <div class="clear"></div>
 								 <a class="btn-link link-arrow-sm" href="san-pham/{{product.slug}}">Chi tiết</a>
-								</li>
-								<script>
-									imagesArray[{{product.id}}] = thisImages
-								</script>			 
+								</li>		 
 								{% endfor %}
 							</ul>
 								
@@ -207,14 +169,3 @@ displayEmpty = 0
 	</div>
 </div>
 	<!-- End Content -->
-
-	<script>
-            $(function() {
-            	$.each(idList, function(pnum, pid){
-  					$('#gallery'+pid).imagesGrid({
-                    	images: imagesArray[pid],align: true
-                	});
-				});
-                
-            });
-    </script>

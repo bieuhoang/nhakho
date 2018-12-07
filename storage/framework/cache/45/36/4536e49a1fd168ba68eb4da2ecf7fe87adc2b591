@@ -1,43 +1,79 @@
-1536266634a:1:{s:12:"san-pham.htm";a:12:{s:8:"fileName";s:12:"san-pham.htm";s:7:"content";s:2594:"title = "san-pham"
+1544195650a:1:{s:12:"san-pham.htm";a:13:{s:8:"fileName";s:12:"san-pham.htm";s:7:"content";s:4433:"title = "san-pham"
 url = "/san-pham/:slug"
 layout = "nhakholayout"
 description = "Trang mô tả chi tiết sản phẩm"
 is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
 
 [product]
-slug = "{{ :slug }}"
-
-[products]
-pageNumber = "{{ :page }}"
-productsPerPage = 10
-noProductsMessage = "No products found"
-sortOrder = "created_at desc"
+productSlug = "{{ :slug }}"
 ==
 <!-- Content -->
+<script>
+	var thisPage = "";
+	var imagesArray = new Array();
+</script>
 <div class="section section-blog section-pad">
 	<div class="container">
 		<div class="content row">
 			<div class="col-md-8 res-m-bttm">
-				<h2>{{product.title}}</h2>
-				<i class="price">{{product.price}}</i>
-				<i class="price">{{product.xuatxu}}</i>
-				<div class="row">
-					<!-- Gallery -->
-					<div class="gallery gallery-col4 gallery-filled gallery-lightbox hover-zoom">
-						<ul class="gallery-list">
-							{% if product.images.count %}
-							{% for image in product.images %}
-							<li>
-								<a href="{{ image.path }}">
-									<div class="gallery-item"><img src="{{ image.path }}" alt="{{ image.filename }}"></div>
-								</a>
-							</li>
-							{% endfor %}
-							{% else %}
-							{% endif %}
-						</ul>
-					</div>
-				</div>
+				<h3 style="display: initial;">
+								{{product.name}}
+								</h3>
+								<div class="clear"></div>
+								<div class="col-md-2">
+									<img src="{{product.main_image.path}}">
+									</div>
+								<div class="col-md-5">
+								<i class="fas fa-calendar-alt"></i>Ngày đăng: {{ product.created_at|date('d/m/Y') }}
+								</div>		
+								<div class="col-md-5">
+								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price[0].price|number_format(0, ',', '.') }}</b> ({{product.price[0].currency}})</i>
+								</div>
+								{% if product.user_defined_id %}
+								<div class="col-md-5">
+								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.user_defined_id}}
+								</div>
+								{% endif %}
+                                 {% if product.xuatxu %}
+								<div class="col-md-5">
+								<i class="fas fa-globe-americas"></i>Xuất xứ: {{product.xuatxu}}
+								</div>
+								{% endif %}
+								{% if product.thuonghieu %}
+								<div class="col-md-5">
+								<i class="fas fa-hourglass-start"></i>Thương hiệu: {{product.thuonghieu}}
+								</div>
+								{% endif %}
+								
+								{% if product.categories.count %}
+								<div class="col-md-5"><i class="fas fa-sitemap"></i>Thể loại:
+								{% for category in product.categories%}			
+									<a href="{{ category.url }}">{{ category.name }}</a>
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %}
+								</div>
+								{% endif %}
+								
+								<div class="product-details">{{ product.description|raw}}</div>
+								
+									{% if product.images.count %}
+									{% for image in product.images %}
+									<script>
+										imagesArray.push("{{image.path}}");
+        							</script>
+									{% endfor %}
+									{% endif %}
+									<div id="gallery{{product.id}}"></div>
+									{% if product.video %}
+										
+										<iframe width="100%" height="360" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+								 {% endif %}									
+								 <div class="clear"></div>
+								 
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar-right">
@@ -84,32 +120,79 @@ sortOrder = "created_at desc"
 			</div>
 		</div>
 	</div>
-</div>		
-";s:5:"mtime";i:1536266010;s:6:"markup";s:2290:"<!-- Content -->
+</div>
+<script>
+            $(function() {
+  					$('#gallery{{product.id}}').imagesGrid({
+                    	images: imagesArray,align: true
+                	});
+                
+            });
+    </script>";s:5:"mtime";i:1544195048;s:6:"markup";s:4198:"<!-- Content -->
+<script>
+	var thisPage = "";
+	var imagesArray = new Array();
+</script>
 <div class="section section-blog section-pad">
 	<div class="container">
 		<div class="content row">
 			<div class="col-md-8 res-m-bttm">
-				<h2>{{product.title}}</h2>
-				<i class="price">{{product.price}}</i>
-				<i class="price">{{product.xuatxu}}</i>
-				<div class="row">
-					<!-- Gallery -->
-					<div class="gallery gallery-col4 gallery-filled gallery-lightbox hover-zoom">
-						<ul class="gallery-list">
-							{% if product.images.count %}
-							{% for image in product.images %}
-							<li>
-								<a href="{{ image.path }}">
-									<div class="gallery-item"><img src="{{ image.path }}" alt="{{ image.filename }}"></div>
-								</a>
-							</li>
-							{% endfor %}
-							{% else %}
-							{% endif %}
-						</ul>
-					</div>
-				</div>
+				<h3 style="display: initial;">
+								{{product.name}}
+								</h3>
+								<div class="clear"></div>
+								<div class="col-md-2">
+									<img src="{{product.main_image.path}}">
+									</div>
+								<div class="col-md-5">
+								<i class="fas fa-calendar-alt"></i>Ngày đăng: {{ product.created_at|date('d/m/Y') }}
+								</div>		
+								<div class="col-md-5">
+								<i class="fas fa-money-bill-wave"></i>Giá bán:{{ product.price[0].price|number_format(0, ',', '.') }}</b> ({{product.price[0].currency}})</i>
+								</div>
+								{% if product.user_defined_id %}
+								<div class="col-md-5">
+								<i class="fas fa-barcode"></i>Mã sản phẩm: {{product.user_defined_id}}
+								</div>
+								{% endif %}
+                                 {% if product.xuatxu %}
+								<div class="col-md-5">
+								<i class="fas fa-globe-americas"></i>Xuất xứ: {{product.xuatxu}}
+								</div>
+								{% endif %}
+								{% if product.thuonghieu %}
+								<div class="col-md-5">
+								<i class="fas fa-hourglass-start"></i>Thương hiệu: {{product.thuonghieu}}
+								</div>
+								{% endif %}
+								
+								{% if product.categories.count %}
+								<div class="col-md-5"><i class="fas fa-sitemap"></i>Thể loại:
+								{% for category in product.categories%}			
+									<a href="{{ category.url }}">{{ category.name }}</a>
+									{% if not loop.last %},
+									{% endif %}
+								{% endfor %}
+								</div>
+								{% endif %}
+								
+								<div class="product-details">{{ product.description|raw}}</div>
+								
+									{% if product.images.count %}
+									{% for image in product.images %}
+									<script>
+										imagesArray.push("{{image.path}}");
+        							</script>
+									{% endfor %}
+									{% endif %}
+									<div id="gallery{{product.id}}"></div>
+									{% if product.video %}
+										
+										<iframe width="100%" height="360" src="{{str_replace_first('youtu.be', 'www.youtube.com/embed', product.video)}}?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+								 {% endif %}									
+								 <div class="clear"></div>
+								 
 			</div>
 			<div class="col-md-4">
 				<div class="sidebar-right">
@@ -156,4 +239,12 @@ sortOrder = "created_at desc"
 			</div>
 		</div>
 	</div>
-</div>";s:4:"code";N;s:5:"title";s:8:"san-pham";s:3:"url";s:15:"/san-pham/:slug";s:6:"layout";s:12:"nhakholayout";s:11:"description";s:38:"Trang mô tả chi tiết sản phẩm";s:9:"is_hidden";s:1:"0";s:7:"product";a:1:{s:4:"slug";s:11:"{{ :slug }}";}s:8:"products";a:4:{s:10:"pageNumber";s:11:"{{ :page }}";s:15:"productsPerPage";s:2:"10";s:17:"noProductsMessage";s:17:"No products found";s:9:"sortOrder";s:15:"created_at desc";}}}
+</div>
+<script>
+            $(function() {
+  					$('#gallery{{product.id}}').imagesGrid({
+                    	images: imagesArray,align: true
+                	});
+                
+            });
+    </script>";s:4:"code";N;s:5:"title";s:8:"san-pham";s:3:"url";s:15:"/san-pham/:slug";s:6:"layout";s:12:"nhakholayout";s:11:"description";s:38:"Trang mô tả chi tiết sản phẩm";s:9:"is_hidden";s:1:"0";s:11:"robot_index";s:5:"index";s:12:"robot_follow";s:6:"follow";s:7:"product";a:1:{s:11:"productSlug";s:11:"{{ :slug }}";}}}

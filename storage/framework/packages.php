@@ -17,4 +17,11 @@
       'Date' => 'Jenssegers\\Date\\Date',
     ),
   ),
+  'nesbot/carbon' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Carbon\\Laravel\\ServiceProvider',
+    ),
+  ),
 );

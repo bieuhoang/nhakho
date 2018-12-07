@@ -95,3 +95,9 @@
     - 'Changed json column types to text for new installations since it is causing problems with old MySQL versions'
 1.0.40:
     - 'Added single product menu type (thanks to alxy)'
+1.0.41:
+    - 'Updated table offline_snipcartshop_products'
+    - builder_table_update_offline_snipcartshop_products_2.php
+1.0.42:
+    - 'Updated table offline_snipcartshop_products'
+    - builder_table_update_offline_snipcartshop_products_3.php

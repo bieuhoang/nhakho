@@ -1,4 +1,4 @@
-1536266635a:1:{s:19:"samples/contact.htm";a:8:{s:8:"fileName";s:19:"samples/contact.htm";s:7:"content";s:2818:"title = "Contact"
+1544195340a:1:{s:19:"samples/contact.htm";a:8:{s:8:"fileName";s:19:"samples/contact.htm";s:7:"content";s:2818:"title = "Contact"
 url = "/contact"
 layout = "default"
 ==
@@ -71,7 +71,7 @@ layout = "default"
 
     </div>
 </div>
-";s:5:"mtime";i:1536266010;s:6:"markup";s:2759:"<section id="layout-title">
+";s:5:"mtime";i:1543842779;s:6:"markup";s:2759:"<section id="layout-title">
     <div class="container">
         <h3>Contact us now</h3>
     </div>

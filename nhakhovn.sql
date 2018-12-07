@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2018 at 08:26 PM
+-- Generation Time: Dec 07, 2018 at 03:05 PM
 -- Server version: 8.0.13
 -- PHP Version: 7.1.19
 
@@ -36,6 +36,13 @@ CREATE TABLE `backend_access_log` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `backend_access_log`
+--
+
+INSERT INTO `backend_access_log` (`id`, `user_id`, `ip_address`, `created_at`, `updated_at`) VALUES
+(1, 1, '127.0.0.1', '2018-12-07 06:39:52', '2018-12-07 06:39:52');
+
 -- --------------------------------------------------------
 
 --
@@ -67,7 +74,7 @@ CREATE TABLE `backend_users` (
 --
 
 INSERT INTO `backend_users` (`id`, `first_name`, `last_name`, `login`, `email`, `password`, `activation_code`, `persist_code`, `reset_password_code`, `permissions`, `is_activated`, `role_id`, `activated_at`, `last_login`, `created_at`, `updated_at`, `is_superuser`) VALUES
-(1, 'Admin', 'Person', 'bieuhoang', 'bieuhv@gmail.com', '$2y$10$Y.ywX0J5CuHxOww0zmWCRekWt3N6e8Eu5kuMYF/zJOnZtjNfrJehK', NULL, NULL, NULL, '', 1, 2, NULL, NULL, '2018-11-28 13:18:16', '2018-11-28 13:18:16', 1);
+(1, 'Admin', 'Person', 'admin', 'admin@domain.tld', '$2y$10$YzEcbTFs.NORJtYQ.dOOOePNq4cW8wig7OZk4VIfJ15q2hWDtWyDi', NULL, '$2y$10$oZLblryhetj9UNzFv2FqI.U1CQ9Ur3nZTYvYEXuUg9iL.IuhYI3ra', NULL, '', 1, 2, NULL, '2018-12-07 06:39:52', '2018-12-07 06:39:36', '2018-12-07 06:39:52', 1);
 
 -- --------------------------------------------------------
 
@@ -108,7 +115,7 @@ CREATE TABLE `backend_user_groups` (
 --
 
 INSERT INTO `backend_user_groups` (`id`, `name`, `created_at`, `updated_at`, `code`, `description`, `is_new_user_default`) VALUES
-(1, 'Owners', '2018-11-28 13:18:16', '2018-11-28 13:18:16', 'owners', 'Default group for website owners.', 0);
+(1, 'Owners', '2018-12-07 06:39:36', '2018-12-07 06:39:36', 'owners', 'Default group for website owners.', 0);
 
 -- --------------------------------------------------------
 
@@ -147,8 +154,8 @@ CREATE TABLE `backend_user_roles` (
 --
 
 INSERT INTO `backend_user_roles` (`id`, `name`, `code`, `description`, `permissions`, `is_system`, `created_at`, `updated_at`) VALUES
-(1, 'Publisher', 'publisher', 'Site editor with access to publishing tools.', '', 1, '2018-11-28 13:18:16', '2018-11-28 13:18:16'),
-(2, 'Developer', 'developer', 'Site administrator with access to developer tools.', '', 1, '2018-11-28 13:18:16', '2018-11-28 13:18:16');
+(1, 'Publisher', 'publisher', 'Site editor with access to publishing tools.', '', 1, '2018-12-07 06:39:36', '2018-12-07 06:39:36'),
+(2, 'Developer', 'developer', 'Site administrator with access to developer tools.', '', 1, '2018-12-07 06:39:36', '2018-12-07 06:39:36');
 
 -- --------------------------------------------------------
 
@@ -167,6 +174,13 @@ CREATE TABLE `backend_user_throttle` (
   `is_banned` tinyint(1) NOT NULL DEFAULT '0',
   `banned_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `backend_user_throttle`
+--
+
+INSERT INTO `backend_user_throttle` (`id`, `user_id`, `ip_address`, `attempts`, `last_attempt_at`, `is_suspended`, `suspended_at`, `is_banned`, `banned_at`) VALUES
+(1, 1, '127.0.0.1', 0, NULL, 0, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -321,6 +335,300 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `offline_snipcartshop_categories`
+--
+
+CREATE TABLE `offline_snipcartshop_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `nest_left` int(11) DEFAULT NULL,
+  `nest_right` int(11) DEFAULT NULL,
+  `nest_depth` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `offline_snipcartshop_categories`
+--
+
+INSERT INTO `offline_snipcartshop_categories` (`id`, `name`, `slug`, `code`, `meta_title`, `meta_description`, `sort_order`, `created_at`, `updated_at`, `parent_id`, `nest_left`, `nest_right`, `nest_depth`) VALUES
+(1, 'Đồng hồ treo tường', 'djong-ho-treo-tong', '', '', '', 0, '2018-12-07 06:44:12', '2018-12-07 06:44:12', NULL, 1, 2, 0),
+(2, 'Đồng hồ để bàn', 'djong-ho-dje-ban', '', '', '', 0, '2018-12-07 06:44:26', '2018-12-07 06:44:26', NULL, 3, 4, 0),
+(3, 'Đồng hồ tủ đứng', 'djong-ho-tu-djung', '', '', '', 0, '2018-12-07 06:44:39', '2018-12-07 06:44:39', NULL, 5, 6, 0),
+(4, 'Sản phẩm khác', 'san-pham-khac', '', '', '', 0, '2018-12-07 06:44:49', '2018-12-07 06:44:49', NULL, 7, 8, 0),
+(5, 'Đồng hồ vai bò', 'djong-ho-vai-bo', '', '', '', 0, '2018-12-07 06:45:00', '2018-12-07 06:45:00', NULL, 9, 10, 0),
+(6, 'Đồng hồ quả tạ', 'djong-ho-qua-ta', '', '', '', 0, '2018-12-07 06:45:08', '2018-12-07 06:45:08', NULL, 11, 12, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_category_product`
+--
+
+CREATE TABLE `offline_snipcartshop_category_product` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `offline_snipcartshop_category_product`
+--
+
+INSERT INTO `offline_snipcartshop_category_product` (`id`, `category_id`, `product_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 1, 2),
+(5, 3, 2),
+(6, 4, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_discounts`
+--
+
+CREATE TABLE `offline_snipcartshop_discounts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `guid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `total_to_reach` decimal(10,0) DEFAULT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Rate',
+  `trigger` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Code',
+  `rate` int(10) UNSIGNED DEFAULT NULL,
+  `amount` decimal(10,0) DEFAULT NULL,
+  `alternate_price` decimal(10,0) DEFAULT NULL,
+  `max_number_of_usages` int(10) UNSIGNED DEFAULT NULL,
+  `expires` datetime DEFAULT NULL,
+  `number_of_usages` int(10) UNSIGNED DEFAULT NULL,
+  `number_of_usages_uncompleted` int(10) UNSIGNED DEFAULT NULL,
+  `shipping_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_cost` decimal(10,0) DEFAULT NULL,
+  `shipping_guaranteed_days_to_delivery` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_orders`
+--
+
+CREATE TABLE `offline_snipcartshop_orders` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `token` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `currency` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `creation_date` timestamp NULL DEFAULT NULL,
+  `modification_date` timestamp NULL DEFAULT NULL,
+  `completion_date` timestamp NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `will_be_paid_later` tinyint(1) DEFAULT NULL,
+  `shipping_address_same_as_billing` tinyint(1) DEFAULT NULL,
+  `billing_address` text COLLATE utf8mb4_unicode_ci,
+  `shipping_address` text COLLATE utf8mb4_unicode_ci,
+  `credit_card_last4_digits` varchar(4) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tracking_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tracking_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_fees` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_provider` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipping_method` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `card_holder_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `card_type` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_method` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_gateway_used` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tax_provider` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lang` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `refunds_amount` double(8,2) DEFAULT NULL,
+  `adjusted_amount` double(8,2) DEFAULT NULL,
+  `rebate_amount` double(8,2) DEFAULT NULL,
+  `taxes` text COLLATE utf8mb4_unicode_ci,
+  `items_total` decimal(8,2) DEFAULT NULL,
+  `subtotal` decimal(8,2) DEFAULT NULL,
+  `taxable_total` decimal(8,2) DEFAULT NULL,
+  `grand_total` decimal(8,2) DEFAULT NULL,
+  `total_weight` int(11) DEFAULT NULL,
+  `total_rebate_rate` int(11) DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci,
+  `custom_fields` text COLLATE utf8mb4_unicode_ci,
+  `shipping_enabled` tinyint(1) DEFAULT NULL,
+  `payment_transaction_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `metadata` text COLLATE utf8mb4_unicode_ci,
+  `ip_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discounts` text COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_order_items`
+--
+
+CREATE TABLE `offline_snipcartshop_order_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `unique_id` char(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` decimal(8,2) DEFAULT NULL,
+  `total_price` decimal(8,2) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `max_quantity` int(11) DEFAULT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL,
+  `length` int(11) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `total_weight` decimal(8,2) DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stackable` tinyint(1) DEFAULT NULL,
+  `duplicatable` tinyint(1) DEFAULT NULL,
+  `shippable` tinyint(1) DEFAULT NULL,
+  `taxable` tinyint(1) DEFAULT NULL,
+  `custom_fields` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `taxes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `added_on` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_products`
+--
+
+CREATE TABLE `offline_snipcartshop_products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_defined_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description_short` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `meta_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci,
+  `weight` int(10) UNSIGNED DEFAULT NULL,
+  `width` int(10) UNSIGNED DEFAULT NULL,
+  `length` int(10) UNSIGNED DEFAULT NULL,
+  `height` int(10) UNSIGNED DEFAULT NULL,
+  `quantity_default` int(10) UNSIGNED DEFAULT NULL,
+  `quantity_max` int(10) UNSIGNED DEFAULT NULL,
+  `quantity_min` int(10) UNSIGNED DEFAULT NULL,
+  `stock` int(11) DEFAULT '0',
+  `properties` text COLLATE utf8mb4_unicode_ci,
+  `links` text COLLATE utf8mb4_unicode_ci,
+  `inventory_management_method` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'single',
+  `allow_out_of_stock_purchases` tinyint(1) NOT NULL DEFAULT '0',
+  `stackable` tinyint(1) NOT NULL DEFAULT '1',
+  `shippable` tinyint(1) NOT NULL DEFAULT '1',
+  `taxable` tinyint(1) NOT NULL DEFAULT '1',
+  `published` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `thuonghieu` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `video` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `xuatxu` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gong` int(11) DEFAULT NULL,
+  `bua` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `offline_snipcartshop_products`
+--
+
+INSERT INTO `offline_snipcartshop_products` (`id`, `user_defined_id`, `name`, `slug`, `price`, `description_short`, `description`, `meta_title`, `meta_description`, `weight`, `width`, `length`, `height`, `quantity_default`, `quantity_max`, `quantity_min`, `stock`, `properties`, `links`, `inventory_management_method`, `allow_out_of_stock_purchases`, `stackable`, `shippable`, `taxable`, `published`, `created_at`, `updated_at`, `thuonghieu`, `video`, `xuatxu`, `gong`, `bua`) VALUES
+(1, 'Đồng hồ cổ Vedette xuất xứ Pháp', 'Đồng hồ cổ Vedette xuất xứ Pháp', 'djong-ho-co-vedette-xuat-xu-phap', '[{\"currency\":null,\"price\":\"158000000\"}]', 'ákdhasdsjkd kjashd kjasd', '<p>ámdh jahdkjsadkjhaskjdf &nbsp; ákdjnas dklas ldk &nbsp;áldkj sald&nbsp;</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '[]', '[]', 'singe', 0, 0, 1, 1, 1, '2018-12-07 06:46:01', '2018-12-07 06:46:01', NULL, NULL, NULL, NULL, NULL),
+(2, 'M101', 'Đồng hồ cổ ODO 30 xuất xứ Pháp.', 'djong-ho-co-odo-30-xuat-xu-phap', '[{\"currency\":\"VN\\u0110\",\"price\":\"158900000\"}]', 'Dungf conga tams duroc', '<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '[]', '[]', 'singe', 0, 0, 1, 1, 1, '2018-12-07 07:41:45', '2018-12-07 07:42:08', 'odo', 'https://youtu.be/qiyKEaJoUdw', 'phap', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_product_accessory`
+--
+
+CREATE TABLE `offline_snipcartshop_product_accessory` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `accessory_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_product_custom_fields`
+--
+
+CREATE TABLE `offline_snipcartshop_product_custom_fields` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'text',
+  `options` text COLLATE utf8mb4_unicode_ci,
+  `required` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_product_custom_field_options`
+--
+
+CREATE TABLE `offline_snipcartshop_product_custom_field_options` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `custom_field_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_product_variants`
+--
+
+CREATE TABLE `offline_snipcartshop_product_variants` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `allow_out_of_stock_purchases` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `offline_snipcartshop_product_variant_custom_field_option`
+--
+
+CREATE TABLE `offline_snipcartshop_product_variant_custom_field_option` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `variant_id` int(10) UNSIGNED NOT NULL,
+  `custom_field_option_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rainlab_blog_categories`
 --
 
@@ -343,7 +651,9 @@ CREATE TABLE `rainlab_blog_categories` (
 --
 
 INSERT INTO `rainlab_blog_categories` (`id`, `name`, `slug`, `code`, `description`, `parent_id`, `nest_left`, `nest_right`, `nest_depth`, `created_at`, `updated_at`) VALUES
-(1, 'Uncategorized', 'uncategorized', NULL, NULL, NULL, 1, 2, 0, '2018-11-28 13:18:12', '2018-11-28 13:18:12');
+(1, 'Uncategorized', 'uncategorized', NULL, NULL, NULL, 1, 2, 0, '2018-12-07 06:41:48', '2018-12-07 06:41:48'),
+(2, 'Chia sẻ kinh nghiệm', 'chia-se-kinh-nghiem', NULL, '', NULL, 3, 4, 0, '2018-12-07 07:43:14', '2018-12-07 07:43:14'),
+(3, 'Cẩm nang đồng hồ cổ', 'cam-nang-djong-ho-co', NULL, '', NULL, 5, 6, 0, '2018-12-07 07:43:31', '2018-12-07 07:43:31');
 
 -- --------------------------------------------------------
 
@@ -362,15 +672,24 @@ CREATE TABLE `rainlab_blog_posts` (
   `published_at` timestamp NULL DEFAULT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `seo_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seo_description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `seo_keywords` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `canonical_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redirect_url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `robot_index` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `robot_follow` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `rainlab_blog_posts`
 --
 
-INSERT INTO `rainlab_blog_posts` (`id`, `user_id`, `title`, `slug`, `excerpt`, `content`, `content_html`, `published_at`, `published`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'First blog post', 'first-blog-post', 'The first ever blog post is here. It might be a good idea to update this post with some more relevant content.', 'This is your first ever **blog post**! It might be a good idea to update this post with some more relevant content.\n\nYou can edit this content by selecting **Blog** from the administration back-end menu.\n\n*Enjoy the good times!*', '<p>This is your first ever <strong>blog post</strong>! It might be a good idea to update this post with some more relevant content.</p>\n<p>You can edit this content by selecting <strong>Blog</strong> from the administration back-end menu.</p>\n<p><em>Enjoy the good times!</em></p>', '2018-11-28 13:18:12', 1, '2018-11-28 13:18:12', '2018-11-28 13:18:12');
+INSERT INTO `rainlab_blog_posts` (`id`, `user_id`, `title`, `slug`, `excerpt`, `content`, `content_html`, `published_at`, `published`, `created_at`, `updated_at`, `seo_title`, `seo_description`, `seo_keywords`, `canonical_url`, `redirect_url`, `robot_index`, `robot_follow`) VALUES
+(1, NULL, 'First blog post', 'first-blog-post', 'The first ever blog post is here. It might be a good idea to update this post with some more relevant content.', 'This is your first ever **blog post**! It might be a good idea to update this post with some more relevant content.\n\nYou can edit this content by selecting **Blog** from the administration back-end menu.\n\n*Enjoy the good times!*', '<p>This is your first ever <strong>blog post</strong>! It might be a good idea to update this post with some more relevant content.</p>\n<p>You can edit this content by selecting <strong>Blog</strong> from the administration back-end menu.</p>\n<p><em>Enjoy the good times!</em></p>', '2018-12-07 06:41:48', 1, '2018-12-07 06:41:48', '2018-12-07 06:41:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 'Đồng hồ cổ Vedette xuất xứ Pháp', 'djong-ho-co-vedette-xuat-xu-phap', '', 'NộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinh', '<p>NộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinhNộiNội dungNội dung lomnhNội dung lomnh taNội dung lomnh ta linh tinh</p>', '2018-12-05 17:55:00', 1, '2018-12-07 07:44:31', '2018-12-07 07:44:31', '', '', '', '', '', 'index', 'follow'),
+(3, 1, 'Đồng hồ cổ Mauther xuất xứ Đức.', 'djong-ho-co-mauther-xuat-xu-djuc', '', 'Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức.', '<p>Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức. Đồng hồ cổ Mauther xuất xứ Đức.</p>', '2018-12-06 07:45:11', 1, '2018-12-07 07:45:13', '2018-12-07 07:45:13', '', '', '', '', '', 'index', 'follow');
 
 -- --------------------------------------------------------
 
@@ -383,118 +702,27 @@ CREATE TABLE `rainlab_blog_posts_categories` (
   `category_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `rainlab_blog_posts_categories`
+--
+
+INSERT INTO `rainlab_blog_posts_categories` (`post_id`, `category_id`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 2),
+(3, 3);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rainlab_forum_channels`
+-- Table structure for table `rainlab_sitemap_definitions`
 --
 
-CREATE TABLE `rainlab_forum_channels` (
+CREATE TABLE `rainlab_sitemap_definitions` (
   `id` int(10) UNSIGNED NOT NULL,
-  `parent_id` int(10) UNSIGNED DEFAULT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nest_left` int(11) DEFAULT NULL,
-  `nest_right` int(11) DEFAULT NULL,
-  `nest_depth` int(11) DEFAULT NULL,
-  `count_topics` int(11) NOT NULL DEFAULT '0',
-  `count_posts` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `is_hidden` tinyint(1) NOT NULL DEFAULT '0',
-  `is_moderated` tinyint(1) NOT NULL DEFAULT '0',
-  `embed_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `rainlab_forum_channels`
---
-
-INSERT INTO `rainlab_forum_channels` (`id`, `parent_id`, `title`, `slug`, `description`, `nest_left`, `nest_right`, `nest_depth`, `count_topics`, `count_posts`, `created_at`, `updated_at`, `is_hidden`, `is_moderated`, `embed_code`) VALUES
-(1, NULL, 'Channel Orange', 'channel-orange', 'A root level forum channel', 1, 12, 0, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(2, 1, 'Autumn Leaves', 'autumn-leaves', 'Discussion about the season of falling leaves.', 2, 9, 1, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(3, 2, 'September', 'september', 'The start of the fall season.', 3, 4, 2, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(4, 2, 'October', 'october', 'The middle of the fall season.', 5, 6, 2, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(5, 2, 'November', 'november', 'The end of the fall season.', 7, 8, 2, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(6, 1, 'Summer Breeze', 'summer-breeze', 'Discussion about the wind at the ocean.', 10, 11, 1, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(7, NULL, 'Channel Green', 'channel-green', 'A root level forum channel', 13, 18, 0, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(8, 7, 'Winter Snow', 'winter-snow', 'Discussion about the frosty snow flakes.', 14, 15, 1, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL),
-(9, 7, 'Spring Trees', 'spring-trees', 'Discussion about the blooming gardens.', 16, 17, 1, 0, 0, '2018-11-28 13:18:13', '2018-11-28 13:18:13', 0, 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rainlab_forum_members`
---
-
-CREATE TABLE `rainlab_forum_members` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
-  `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `count_posts` int(11) NOT NULL DEFAULT '0',
-  `count_topics` int(11) NOT NULL DEFAULT '0',
-  `last_active_at` datetime DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `is_moderator` tinyint(1) NOT NULL DEFAULT '0',
-  `is_banned` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rainlab_forum_posts`
---
-
-CREATE TABLE `rainlab_forum_posts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `subject` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `content_html` text COLLATE utf8mb4_unicode_ci,
-  `topic_id` int(10) UNSIGNED DEFAULT NULL,
-  `member_id` int(10) UNSIGNED DEFAULT NULL,
-  `edit_user_id` int(11) DEFAULT NULL,
-  `delete_user_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rainlab_forum_topics`
---
-
-CREATE TABLE `rainlab_forum_topics` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `subject` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `channel_id` int(10) UNSIGNED NOT NULL,
-  `start_member_id` int(11) DEFAULT NULL,
-  `last_post_id` int(11) DEFAULT NULL,
-  `last_post_member_id` int(11) DEFAULT NULL,
-  `last_post_at` datetime DEFAULT NULL,
-  `is_private` tinyint(1) NOT NULL DEFAULT '0',
-  `is_sticky` tinyint(1) NOT NULL DEFAULT '0',
-  `is_locked` tinyint(1) NOT NULL DEFAULT '0',
-  `count_posts` int(11) NOT NULL DEFAULT '0',
-  `count_views` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `embed_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rainlab_forum_topic_followers`
---
-
-CREATE TABLE `rainlab_forum_topic_followers` (
-  `topic_id` int(10) UNSIGNED NOT NULL,
-  `member_id` int(10) UNSIGNED NOT NULL,
+  `theme` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data` mediumtext COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -607,6 +835,20 @@ CREATE TABLE `system_event_logs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `system_event_logs`
+--
+
+INSERT INTO `system_event_logs` (`id`, `level`, `message`, `details`, `created_at`, `updated_at`) VALUES
+(1, 'error', 'October\\Rain\\Exception\\SystemException: Class name is not registered for the component \"products\". Check the component plugin. in /Users/nhakho/www/nhakho.vn/modules/cms/Classes/ComponentManager.php:200\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(1263): Cms\\Classes\\ComponentManager->makeComponent(\'products\', Object(Cms5c0a7872ba940532185858_3595d2fb7faa2bc04e70507410a0b95dClass), Array)\n#1 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(552): Cms\\Classes\\Controller->addComponent(\'products\', \'products\', Array)\n#2 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(297): Cms\\Classes\\Controller->initComponents()\n#3 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'/\')\n#5 [internal function]: Cms\\Classes\\CmsController->run(\'/\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#7 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#14 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#31 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#41 {main}', NULL, '2018-12-07 06:41:06', '2018-12-07 06:41:06'),
+(2, 'error', 'October\\Rain\\Exception\\SystemException: Class name is not registered for the component \"products\". Check the component plugin. in /Users/nhakho/www/nhakho.vn/modules/cms/Classes/ComponentManager.php:200\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(1263): Cms\\Classes\\ComponentManager->makeComponent(\'products\', Object(Cms5c0a78b962b37492242126_90ddd6ee001454ce880a6faaf7842858Class), Array)\n#1 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(552): Cms\\Classes\\Controller->addComponent(\'products\', \'products\', Array)\n#2 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(297): Cms\\Classes\\Controller->initComponents()\n#3 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'/\')\n#5 [internal function]: Cms\\Classes\\CmsController->run(\'/\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#7 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#14 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#31 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#41 {main}', NULL, '2018-12-07 06:42:17', '2018-12-07 06:42:17'),
+(3, 'error', 'RuntimeException: [snipcartshop] Please configure at least one currency via the backend settings. in /Users/nhakho/www/nhakho.vn/plugins/offline/snipcartshop/models/CurrencySettings.php:45\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/plugins/offline/snipcartshop/models/Product.php(214): OFFLINE\\SnipcartShop\\Models\\CurrencySettings::activeCurrency()\n#1 /Users/nhakho/www/nhakho.vn/plugins/offline/snipcartshop/models/Product.php(233): OFFLINE\\SnipcartShop\\Models\\Product->getPriceInCurrency()\n#2 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php(438): OFFLINE\\SnipcartShop\\Models\\Product->getPriceFormattedAttribute(NULL)\n#3 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Concerns/HasAttributes.php(340): Illuminate\\Database\\Eloquent\\Model->mutateAttribute(\'priceFormatted\', NULL)\n#4 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(993): Illuminate\\Database\\Eloquent\\Model->getAttributeValue(\'priceFormatted\')\n#5 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(957): October\\Rain\\Database\\Model->getAttributeValue(\'priceFormatted\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1382): October\\Rain\\Database\\Model->getAttribute(\'priceFormatted\')\n#7 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/ExtendableTrait.php(348): Illuminate\\Database\\Eloquent\\Model->__get(\'priceFormatted\')\n#8 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(617): October\\Rain\\Database\\Model->extendableGet(\'priceFormatted\')\n#9 /Users/nhakho/www/nhakho.vn/plugins/offline/snipcartshop/models/product/_price.htm(1): October\\Rain\\Database\\Model->__get(\'priceFormatted\')\n#10 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#11 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\Controller->makeFileContents(\'/Users/nhakho/w...\', Array)\n#12 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/Lists.php(1158): Backend\\Classes\\Controller->makePartial(\'$/offline/snipc...\', Array)\n#13 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/Lists.php(1019): Backend\\Widgets\\Lists->evalPartialTypeValue(Object(OFFLINE\\SnipcartShop\\Models\\Product), Object(Backend\\Classes\\ListColumn), Array)\n#14 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/lists/partials/_list_body_row.htm(27): Backend\\Widgets\\Lists->getColumnValue(Object(OFFLINE\\SnipcartShop\\Models\\Product), Object(Backend\\Classes\\ListColumn))\n#15 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#16 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\WidgetBase->makeFileContents(\'/Users/nhakho/w...\', Array)\n#17 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/lists/partials/_list_body_rows.htm(2): Backend\\Classes\\WidgetBase->makePartial(\'_list_body_row....\', Array)\n#18 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#19 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\WidgetBase->makeFileContents(\'/Users/nhakho/w...\', Array)\n#20 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/lists/partials/_list.htm(8): Backend\\Classes\\WidgetBase->makePartial(\'_list_body_rows...\')\n#21 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#22 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\WidgetBase->makeFileContents(\'/Users/nhakho/w...\', Array)\n#23 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/lists/partials/_list-container.htm(2): Backend\\Classes\\WidgetBase->makePartial(\'_list.htm\')\n#24 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#25 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\WidgetBase->makeFileContents(\'/Users/nhakho/w...\', Array)\n#26 /Users/nhakho/www/nhakho.vn/modules/backend/Widgets/Lists.php(238): Backend\\Classes\\WidgetBase->makePartial(\'_list-container...\')\n#27 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/listcontroller/partials/_container.htm(9): Backend\\Widgets\\Lists->render()\n#28 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#29 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/ControllerBehavior.php(143): Backend\\Classes\\Controller->makeFileContents(\'/Users/nhakho/w...\', Array)\n#30 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(97): Backend\\Classes\\ControllerBehavior->makeFileContents(\'/Users/nhakho/w...\', Array)\n#31 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/ListController.php(393): Backend\\Classes\\ControllerBehavior->makePartial(\'_container.htm\', Array)\n#32 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/ListController.php(380): Backend\\Behaviors\\ListController->listMakePartial(\'container\', Array)\n#33 [internal function]: Backend\\Behaviors\\ListController->listRender()\n#34 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/ExtendableTrait.php(397): call_user_func_array(Array, Array)\n#35 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/Extendable.php(46): October\\Rain\\Extension\\Extendable->extendableCall(\'listRender\', Array)\n#36 /Users/nhakho/www/nhakho.vn/plugins/offline/snipcartshop/controllers/products/index.htm(1): October\\Rain\\Extension\\Extendable->__call(\'listRender\', Array)\n#37 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(247): include(\'/Users/nhakho/w...\')\n#38 /Users/nhakho/www/nhakho.vn/modules/system/Traits/ViewMaker.php(109): Backend\\Classes\\Controller->makeFileContents(\'/Users/nhakho/w...\')\n#39 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(364): Backend\\Classes\\Controller->makeView(\'index\')\n#40 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(246): Backend\\Classes\\Controller->execPageAction(\'index\', Array)\n#41 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/BackendController.php(112): Backend\\Classes\\Controller->run(\'index\', Array)\n#42 [internal function]: Backend\\Classes\\BackendController->run(\'offline/snipcar...\')\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#45 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Backend\\Classes\\BackendController), \'run\')\n#46 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#47 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#48 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#49 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#50 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#51 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#52 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#53 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#54 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#55 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#56 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#57 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#58 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#59 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#60 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#61 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#62 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#63 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#64 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#65 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#66 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#67 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#68 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#69 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#70 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#71 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#72 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#73 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#74 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#75 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#76 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#77 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#78 {main}', NULL, '2018-12-07 07:27:26', '2018-12-07 07:27:26');
+INSERT INTO `system_event_logs` (`id`, `level`, `message`, `details`, `created_at`, `updated_at`) VALUES
+(4, 'error', 'PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column \'thuonghieu\' in \'field list\' in /Users/nhakho/www/nhakho.vn/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:77\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(77): PDO->prepare(\'insert into `of...\', Array)\n#1 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(452): Doctrine\\DBAL\\Driver\\PDOConnection->prepare(\'insert into `of...\')\n#2 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(657): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}(\'insert into `of...\', Array)\n#3 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback(\'insert into `of...\', Array, Object(Closure))\n#4 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(459): Illuminate\\Database\\Connection->run(\'insert into `of...\', Array, Object(Closure))\n#5 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(411): Illuminate\\Database\\Connection->statement(\'insert into `of...\', Array)\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert(\'insert into `of...\', Array)\n#7 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2159): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(October\\Rain\\Database\\QueryBuilder), \'insert into `of...\', Array, \'id\')\n#8 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/QueryBuilder.php(276): Illuminate\\Database\\Query\\Builder->insertGetId(Array, \'id\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1283): October\\Rain\\Database\\QueryBuilder->insertGetId(Array, \'id\')\n#10 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Builder.php(178): Illuminate\\Database\\Eloquent\\Builder->__call(\'insertGetId\', Array)\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(722): October\\Rain\\Database\\Builder->__call(\'insertGetId\', Array)\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(687): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(October\\Rain\\Database\\Builder), Array)\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(550): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(October\\Rain\\Database\\Builder))\n#14 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(747): Illuminate\\Database\\Eloquent\\Model->save(Array)\n#15 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(780): October\\Rain\\Database\\Model->saveInternal(Array)\n#16 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(241): October\\Rain\\Database\\Model->save(NULL, \'l78hD78jrE1DmSN...\')\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(29): Backend\\Behaviors\\FormController->Backend\\Behaviors\\{closure}(Object(October\\Rain\\Database\\Connections\\MySqlConnection))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(327): Illuminate\\Database\\Connection->transaction(Object(Closure))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(221): Illuminate\\Database\\DatabaseManager->__call(\'transaction\', Array)\n#20 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(243): Illuminate\\Support\\Facades\\Facade::__callStatic(\'transaction\', Array)\n#21 [internal function]: Backend\\Behaviors\\FormController->create_onSave()\n#22 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/ExtendableTrait.php(397): call_user_func_array(Array, Array)\n#23 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/Extendable.php(46): October\\Rain\\Extension\\Extendable->extendableCall(\'create_onSave\', Array)\n#24 [internal function]: October\\Rain\\Extension\\Extendable->__call(\'create_onSave\', Array)\n#25 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(532): call_user_func_array(Array, Array)\n#26 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(423): Backend\\Classes\\Controller->runAjaxHandler(\'onSave\')\n#27 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(228): Backend\\Classes\\Controller->execAjaxHandlers()\n#28 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/BackendController.php(112): Backend\\Classes\\Controller->run(\'create\', Array)\n#29 [internal function]: Backend\\Classes\\BackendController->run(\'offline/snipcar...\')\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Backend\\Classes\\BackendController), \'run\')\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#45 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#46 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#47 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#48 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#49 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#50 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#51 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#52 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#53 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#54 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#55 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#56 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#57 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#58 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#59 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#60 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#61 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#62 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#63 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#64 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#65 {main}\n\nNext Doctrine\\DBAL\\Driver\\PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column \'thuonghieu\' in \'field list\' in /Users/nhakho/www/nhakho.vn/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:79\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(452): Doctrine\\DBAL\\Driver\\PDOConnection->prepare(\'insert into `of...\')\n#1 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(657): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}(\'insert into `of...\', Array)\n#2 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback(\'insert into `of...\', Array, Object(Closure))\n#3 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(459): Illuminate\\Database\\Connection->run(\'insert into `of...\', Array, Object(Closure))\n#4 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(411): Illuminate\\Database\\Connection->statement(\'insert into `of...\', Array)\n#5 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert(\'insert into `of...\', Array)\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2159): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(October\\Rain\\Database\\QueryBuilder), \'insert into `of...\', Array, \'id\')\n#7 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/QueryBuilder.php(276): Illuminate\\Database\\Query\\Builder->insertGetId(Array, \'id\')\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1283): October\\Rain\\Database\\QueryBuilder->insertGetId(Array, \'id\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Builder.php(178): Illuminate\\Database\\Eloquent\\Builder->__call(\'insertGetId\', Array)\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(722): October\\Rain\\Database\\Builder->__call(\'insertGetId\', Array)\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(687): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(October\\Rain\\Database\\Builder), Array)\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(550): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(October\\Rain\\Database\\Builder))\n#13 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(747): Illuminate\\Database\\Eloquent\\Model->save(Array)\n#14 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(780): October\\Rain\\Database\\Model->saveInternal(Array)\n#15 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(241): October\\Rain\\Database\\Model->save(NULL, \'l78hD78jrE1DmSN...\')\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(29): Backend\\Behaviors\\FormController->Backend\\Behaviors\\{closure}(Object(October\\Rain\\Database\\Connections\\MySqlConnection))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(327): Illuminate\\Database\\Connection->transaction(Object(Closure))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(221): Illuminate\\Database\\DatabaseManager->__call(\'transaction\', Array)\n#19 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(243): Illuminate\\Support\\Facades\\Facade::__callStatic(\'transaction\', Array)\n#20 [internal function]: Backend\\Behaviors\\FormController->create_onSave()\n#21 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/ExtendableTrait.php(397): call_user_func_array(Array, Array)\n#22 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/Extendable.php(46): October\\Rain\\Extension\\Extendable->extendableCall(\'create_onSave\', Array)\n#23 [internal function]: October\\Rain\\Extension\\Extendable->__call(\'create_onSave\', Array)\n#24 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(532): call_user_func_array(Array, Array)\n#25 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(423): Backend\\Classes\\Controller->runAjaxHandler(\'onSave\')\n#26 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(228): Backend\\Classes\\Controller->execAjaxHandlers()\n#27 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/BackendController.php(112): Backend\\Classes\\Controller->run(\'create\', Array)\n#28 [internal function]: Backend\\Classes\\BackendController->run(\'offline/snipcar...\')\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Backend\\Classes\\BackendController), \'run\')\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#45 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#46 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#47 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#48 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#49 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#50 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#51 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#52 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#53 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#54 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#55 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#56 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#57 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#58 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#59 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#60 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#61 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#62 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#63 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#64 {main}\n\nNext Illuminate\\Database\\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column \'thuonghieu\' in \'field list\' (SQL: insert into `offline_snipcartshop_products` (`name`, `slug`, `thuonghieu`, `xuatxu`, `published`, `video`, `user_defined_id`, `description_short`, `price`, `description`, `taxable`, `shippable`, `weight`, `width`, `length`, `height`, `stackable`, `quantity_default`, `quantity_min`, `quantity_max`, `allow_out_of_stock_purchases`, `inventory_management_method`, `meta_title`, `meta_description`, `properties`, `links`, `updated_at`, `created_at`) values (Đồng hồ cổ ODO 30 xuất xứ Pháp., djong-ho-co-odo-30-xuat-xu-phap, odo, phap, 0, https://youtu.be/qiyKEaJoUdw, M101, Dungf conga tams duroc, [{\"currency\":\"VN\\u0110\",\"price\":\"158900000\"}], <p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>\r\n\r\n<p>Demo noi dung 123&nbsp;</p>, 1, 1, , , , , 0, , , , 0, singe, , , [], [], 2018-12-07 14:39:46, 2018-12-07 14:39:46)) in /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php:664\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(624): Illuminate\\Database\\Connection->runQueryCallback(\'insert into `of...\', Array, Object(Closure))\n#1 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(459): Illuminate\\Database\\Connection->run(\'insert into `of...\', Array, Object(Closure))\n#2 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Connection.php(411): Illuminate\\Database\\Connection->statement(\'insert into `of...\', Array)\n#3 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\\Database\\Connection->insert(\'insert into `of...\', Array)\n#4 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2159): Illuminate\\Database\\Query\\Processors\\Processor->processInsertGetId(Object(October\\Rain\\Database\\QueryBuilder), \'insert into `of...\', Array, \'id\')\n#5 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/QueryBuilder.php(276): Illuminate\\Database\\Query\\Builder->insertGetId(Array, \'id\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1283): October\\Rain\\Database\\QueryBuilder->insertGetId(Array, \'id\')\n#7 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Builder.php(178): Illuminate\\Database\\Eloquent\\Builder->__call(\'insertGetId\', Array)\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(722): October\\Rain\\Database\\Builder->__call(\'insertGetId\', Array)\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(687): Illuminate\\Database\\Eloquent\\Model->insertAndSetId(Object(October\\Rain\\Database\\Builder), Array)\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(550): Illuminate\\Database\\Eloquent\\Model->performInsert(Object(October\\Rain\\Database\\Builder))\n#11 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(747): Illuminate\\Database\\Eloquent\\Model->save(Array)\n#12 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Database/Model.php(780): October\\Rain\\Database\\Model->saveInternal(Array)\n#13 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(241): October\\Rain\\Database\\Model->save(NULL, \'l78hD78jrE1DmSN...\')\n#14 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(29): Backend\\Behaviors\\FormController->Backend\\Behaviors\\{closure}(Object(October\\Rain\\Database\\Connections\\MySqlConnection))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(327): Illuminate\\Database\\Connection->transaction(Object(Closure))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(221): Illuminate\\Database\\DatabaseManager->__call(\'transaction\', Array)\n#17 /Users/nhakho/www/nhakho.vn/modules/backend/Behaviors/FormController.php(243): Illuminate\\Support\\Facades\\Facade::__callStatic(\'transaction\', Array)\n#18 [internal function]: Backend\\Behaviors\\FormController->create_onSave()\n#19 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/ExtendableTrait.php(397): call_user_func_array(Array, Array)\n#20 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Extension/Extendable.php(46): October\\Rain\\Extension\\Extendable->extendableCall(\'create_onSave\', Array)\n#21 [internal function]: October\\Rain\\Extension\\Extendable->__call(\'create_onSave\', Array)\n#22 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(532): call_user_func_array(Array, Array)\n#23 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(423): Backend\\Classes\\Controller->runAjaxHandler(\'onSave\')\n#24 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/Controller.php(228): Backend\\Classes\\Controller->execAjaxHandlers()\n#25 /Users/nhakho/www/nhakho.vn/modules/backend/Classes/BackendController.php(112): Backend\\Classes\\Controller->run(\'create\', Array)\n#26 [internal function]: Backend\\Classes\\BackendController->run(\'offline/snipcar...\')\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Backend\\Classes\\BackendController), \'run\')\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#45 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#46 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#47 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#48 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#49 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#50 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#51 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#52 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#53 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#54 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#55 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#56 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#57 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#58 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#59 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#60 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#61 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#62 {main}', NULL, '2018-12-07 07:39:46', '2018-12-07 07:39:46');
+INSERT INTO `system_event_logs` (`id`, `level`, `message`, `details`, `created_at`, `updated_at`) VALUES
+(5, 'error', 'ErrorException: Array to string conversion in /Users/nhakho/www/nhakho.vn/storage/cms/twig/d3/d34b0120ed5461da50b76557cd559829b935bdb999f851f57ea7ee851282f363.php:93\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/storage/cms/twig/d3/d34b0120ed5461da50b76557cd559829b935bdb999f851f57ea7ee851282f363.php(93): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, \'Array to string...\', \'/Users/nhakho/w...\', 93, Array)\n#1 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(390): __TwigTemplate_fadbf62194cf8be613bd1b27f44635f0a93f025739a29b9de68b312befc8f4da->doDisplay(Array, Array)\n#2 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(367): Twig_Template->displayWithErrorHandling(Array, Array)\n#3 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(375): Twig_Template->display(Array)\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(360): Twig_Template->render(Array)\n#5 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#6 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'san-pham/djong-...\')\n#7 [internal function]: Cms\\Classes\\CmsController->run(\'san-pham/djong-...\')\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#14 /Users/nhakho/www/nhakho.vn/plugins/rainlab/translate/classes/LocaleMiddleware.php(29): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): RainLab\\Translate\\Classes\\LocaleMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#36 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#45 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#46 {main}\n\nNext Twig_Error_Runtime: An exception has been thrown during the rendering of a template (\"Array to string conversion\") in \"/Users/nhakho/www/nhakho.vn/themes/responsiv-flat/pages/san-pham.htm\" at line 22. in /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php:405\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(367): Twig_Template->displayWithErrorHandling(Array, Array)\n#1 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(375): Twig_Template->display(Array)\n#2 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(360): Twig_Template->render(Array)\n#3 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'san-pham/djong-...\')\n#5 [internal function]: Cms\\Classes\\CmsController->run(\'san-pham/djong-...\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#7 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#12 /Users/nhakho/www/nhakho.vn/plugins/rainlab/translate/classes/LocaleMiddleware.php(29): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): RainLab\\Translate\\Classes\\LocaleMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#14 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#34 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#44 {main}', NULL, '2018-12-07 08:00:57', '2018-12-07 08:00:57'),
+(6, 'error', 'ErrorException: Array to string conversion in /Users/nhakho/www/nhakho.vn/storage/cms/twig/d3/d34b0120ed5461da50b76557cd559829b935bdb999f851f57ea7ee851282f363.php:93\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/storage/cms/twig/d3/d34b0120ed5461da50b76557cd559829b935bdb999f851f57ea7ee851282f363.php(93): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, \'Array to string...\', \'/Users/nhakho/w...\', 93, Array)\n#1 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(390): __TwigTemplate_fadbf62194cf8be613bd1b27f44635f0a93f025739a29b9de68b312befc8f4da->doDisplay(Array, Array)\n#2 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(367): Twig_Template->displayWithErrorHandling(Array, Array)\n#3 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(375): Twig_Template->display(Array)\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(360): Twig_Template->render(Array)\n#5 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#6 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'san-pham/djong-...\')\n#7 [internal function]: Cms\\Classes\\CmsController->run(\'san-pham/djong-...\')\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#12 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#14 /Users/nhakho/www/nhakho.vn/plugins/rainlab/translate/classes/LocaleMiddleware.php(29): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): RainLab\\Translate\\Classes\\LocaleMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#34 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#36 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#44 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#45 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#46 {main}\n\nNext Twig_Error_Runtime: An exception has been thrown during the rendering of a template (\"Array to string conversion\") in \"/Users/nhakho/www/nhakho.vn/themes/responsiv-flat/pages/san-pham.htm\" at line 22. in /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php:405\nStack trace:\n#0 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(367): Twig_Template->displayWithErrorHandling(Array, Array)\n#1 /Users/nhakho/www/nhakho.vn/vendor/twig/twig/lib/Twig/Template.php(375): Twig_Template->display(Array)\n#2 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(360): Twig_Template->render(Array)\n#3 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/Controller.php(206): Cms\\Classes\\Controller->runPage(Object(Cms\\Classes\\Page))\n#4 /Users/nhakho/www/nhakho.vn/modules/cms/Classes/CmsController.php(50): Cms\\Classes\\Controller->run(\'san-pham/djong-...\')\n#5 [internal function]: Cms\\Classes\\CmsController->run(\'san-pham/djong-...\')\n#6 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array(Array, Array)\n#7 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(45): Illuminate\\Routing\\Controller->callAction(\'run\', Array)\n#8 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(212): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Cms\\Classes\\CmsController), \'run\')\n#9 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Route.php(169): Illuminate\\Routing\\Route->runController()\n#10 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(658): Illuminate\\Routing\\Route->run()\n#11 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#12 /Users/nhakho/www/nhakho.vn/plugins/rainlab/translate/classes/LocaleMiddleware.php(29): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#13 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): RainLab\\Translate\\Classes\\LocaleMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#14 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#15 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(41): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#16 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#17 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#18 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#19 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#20 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#21 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(63): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#22 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#23 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#24 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#25 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#26 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#27 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(66): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#28 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#29 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#30 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#31 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(660): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#32 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))\n#33 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Router.php(601): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))\n#34 /Users/nhakho/www/nhakho.vn/vendor/october/rain/src/Router/CoreRouter.php(20): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))\n#35 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(176): October\\Rain\\Router\\CoreRouter->dispatch(Object(Illuminate\\Http\\Request))\n#36 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(30): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))\n#37 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(46): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#38 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(149): Illuminate\\Foundation\\Http\\Middleware\\CheckForMaintenanceMode->handle(Object(Illuminate\\Http\\Request), Object(Closure))\n#39 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(53): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))\n#40 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(102): Illuminate\\Routing\\Pipeline->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))\n#41 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(151): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))\n#42 /Users/nhakho/www/nhakho.vn/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))\n#43 /Users/nhakho/www/nhakho.vn/index.php(43): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))\n#44 {main}', NULL, '2018-12-07 08:00:59', '2018-12-07 08:00:59');
+
 -- --------------------------------------------------------
 
 --
@@ -629,6 +871,22 @@ CREATE TABLE `system_files` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `system_files`
+--
+
+INSERT INTO `system_files` (`id`, `disk_name`, `file_name`, `file_size`, `content_type`, `title`, `description`, `field`, `attachment_id`, `attachment_type`, `is_public`, `sort_order`, `created_at`, `updated_at`) VALUES
+(1, '5c0a798edb59a098111069.png', 'tho-sua-dong-ho-hung.png', 84181, 'image/png', NULL, NULL, 'main_image', '1', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 1, '2018-12-07 06:45:50', '2018-12-07 06:46:01'),
+(2, '5c0a7994d5bd3476716435.png', 'iconlogo.png', 199007, 'image/png', NULL, NULL, 'images', '1', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 2, '2018-12-07 06:45:56', '2018-12-07 06:46:01'),
+(3, '5c0a79952af56569584013.png', 'logo1.png', 32343, 'image/png', NULL, NULL, 'images', '1', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 3, '2018-12-07 06:45:57', '2018-12-07 06:46:01'),
+(4, '5c0a79952ba44251766540.png', 'tho-sua-dong-ho-hai.png', 266888, 'image/png', NULL, NULL, 'images', '1', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 4, '2018-12-07 06:45:57', '2018-12-07 06:46:01'),
+(5, '5c0a7995735ce205268095.png', 'tho-sua-dong-ho-bieu.png', 962249, 'image/png', NULL, NULL, 'images', '1', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 5, '2018-12-07 06:45:57', '2018-12-07 06:46:01'),
+(6, '5c0a85d573d76991086388.png', 'tho-sua-dong-ho-hai.png', 266888, 'image/png', NULL, NULL, 'main_image', '2', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 6, '2018-12-07 07:38:13', '2018-12-07 07:41:45'),
+(7, '5c0a85db313c8001437870.png', 'tho-sua-dong-ho-hung.png', 84181, 'image/png', NULL, NULL, 'images', '2', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 7, '2018-12-07 07:38:19', '2018-12-07 07:41:45'),
+(8, '5c0a85db33116589169600.png', 'tho-sua-dong-ho-sung.png', 213524, 'image/png', NULL, NULL, 'images', '2', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 8, '2018-12-07 07:38:19', '2018-12-07 07:41:45'),
+(9, '5c0a85db7e647303975178.png', 'tho-sua-dong-ho-thang.png', 1196511, 'image/png', NULL, NULL, 'images', '2', 'OFFLINE\\SnipcartShop\\Models\\Product', 1, 9, '2018-12-07 07:38:19', '2018-12-07 07:41:45'),
+(10, '5c0a8735596ab858734838.png', 'tho-sua-dong-ho-hung.png', 84181, 'image/png', NULL, NULL, 'featured_images', '2', 'RainLab\\Blog\\Models\\Post', 1, 10, '2018-12-07 07:44:05', '2018-12-07 07:44:31');
 
 -- --------------------------------------------------------
 
@@ -654,8 +912,8 @@ CREATE TABLE `system_mail_layouts` (
 --
 
 INSERT INTO `system_mail_layouts` (`id`, `name`, `code`, `content_html`, `content_text`, `content_css`, `is_locked`, `options`, `created_at`, `updated_at`) VALUES
-(1, 'Default layout', 'default', '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n</head>\n<body>\n    <style type=\"text/css\" media=\"screen\">\n        {{ brandCss|raw }}\n        {{ css|raw }}\n    </style>\n\n    <table class=\"wrapper layout-default\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n\n        <!-- Header -->\n        {% partial \'header\' body %}\n            {{ subject|raw }}\n        {% endpartial %}\n\n        <tr>\n            <td align=\"center\">\n                <table class=\"content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                    <!-- Email Body -->\n                    <tr>\n                        <td class=\"body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                            <table class=\"inner-body\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\">\n                                <!-- Body content -->\n                                <tr>\n                                    <td class=\"content-cell\">\n                                        {{ content|raw }}\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n\n        <!-- Footer -->\n        {% partial \'footer\' body %}\n            &copy; {{ \"now\"|date(\"Y\") }} {{ appName }}. All rights reserved.\n        {% endpartial %}\n\n    </table>\n\n</body>\n</html>', '{{ content|raw }}', '@media only screen and (max-width: 600px) {\n    .inner-body {\n        width: 100% !important;\n    }\n\n    .footer {\n        width: 100% !important;\n    }\n}\n\n@media only screen and (max-width: 500px) {\n    .button {\n        width: 100% !important;\n    }\n}', 1, NULL, '2018-11-28 13:18:16', '2018-11-28 13:18:16'),
-(2, 'System layout', 'system', '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n</head>\n<body>\n    <style type=\"text/css\" media=\"screen\">\n        {{ brandCss|raw }}\n        {{ css|raw }}\n    </style>\n\n    <table class=\"wrapper layout-system\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n        <tr>\n            <td align=\"center\">\n                <table class=\"content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                    <!-- Email Body -->\n                    <tr>\n                        <td class=\"body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                            <table class=\"inner-body\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\">\n                                <!-- Body content -->\n                                <tr>\n                                    <td class=\"content-cell\">\n                                        {{ content|raw }}\n\n                                        <!-- Subcopy -->\n                                        {% partial \'subcopy\' body %}\n                                            **This is an automatic message. Please do not reply to it.**\n                                        {% endpartial %}\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n    </table>\n\n</body>\n</html>', '{{ content|raw }}\n\n\n---\nThis is an automatic message. Please do not reply to it.', '@media only screen and (max-width: 600px) {\n    .inner-body {\n        width: 100% !important;\n    }\n\n    .footer {\n        width: 100% !important;\n    }\n}\n\n@media only screen and (max-width: 500px) {\n    .button {\n        width: 100% !important;\n    }\n}', 1, NULL, '2018-11-28 13:18:16', '2018-11-28 13:18:16');
+(1, 'Default layout', 'default', '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n</head>\n<body>\n    <style type=\"text/css\" media=\"screen\">\n        {{ brandCss|raw }}\n        {{ css|raw }}\n    </style>\n\n    <table class=\"wrapper layout-default\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n\n        <!-- Header -->\n        {% partial \'header\' body %}\n            {{ subject|raw }}\n        {% endpartial %}\n\n        <tr>\n            <td align=\"center\">\n                <table class=\"content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                    <!-- Email Body -->\n                    <tr>\n                        <td class=\"body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                            <table class=\"inner-body\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\">\n                                <!-- Body content -->\n                                <tr>\n                                    <td class=\"content-cell\">\n                                        {{ content|raw }}\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n\n        <!-- Footer -->\n        {% partial \'footer\' body %}\n            &copy; {{ \"now\"|date(\"Y\") }} {{ appName }}. All rights reserved.\n        {% endpartial %}\n\n    </table>\n\n</body>\n</html>', '{{ content|raw }}', '@media only screen and (max-width: 600px) {\n    .inner-body {\n        width: 100% !important;\n    }\n\n    .footer {\n        width: 100% !important;\n    }\n}\n\n@media only screen and (max-width: 500px) {\n    .button {\n        width: 100% !important;\n    }\n}', 1, NULL, '2018-12-07 06:39:36', '2018-12-07 06:39:36'),
+(2, 'System layout', 'system', '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n</head>\n<body>\n    <style type=\"text/css\" media=\"screen\">\n        {{ brandCss|raw }}\n        {{ css|raw }}\n    </style>\n\n    <table class=\"wrapper layout-system\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n        <tr>\n            <td align=\"center\">\n                <table class=\"content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                    <!-- Email Body -->\n                    <tr>\n                        <td class=\"body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n                            <table class=\"inner-body\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\">\n                                <!-- Body content -->\n                                <tr>\n                                    <td class=\"content-cell\">\n                                        {{ content|raw }}\n\n                                        <!-- Subcopy -->\n                                        {% partial \'subcopy\' body %}\n                                            **This is an automatic message. Please do not reply to it.**\n                                        {% endpartial %}\n                                    </td>\n                                </tr>\n                            </table>\n                        </td>\n                    </tr>\n                </table>\n            </td>\n        </tr>\n    </table>\n\n</body>\n</html>', '{{ content|raw }}\n\n\n---\nThis is an automatic message. Please do not reply to it.', '@media only screen and (max-width: 600px) {\n    .inner-body {\n        width: 100% !important;\n    }\n\n    .footer {\n        width: 100% !important;\n    }\n}\n\n@media only screen and (max-width: 500px) {\n    .button {\n        width: 100% !important;\n    }\n}', 1, NULL, '2018-12-07 06:39:36', '2018-12-07 06:39:36');
 
 -- --------------------------------------------------------
 
@@ -714,7 +972,8 @@ CREATE TABLE `system_parameters` (
 INSERT INTO `system_parameters` (`id`, `namespace`, `group`, `item`, `value`) VALUES
 (1, 'system', 'update', 'count', '0'),
 (2, 'system', 'core', 'hash', '\"8dccb2043759b385e46cc3cf6a36c4b4\"'),
-(3, 'system', 'core', 'build', '\"443\"');
+(3, 'system', 'core', 'build', '\"443\"'),
+(4, 'cms', 'theme', 'active', '\"responsiv-flat\"');
 
 -- --------------------------------------------------------
 
@@ -736,359 +995,256 @@ CREATE TABLE `system_plugin_history` (
 --
 
 INSERT INTO `system_plugin_history` (`id`, `code`, `type`, `version`, `detail`, `created_at`) VALUES
-(1, 'October.Demo', 'comment', '1.0.1', 'First version of Demo', '2018-11-28 13:18:11'),
-(2, 'RainLab.Translate', 'script', '1.0.1', 'create_messages_table.php', '2018-11-28 13:18:11'),
-(3, 'RainLab.Translate', 'script', '1.0.1', 'create_attributes_table.php', '2018-11-28 13:18:11'),
-(4, 'RainLab.Translate', 'script', '1.0.1', 'create_locales_table.php', '2018-11-28 13:18:11'),
-(5, 'RainLab.Translate', 'comment', '1.0.1', 'First version of Translate', '2018-11-28 13:18:11'),
-(6, 'RainLab.Translate', 'comment', '1.0.2', 'Languages and Messages can now be deleted.', '2018-11-28 13:18:11'),
-(7, 'RainLab.Translate', 'comment', '1.0.3', 'Minor updates for latest October release.', '2018-11-28 13:18:11'),
-(8, 'RainLab.Translate', 'comment', '1.0.4', 'Locale cache will clear when updating a language.', '2018-11-28 13:18:11'),
-(9, 'RainLab.Translate', 'comment', '1.0.5', 'Add Spanish language and fix plugin config.', '2018-11-28 13:18:11'),
-(10, 'RainLab.Translate', 'comment', '1.0.6', 'Minor improvements to the code.', '2018-11-28 13:18:11'),
-(11, 'RainLab.Translate', 'comment', '1.0.7', 'Fixes major bug where translations are skipped entirely!', '2018-11-28 13:18:11'),
-(12, 'RainLab.Translate', 'comment', '1.0.8', 'Minor bug fixes.', '2018-11-28 13:18:11'),
-(13, 'RainLab.Translate', 'comment', '1.0.9', 'Fixes an issue where newly created models lose their translated values.', '2018-11-28 13:18:11'),
-(14, 'RainLab.Translate', 'comment', '1.0.10', 'Minor fix for latest build.', '2018-11-28 13:18:11'),
-(15, 'RainLab.Translate', 'comment', '1.0.11', 'Fix multilingual rich editor when used in stretch mode.', '2018-11-28 13:18:11'),
-(16, 'RainLab.Translate', 'comment', '1.1.0', 'Introduce compatibility with RainLab.Pages plugin.', '2018-11-28 13:18:11'),
-(17, 'RainLab.Translate', 'comment', '1.1.1', 'Minor UI fix to the language picker.', '2018-11-28 13:18:11'),
-(18, 'RainLab.Translate', 'comment', '1.1.2', 'Add support for translating Static Content files.', '2018-11-28 13:18:11'),
-(19, 'RainLab.Translate', 'comment', '1.1.3', 'Improved support for the multilingual rich editor.', '2018-11-28 13:18:11'),
-(20, 'RainLab.Translate', 'comment', '1.1.4', 'Adds new multilingual markdown editor.', '2018-11-28 13:18:11'),
-(21, 'RainLab.Translate', 'comment', '1.1.5', 'Minor update to the multilingual control API.', '2018-11-28 13:18:11'),
-(22, 'RainLab.Translate', 'comment', '1.1.6', 'Minor improvements in the message editor.', '2018-11-28 13:18:11'),
-(23, 'RainLab.Translate', 'comment', '1.1.7', 'Fixes bug not showing content when first loading multilingual textarea controls.', '2018-11-28 13:18:11'),
-(24, 'RainLab.Translate', 'comment', '1.2.0', 'CMS pages now support translating the URL.', '2018-11-28 13:18:11'),
-(25, 'RainLab.Translate', 'comment', '1.2.1', 'Minor update in the rich editor and code editor language control position.', '2018-11-28 13:18:11'),
-(26, 'RainLab.Translate', 'comment', '1.2.2', 'Static Pages now support translating the URL.', '2018-11-28 13:18:11'),
-(27, 'RainLab.Translate', 'comment', '1.2.3', 'Fixes Rich Editor when inserting a page link.', '2018-11-28 13:18:11'),
-(28, 'RainLab.Translate', 'script', '1.2.4', 'create_indexes_table.php', '2018-11-28 13:18:11'),
-(29, 'RainLab.Translate', 'comment', '1.2.4', 'Translatable attributes can now be declared as indexes.', '2018-11-28 13:18:11'),
-(30, 'RainLab.Translate', 'comment', '1.2.5', 'Adds new multilingual repeater form widget.', '2018-11-28 13:18:11'),
-(31, 'RainLab.Translate', 'comment', '1.2.6', 'Fixes repeater usage with static pages plugin.', '2018-11-28 13:18:11'),
-(32, 'RainLab.Translate', 'comment', '1.2.7', 'Fixes placeholder usage with static pages plugin.', '2018-11-28 13:18:11'),
-(33, 'RainLab.Translate', 'comment', '1.2.8', 'Improvements to code for latest October build compatibility.', '2018-11-28 13:18:11'),
-(34, 'RainLab.Translate', 'comment', '1.2.9', 'Fixes context for translated strings when used with Static Pages.', '2018-11-28 13:18:11'),
-(35, 'RainLab.Translate', 'comment', '1.2.10', 'Minor UI fix to the multilingual repeater.', '2018-11-28 13:18:11'),
-(36, 'RainLab.Translate', 'comment', '1.2.11', 'Fixes translation not working with partials loaded via AJAX.', '2018-11-28 13:18:11'),
-(37, 'RainLab.Translate', 'comment', '1.2.12', 'Add support for translating the new grouped repeater feature.', '2018-11-28 13:18:11'),
-(38, 'RainLab.Translate', 'comment', '1.3.0', 'Added search to the translate messages page.', '2018-11-28 13:18:11'),
-(39, 'RainLab.Translate', 'script', '1.3.1', 'builder_table_update_rainlab_translate_locales.php', '2018-11-28 13:18:11'),
-(40, 'RainLab.Translate', 'script', '1.3.1', 'seed_all_tables.php', '2018-11-28 13:18:11'),
-(41, 'RainLab.Translate', 'comment', '1.3.1', 'Added reordering to languages', '2018-11-28 13:18:11'),
-(42, 'RainLab.Translate', 'comment', '1.3.2', 'Improved compatibility with RainLab.Pages, added ability to scan Mail Messages for translatable variables.', '2018-11-28 13:18:11'),
-(43, 'RainLab.Translate', 'comment', '1.3.3', 'Fix to the locale picker session handling in Build 420 onwards.', '2018-11-28 13:18:11'),
-(44, 'RainLab.Translate', 'comment', '1.3.4', 'Add alternate hreflang elements and adds prefixDefaultLocale setting.', '2018-11-28 13:18:11'),
-(45, 'RainLab.Translate', 'comment', '1.3.5', 'Fix MLRepeater bug when switching locales.', '2018-11-28 13:18:11'),
-(46, 'RainLab.Translate', 'comment', '1.3.6', 'Fix Middleware to use the prefixDefaultLocale setting introduced in 1.3.4', '2018-11-28 13:18:11'),
-(47, 'RainLab.Translate', 'comment', '1.3.7', 'Fix config reference in LocaleMiddleware', '2018-11-28 13:18:11'),
-(48, 'RainLab.Translate', 'comment', '1.3.8', 'Keep query string when switching locales', '2018-11-28 13:18:11'),
-(49, 'RainLab.User', 'script', '1.0.1', 'create_users_table.php', '2018-11-28 13:18:11'),
-(50, 'RainLab.User', 'script', '1.0.1', 'create_throttle_table.php', '2018-11-28 13:18:11'),
-(51, 'RainLab.User', 'comment', '1.0.1', 'Initialize plugin.', '2018-11-28 13:18:11'),
-(52, 'RainLab.User', 'comment', '1.0.2', 'Seed tables.', '2018-11-28 13:18:11'),
-(53, 'RainLab.User', 'comment', '1.0.3', 'Translated hard-coded text to language strings.', '2018-11-28 13:18:11'),
-(54, 'RainLab.User', 'comment', '1.0.4', 'Improvements to user-interface for Location manager.', '2018-11-28 13:18:11'),
-(55, 'RainLab.User', 'comment', '1.0.5', 'Added contact details for users.', '2018-11-28 13:18:11'),
-(56, 'RainLab.User', 'script', '1.0.6', 'create_mail_blockers_table.php', '2018-11-28 13:18:11'),
-(57, 'RainLab.User', 'comment', '1.0.6', 'Added Mail Blocker utility so users can block specific mail templates.', '2018-11-28 13:18:11'),
-(58, 'RainLab.User', 'comment', '1.0.7', 'Add back-end Settings page.', '2018-11-28 13:18:11'),
-(59, 'RainLab.User', 'comment', '1.0.8', 'Updated the Settings page.', '2018-11-28 13:18:11'),
-(60, 'RainLab.User', 'comment', '1.0.9', 'Adds new welcome mail message for users and administrators.', '2018-11-28 13:18:11'),
-(61, 'RainLab.User', 'comment', '1.0.10', 'Adds administrator-only activation mode.', '2018-11-28 13:18:11'),
-(62, 'RainLab.User', 'script', '1.0.11', 'users_add_login_column.php', '2018-11-28 13:18:11'),
-(63, 'RainLab.User', 'comment', '1.0.11', 'Users now have an optional login field that defaults to the email field.', '2018-11-28 13:18:11'),
-(64, 'RainLab.User', 'script', '1.0.12', 'users_rename_login_to_username.php', '2018-11-28 13:18:12'),
-(65, 'RainLab.User', 'comment', '1.0.12', 'Create a dedicated setting for choosing the login mode.', '2018-11-28 13:18:12'),
-(66, 'RainLab.User', 'comment', '1.0.13', 'Minor fix to the Account sign in logic.', '2018-11-28 13:18:12'),
-(67, 'RainLab.User', 'comment', '1.0.14', 'Minor improvements to the code.', '2018-11-28 13:18:12'),
-(68, 'RainLab.User', 'script', '1.0.15', 'users_add_surname.php', '2018-11-28 13:18:12'),
-(69, 'RainLab.User', 'comment', '1.0.15', 'Adds last name column to users table (surname).', '2018-11-28 13:18:12'),
-(70, 'RainLab.User', 'comment', '1.0.16', 'Require permissions for settings page too.', '2018-11-28 13:18:12'),
-(71, 'RainLab.User', 'comment', '1.1.0', '!!! Profile fields and Locations have been removed.', '2018-11-28 13:18:12'),
-(72, 'RainLab.User', 'script', '1.1.1', 'create_user_groups_table.php', '2018-11-28 13:18:12'),
-(73, 'RainLab.User', 'script', '1.1.1', 'seed_user_groups_table.php', '2018-11-28 13:18:12'),
-(74, 'RainLab.User', 'comment', '1.1.1', 'Users can now be added to groups.', '2018-11-28 13:18:12'),
-(75, 'RainLab.User', 'comment', '1.1.2', 'A raw URL can now be passed as the redirect property in the Account component.', '2018-11-28 13:18:12'),
-(76, 'RainLab.User', 'comment', '1.1.3', 'Adds a super user flag to the users table, reserved for future use.', '2018-11-28 13:18:12'),
-(77, 'RainLab.User', 'comment', '1.1.4', 'User list can be filtered by the group they belong to.', '2018-11-28 13:18:12'),
-(78, 'RainLab.User', 'comment', '1.1.5', 'Adds a new permission to hide the User settings menu item.', '2018-11-28 13:18:12'),
-(79, 'RainLab.User', 'script', '1.2.0', 'users_add_deleted_at.php', '2018-11-28 13:18:12'),
-(80, 'RainLab.User', 'comment', '1.2.0', 'Users can now deactivate their own accounts.', '2018-11-28 13:18:12'),
-(81, 'RainLab.User', 'comment', '1.2.1', 'New feature for checking if a user is recently active/online.', '2018-11-28 13:18:12'),
-(82, 'RainLab.User', 'comment', '1.2.2', 'Add bulk action button to user list.', '2018-11-28 13:18:12'),
-(83, 'RainLab.User', 'comment', '1.2.3', 'Included some descriptive paragraphs in the Reset Password component markup.', '2018-11-28 13:18:12'),
-(84, 'RainLab.User', 'comment', '1.2.4', 'Added a checkbox for blocking all mail sent to the user.', '2018-11-28 13:18:12'),
-(85, 'RainLab.User', 'script', '1.2.5', 'update_timestamp_nullable.php', '2018-11-28 13:18:12'),
-(86, 'RainLab.User', 'comment', '1.2.5', 'Database maintenance. Updated all timestamp columns to be nullable.', '2018-11-28 13:18:12'),
-(87, 'RainLab.User', 'script', '1.2.6', 'users_add_last_seen.php', '2018-11-28 13:18:12'),
-(88, 'RainLab.User', 'comment', '1.2.6', 'Add a dedicated last seen column for users.', '2018-11-28 13:18:12'),
-(89, 'RainLab.User', 'comment', '1.2.7', 'Minor fix to user timestamp attributes.', '2018-11-28 13:18:12'),
-(90, 'RainLab.User', 'comment', '1.2.8', 'Add date range filter to users list. Introduced a logout event.', '2018-11-28 13:18:12'),
-(91, 'RainLab.User', 'comment', '1.2.9', 'Add invitation mail for new accounts created in the back-end.', '2018-11-28 13:18:12'),
-(92, 'RainLab.User', 'script', '1.3.0', 'users_add_guest_flag.php', '2018-11-28 13:18:12'),
-(93, 'RainLab.User', 'script', '1.3.0', 'users_add_superuser_flag.php', '2018-11-28 13:18:12'),
-(94, 'RainLab.User', 'comment', '1.3.0', 'Introduced guest user accounts.', '2018-11-28 13:18:12'),
-(95, 'RainLab.User', 'comment', '1.3.1', 'User notification variables can now be extended.', '2018-11-28 13:18:12'),
-(96, 'RainLab.User', 'comment', '1.3.2', 'Minor fix to the Auth::register method.', '2018-11-28 13:18:12'),
-(97, 'RainLab.User', 'comment', '1.3.3', 'Allow prevention of concurrent user sessions via the user settings.', '2018-11-28 13:18:12'),
-(98, 'RainLab.User', 'comment', '1.3.4', 'Added force secure protocol property to the account component.', '2018-11-28 13:18:12'),
-(99, 'RainLab.User', 'comment', '1.4.0', '!!! The Notifications tab in User settings has been removed.', '2018-11-28 13:18:12'),
-(100, 'RainLab.User', 'comment', '1.4.1', 'Added support for user impersonation.', '2018-11-28 13:18:12'),
-(101, 'RainLab.User', 'comment', '1.4.2', 'Fixes security bug in Password Reset component.', '2018-11-28 13:18:12'),
-(102, 'RainLab.User', 'comment', '1.4.3', 'Fixes session handling for AJAX requests.', '2018-11-28 13:18:12'),
-(103, 'RainLab.User', 'comment', '1.4.4', 'Fixes bug where impersonation touches the last seen timestamp.', '2018-11-28 13:18:12'),
-(104, 'RainLab.User', 'comment', '1.4.5', 'Added token fallback process to Account / Reset Password components when parameter is missing.', '2018-11-28 13:18:12'),
-(105, 'RainLab.User', 'comment', '1.4.6', 'Fixes Auth::register method signature mismatch with core OctoberCMS Auth library', '2018-11-28 13:18:12'),
-(106, 'RainLab.Blog', 'script', '1.0.1', 'create_posts_table.php', '2018-11-28 13:18:12'),
-(107, 'RainLab.Blog', 'script', '1.0.1', 'create_categories_table.php', '2018-11-28 13:18:12'),
-(108, 'RainLab.Blog', 'script', '1.0.1', 'seed_all_tables.php', '2018-11-28 13:18:12'),
-(109, 'RainLab.Blog', 'comment', '1.0.1', 'Initialize plugin.', '2018-11-28 13:18:12'),
-(110, 'RainLab.Blog', 'comment', '1.0.2', 'Added the processed HTML content column to the posts table.', '2018-11-28 13:18:12'),
-(111, 'RainLab.Blog', 'comment', '1.0.3', 'Category component has been merged with Posts component.', '2018-11-28 13:18:12'),
-(112, 'RainLab.Blog', 'comment', '1.0.4', 'Improvements to the Posts list management UI.', '2018-11-28 13:18:12'),
-(113, 'RainLab.Blog', 'comment', '1.0.5', 'Removes the Author column from blog post list.', '2018-11-28 13:18:12'),
-(114, 'RainLab.Blog', 'comment', '1.0.6', 'Featured images now appear in the Post component.', '2018-11-28 13:18:12'),
-(115, 'RainLab.Blog', 'comment', '1.0.7', 'Added support for the Static Pages menus.', '2018-11-28 13:18:12'),
-(116, 'RainLab.Blog', 'comment', '1.0.8', 'Added total posts to category list.', '2018-11-28 13:18:12'),
-(117, 'RainLab.Blog', 'comment', '1.0.9', 'Added support for the Sitemap plugin.', '2018-11-28 13:18:12'),
-(118, 'RainLab.Blog', 'comment', '1.0.10', 'Added permission to prevent users from seeing posts they did not create.', '2018-11-28 13:18:12'),
-(119, 'RainLab.Blog', 'comment', '1.0.11', 'Deprecate \"idParam\" component property in favour of \"slug\" property.', '2018-11-28 13:18:12'),
-(120, 'RainLab.Blog', 'comment', '1.0.12', 'Fixes issue where images cannot be uploaded caused by latest Markdown library.', '2018-11-28 13:18:12'),
-(121, 'RainLab.Blog', 'comment', '1.0.13', 'Fixes problem with providing pages to Sitemap and Pages plugins.', '2018-11-28 13:18:12'),
-(122, 'RainLab.Blog', 'comment', '1.0.14', 'Add support for CSRF protection feature added to core.', '2018-11-28 13:18:12'),
-(123, 'RainLab.Blog', 'comment', '1.1.0', 'Replaced the Post editor with the new core Markdown editor.', '2018-11-28 13:18:12'),
-(124, 'RainLab.Blog', 'comment', '1.1.1', 'Posts can now be imported and exported.', '2018-11-28 13:18:12'),
-(125, 'RainLab.Blog', 'comment', '1.1.2', 'Posts are no longer visible if the published date has not passed.', '2018-11-28 13:18:12'),
-(126, 'RainLab.Blog', 'comment', '1.1.3', 'Added a New Post shortcut button to the blog menu.', '2018-11-28 13:18:12'),
-(127, 'RainLab.Blog', 'script', '1.2.0', 'categories_add_nested_fields.php', '2018-11-28 13:18:12'),
-(128, 'RainLab.Blog', 'comment', '1.2.0', 'Categories now support nesting.', '2018-11-28 13:18:12'),
-(129, 'RainLab.Blog', 'comment', '1.2.1', 'Post slugs now must be unique.', '2018-11-28 13:18:12'),
-(130, 'RainLab.Blog', 'comment', '1.2.2', 'Fixes issue on new installs.', '2018-11-28 13:18:12'),
-(131, 'RainLab.Blog', 'comment', '1.2.3', 'Minor user interface update.', '2018-11-28 13:18:12'),
-(132, 'RainLab.Blog', 'script', '1.2.4', 'update_timestamp_nullable.php', '2018-11-28 13:18:13'),
-(133, 'RainLab.Blog', 'comment', '1.2.4', 'Database maintenance. Updated all timestamp columns to be nullable.', '2018-11-28 13:18:13'),
-(134, 'RainLab.Blog', 'comment', '1.2.5', 'Added translation support for blog posts.', '2018-11-28 13:18:13'),
-(135, 'RainLab.Blog', 'comment', '1.2.6', 'The published field can now supply a time with the date.', '2018-11-28 13:18:13'),
-(136, 'RainLab.Blog', 'comment', '1.2.7', 'Introduced a new RSS feed component.', '2018-11-28 13:18:13'),
-(137, 'RainLab.Blog', 'comment', '1.2.8', 'Fixes issue with translated `content_html` attribute on blog posts.', '2018-11-28 13:18:13'),
-(138, 'RainLab.Blog', 'comment', '1.2.9', 'Added translation support for blog categories.', '2018-11-28 13:18:13'),
-(139, 'RainLab.Blog', 'comment', '1.2.10', 'Added translation support for post slugs.', '2018-11-28 13:18:13'),
-(140, 'RainLab.Blog', 'comment', '1.2.11', 'Fixes bug where excerpt is not translated.', '2018-11-28 13:18:13'),
-(141, 'RainLab.Blog', 'comment', '1.2.12', 'Description field added to category form.', '2018-11-28 13:18:13'),
-(142, 'RainLab.Blog', 'comment', '1.2.13', 'Improved support for Static Pages menus, added a blog post and all blog posts.', '2018-11-28 13:18:13'),
-(143, 'RainLab.Blog', 'comment', '1.2.14', 'Added post exception property to the post list component, useful for showing related posts.', '2018-11-28 13:18:13'),
-(144, 'RainLab.Blog', 'comment', '1.2.15', 'Back-end navigation sort order updated.', '2018-11-28 13:18:13'),
-(145, 'RainLab.Blog', 'comment', '1.2.16', 'Added `nextPost` and `previousPost` to the blog post component.', '2018-11-28 13:18:13'),
-(146, 'RainLab.Blog', 'comment', '1.2.17', 'Improved the next and previous logic to sort by the published date.', '2018-11-28 13:18:13'),
-(147, 'RainLab.Blog', 'comment', '1.2.18', 'Minor change to internals.', '2018-11-28 13:18:13'),
-(148, 'RainLab.Blog', 'comment', '1.2.19', 'Improved support for Build 420+', '2018-11-28 13:18:13'),
-(149, 'RainLab.Forum', 'script', '1.0.1', 'create_channels_table.php', '2018-11-28 13:18:13'),
-(150, 'RainLab.Forum', 'script', '1.0.1', 'create_posts_table.php', '2018-11-28 13:18:13'),
-(151, 'RainLab.Forum', 'script', '1.0.1', 'create_topics_table.php', '2018-11-28 13:18:13'),
-(152, 'RainLab.Forum', 'script', '1.0.1', 'create_members_table.php', '2018-11-28 13:18:13'),
-(153, 'RainLab.Forum', 'script', '1.0.1', 'seed_all_tables.php', '2018-11-28 13:18:13'),
-(154, 'RainLab.Forum', 'comment', '1.0.1', 'First version of Forum', '2018-11-28 13:18:13'),
-(155, 'RainLab.Forum', 'script', '1.0.2', 'create_topic_watches_table.php', '2018-11-28 13:18:13'),
-(156, 'RainLab.Forum', 'comment', '1.0.2', 'Add unread flags to topics', '2018-11-28 13:18:13'),
-(157, 'RainLab.Forum', 'script', '1.0.3', 'members_add_mod_and_ban.php', '2018-11-28 13:18:13'),
-(158, 'RainLab.Forum', 'comment', '1.0.3', 'Users can now be made moderators or be banned', '2018-11-28 13:18:13'),
-(159, 'RainLab.Forum', 'script', '1.0.4', 'channels_add_hidden_and_moderated.php', '2018-11-28 13:18:13'),
-(160, 'RainLab.Forum', 'comment', '1.0.4', 'Channels can now be hidden or moderated', '2018-11-28 13:18:13'),
-(161, 'RainLab.Forum', 'script', '1.0.5', 'add_embed_code.php', '2018-11-28 13:18:13'),
-(162, 'RainLab.Forum', 'comment', '1.0.5', 'Introduced topic and channel embedding', '2018-11-28 13:18:13'),
-(163, 'RainLab.Forum', 'script', '1.0.6', 'create_channel_watches_table.php', '2018-11-28 13:18:13'),
-(164, 'RainLab.Forum', 'comment', '1.0.6', 'Add unread flags to channels', '2018-11-28 13:18:13'),
-(165, 'RainLab.Forum', 'script', '1.0.7', 'create_topic_followers_table.php', '2018-11-28 13:18:14'),
-(166, 'RainLab.Forum', 'comment', '1.0.7', 'Forum members can now follow topics', '2018-11-28 13:18:14'),
-(167, 'RainLab.Forum', 'comment', '1.0.8', 'Added Channel name to the Topics component view', '2018-11-28 13:18:14'),
-(168, 'RainLab.Forum', 'comment', '1.0.9', 'Updated the Settings page', '2018-11-28 13:18:14'),
-(169, 'RainLab.Forum', 'comment', '1.0.10', 'Users can now report spammers who can be banned by moderators.', '2018-11-28 13:18:14'),
-(170, 'RainLab.Forum', 'comment', '1.0.11', 'Users can now quote other posts.', '2018-11-28 13:18:14'),
-(171, 'RainLab.Forum', 'comment', '1.0.12', 'Improve support for CDN asset hosting.', '2018-11-28 13:18:14'),
-(172, 'RainLab.Forum', 'comment', '1.0.13', 'Fixes a bug where channels cannot be selected in the Embed component inspector.', '2018-11-28 13:18:14'),
-(173, 'RainLab.Forum', 'comment', '1.0.14', 'Improve the pagination code used in the component default markup.', '2018-11-28 13:18:14'),
-(174, 'RainLab.Forum', 'comment', '1.0.15', 'When a User is deleted, their Member profile and posts is also deleted.', '2018-11-28 13:18:14'),
-(175, 'RainLab.Forum', 'comment', '1.0.16', 'Posting topics is now throttled allowing 3 new topics every 15 minutes.', '2018-11-28 13:18:14'),
-(176, 'RainLab.Forum', 'comment', '1.0.17', 'Update channel reorder page to new system reordering feature.', '2018-11-28 13:18:14'),
-(177, 'RainLab.Forum', 'comment', '1.0.18', 'Minor fix to embed topic component.', '2018-11-28 13:18:14'),
-(178, 'RainLab.Forum', 'script', '1.0.19', 'update_timestamp_nullable.php', '2018-11-28 13:18:14'),
-(179, 'RainLab.Forum', 'comment', '1.0.19', 'Database maintenance. Updated all timestamp columns to be nullable.', '2018-11-28 13:18:14'),
-(180, 'RainLab.Forum', 'script', '1.1.0', 'drop_watches_tables.php', '2018-11-28 13:18:14'),
-(181, 'RainLab.Forum', 'comment', '1.1.0', 'Major performance enhancements', '2018-11-28 13:18:14'),
-(182, 'RainLab.Forum', 'comment', '1.1.1', 'Fixes bug throwing error when a forum topic has no posts.', '2018-11-28 13:18:14'),
-(183, 'RainLab.Builder', 'comment', '1.0.1', 'Initialize plugin.', '2018-11-28 13:18:14'),
-(184, 'RainLab.Builder', 'comment', '1.0.2', 'Fixes the problem with selecting a plugin. Minor localization corrections. Configuration files in the list and form behaviors are now autocomplete.', '2018-11-28 13:18:14'),
-(185, 'RainLab.Builder', 'comment', '1.0.3', 'Improved handling of the enum data type.', '2018-11-28 13:18:14'),
-(186, 'RainLab.Builder', 'comment', '1.0.4', 'Added user permissions to work with the Builder.', '2018-11-28 13:18:14'),
-(187, 'RainLab.Builder', 'comment', '1.0.5', 'Fixed permissions registration.', '2018-11-28 13:18:14'),
-(188, 'RainLab.Builder', 'comment', '1.0.6', 'Fixed front-end record ordering in the Record List component.', '2018-11-28 13:18:14'),
-(189, 'RainLab.Builder', 'comment', '1.0.7', 'Builder settings are now protected with user permissions. The database table column list is scrollable now. Minor code cleanup.', '2018-11-28 13:18:14'),
-(190, 'RainLab.Builder', 'comment', '1.0.8', 'Added the Reorder Controller behavior.', '2018-11-28 13:18:14'),
-(191, 'RainLab.Builder', 'comment', '1.0.9', 'Minor API and UI updates.', '2018-11-28 13:18:14'),
-(192, 'RainLab.Builder', 'comment', '1.0.10', 'Minor styling update.', '2018-11-28 13:18:14'),
-(193, 'RainLab.Builder', 'comment', '1.0.11', 'Fixed a bug where clicking placeholder in a repeater would open Inspector. Fixed a problem with saving forms with repeaters in tabs. Minor style fix.', '2018-11-28 13:18:14'),
-(194, 'RainLab.Builder', 'comment', '1.0.12', 'Added support for the Trigger property to the Media Finder widget configuration. Names of form fields and list columns definition files can now contain underscores.', '2018-11-28 13:18:14'),
-(195, 'RainLab.Builder', 'comment', '1.0.13', 'Minor styling fix on the database editor.', '2018-11-28 13:18:14'),
-(196, 'RainLab.Builder', 'comment', '1.0.14', 'Added support for published_at timestamp field', '2018-11-28 13:18:14'),
-(197, 'RainLab.Builder', 'comment', '1.0.15', 'Fixed a bug where saving a localization string in Inspector could cause a JavaScript error. Added support for Timestamps and Soft Deleting for new models.', '2018-11-28 13:18:14'),
-(198, 'RainLab.Builder', 'comment', '1.0.16', 'Fixed a bug when saving a form with the Repeater widget in a tab could create invalid fields in the form\'s outside area. Added a check that prevents creating localization strings inside other existing strings.', '2018-11-28 13:18:14'),
-(199, 'RainLab.Builder', 'comment', '1.0.17', 'Added support Trigger attribute support for RecordFinder and Repeater form widgets.', '2018-11-28 13:18:14'),
-(200, 'RainLab.Builder', 'comment', '1.0.18', 'Fixes a bug where \'::class\' notations in a model class definition could prevent the model from appearing in the Builder model list. Added emptyOption property support to the dropdown form control.', '2018-11-28 13:18:14'),
-(201, 'RainLab.Builder', 'comment', '1.0.19', 'Added a feature allowing to add all database columns to a list definition. Added max length validation for database table and column names.', '2018-11-28 13:18:14'),
-(202, 'RainLab.Builder', 'comment', '1.0.20', 'Fixes a bug where form the builder could trigger the \"current.hasAttribute is not a function\" error.', '2018-11-28 13:18:14'),
-(203, 'RainLab.Builder', 'comment', '1.0.21', 'Back-end navigation sort order updated.', '2018-11-28 13:18:14'),
-(204, 'RainLab.Builder', 'comment', '1.0.22', 'Added scopeValue property to the RecordList component.', '2018-11-28 13:18:14'),
-(205, 'RainLab.Pages', 'comment', '1.0.1', 'Implemented the static pages management and the Static Page component.', '2018-11-28 13:18:14'),
-(206, 'RainLab.Pages', 'comment', '1.0.2', 'Fixed the page preview URL.', '2018-11-28 13:18:14'),
-(207, 'RainLab.Pages', 'comment', '1.0.3', 'Implemented menus.', '2018-11-28 13:18:14'),
-(208, 'RainLab.Pages', 'comment', '1.0.4', 'Implemented the content block management and placeholder support.', '2018-11-28 13:18:14'),
-(209, 'RainLab.Pages', 'comment', '1.0.5', 'Added support for the Sitemap plugin.', '2018-11-28 13:18:14'),
-(210, 'RainLab.Pages', 'comment', '1.0.6', 'Minor updates to the internal API.', '2018-11-28 13:18:14'),
-(211, 'RainLab.Pages', 'comment', '1.0.7', 'Added the Snippets feature.', '2018-11-28 13:18:14'),
-(212, 'RainLab.Pages', 'comment', '1.0.8', 'Minor improvements to the code.', '2018-11-28 13:18:14'),
-(213, 'RainLab.Pages', 'comment', '1.0.9', 'Fixes issue where Snippet tab is missing from the Partials form.', '2018-11-28 13:18:14'),
-(214, 'RainLab.Pages', 'comment', '1.0.10', 'Add translations for various locales.', '2018-11-28 13:18:14'),
-(215, 'RainLab.Pages', 'comment', '1.0.11', 'Fixes issue where placeholders tabs were missing from Page form.', '2018-11-28 13:18:14'),
-(216, 'RainLab.Pages', 'comment', '1.0.12', 'Implement Media Manager support.', '2018-11-28 13:18:14'),
-(217, 'RainLab.Pages', 'script', '1.1.0', 'snippets_rename_viewbag_properties.php', '2018-11-28 13:18:14'),
-(218, 'RainLab.Pages', 'comment', '1.1.0', 'Adds meta title and description to pages. Adds |staticPage filter.', '2018-11-28 13:18:14'),
-(219, 'RainLab.Pages', 'comment', '1.1.1', 'Add support for Syntax Fields.', '2018-11-28 13:18:14'),
-(220, 'RainLab.Pages', 'comment', '1.1.2', 'Static Breadcrumbs component now respects the hide from navigation setting.', '2018-11-28 13:18:14'),
-(221, 'RainLab.Pages', 'comment', '1.1.3', 'Minor back-end styling fix.', '2018-11-28 13:18:14'),
-(222, 'RainLab.Pages', 'comment', '1.1.4', 'Minor fix to the StaticPage component API.', '2018-11-28 13:18:14'),
-(223, 'RainLab.Pages', 'comment', '1.1.5', 'Fixes bug when using syntax fields.', '2018-11-28 13:18:14'),
-(224, 'RainLab.Pages', 'comment', '1.1.6', 'Minor styling fix to the back-end UI.', '2018-11-28 13:18:14'),
-(225, 'RainLab.Pages', 'comment', '1.1.7', 'Improved menu item form to include CSS class, open in a new window and hidden flag.', '2018-11-28 13:18:14'),
-(226, 'RainLab.Pages', 'comment', '1.1.8', 'Improved the output of snippet partials when saved.', '2018-11-28 13:18:14'),
-(227, 'RainLab.Pages', 'comment', '1.1.9', 'Minor update to snippet inspector internal API.', '2018-11-28 13:18:14'),
-(228, 'RainLab.Pages', 'comment', '1.1.10', 'Fixes a bug where selecting a layout causes permanent unsaved changes.', '2018-11-28 13:18:14'),
-(229, 'RainLab.Pages', 'comment', '1.1.11', 'Add support for repeater syntax field.', '2018-11-28 13:18:14'),
-(230, 'RainLab.Pages', 'comment', '1.2.0', 'Added support for translations, UI updates.', '2018-11-28 13:18:14'),
-(231, 'RainLab.Pages', 'comment', '1.2.1', 'Use nice titles when listing the content files.', '2018-11-28 13:18:14'),
-(232, 'RainLab.Pages', 'comment', '1.2.2', 'Minor styling update.', '2018-11-28 13:18:14'),
-(233, 'RainLab.Pages', 'comment', '1.2.3', 'Snippets can now be moved by dragging them.', '2018-11-28 13:18:14'),
-(234, 'RainLab.Pages', 'comment', '1.2.4', 'Fixes a bug where the cursor is misplaced when editing text files.', '2018-11-28 13:18:14'),
-(235, 'RainLab.Pages', 'comment', '1.2.5', 'Fixes a bug where the parent page is lost upon changing a page layout.', '2018-11-28 13:18:14'),
-(236, 'RainLab.Pages', 'comment', '1.2.6', 'Shared view variables are now passed to static pages.', '2018-11-28 13:18:14'),
-(237, 'RainLab.Pages', 'comment', '1.2.7', 'Fixes issue with duplicating properties when adding multiple snippets on the same page.', '2018-11-28 13:18:14'),
-(238, 'RainLab.Pages', 'comment', '1.2.8', 'Fixes a bug where creating a content block without extension doesn\'t save the contents to file.', '2018-11-28 13:18:14'),
-(239, 'RainLab.Pages', 'comment', '1.2.9', 'Add conditional support for translating page URLs.', '2018-11-28 13:18:14'),
-(240, 'RainLab.Pages', 'comment', '1.2.10', 'Streamline generation of URLs to use the new Cms::url helper.', '2018-11-28 13:18:14'),
-(241, 'RainLab.Pages', 'comment', '1.2.11', 'Implements repeater usage with translate plugin.', '2018-11-28 13:18:14'),
-(242, 'RainLab.Pages', 'comment', '1.2.12', 'Fixes minor issue when using snippets and switching the application locale.', '2018-11-28 13:18:14'),
-(243, 'RainLab.Pages', 'comment', '1.2.13', 'Fixes bug when AJAX is used on a page that does not yet exist.', '2018-11-28 13:18:14'),
-(244, 'RainLab.Pages', 'comment', '1.2.14', 'Add theme logging support for changes made to menus.', '2018-11-28 13:18:14'),
-(245, 'RainLab.Pages', 'comment', '1.2.15', 'Back-end navigation sort order updated.', '2018-11-28 13:18:14'),
-(246, 'RainLab.Pages', 'comment', '1.2.16', 'Fixes a bug when saving a template that has been modified outside of the CMS (mtime mismatch).', '2018-11-28 13:18:14'),
-(247, 'RainLab.Pages', 'comment', '1.2.17', 'Changes locations of custom fields to secondary tabs instead of the primary Settings area. New menu search ability on adding menu items', '2018-11-28 13:18:14'),
-(248, 'RainLab.Pages', 'comment', '1.2.18', 'Fixes cache-invalidation issues when RainLab.Translate is not installed. Added Greek & Simplified Chinese translations. Removed deprecated calls. Allowed saving HTML in snippet properties. Added support for the MediaFinder in menu items.', '2018-11-28 13:18:14'),
-(249, 'Xeor.OctoCart', 'script', '1.0.0', 'create_orders_table.php', '2018-11-28 13:18:14'),
-(250, 'Xeor.OctoCart', 'comment', '1.0.0', 'First release of OctoCart.', '2018-11-28 13:18:14'),
-(251, 'Xeor.OctoCart', 'script', '2.0.1', 'create_categories_table.php', '2018-11-28 13:18:14'),
-(252, 'Xeor.OctoCart', 'script', '2.0.1', 'create_products_table.php', '2018-11-28 13:18:14'),
-(253, 'Xeor.OctoCart', 'comment', '2.0.1', 'Second version of OctoCart!!! Please look at the documentation before upgrading!!!', '2018-11-28 13:18:14'),
-(254, 'Xeor.OctoCart', 'script', '2.0.2', 'create_product_attributes_table.php', '2018-11-28 13:18:14'),
-(255, 'Xeor.OctoCart', 'comment', '2.0.2', 'Fixes + Add Russian translation.', '2018-11-28 13:18:14'),
-(256, 'Xeor.OctoCart', 'comment', '2.0.3', 'Fixed typo.', '2018-11-28 13:18:14'),
-(257, 'Xeor.OctoCart', 'comment', '2.0.4', 'Fixed issue with price filter.', '2018-11-28 13:18:14'),
-(258, 'Xeor.OctoCart', 'comment', '2.0.5', 'Fixed issue with price filter.', '2018-11-28 13:18:14'),
-(259, 'Xeor.OctoCart', 'script', '2.0.6', 'create_products_fields.php', '2018-11-28 13:18:14'),
-(260, 'Xeor.OctoCart', 'script', '2.0.6', 'demo_seed.php', '2018-11-28 13:18:15'),
-(261, 'Xeor.OctoCart', 'comment', '2.0.6', 'Minor update.', '2018-11-28 13:18:15'),
-(262, 'Xeor.OctoCart', 'comment', '2.0.7', 'Added product availability date.', '2018-11-28 13:18:15'),
-(263, 'Xeor.OctoCart', 'comment', '2.0.8', '!!! Renamed productDisplay and orderDisplay components.', '2018-11-28 13:18:15'),
-(264, 'Xeor.OctoCart', 'comment', '2.0.9', 'Fixed issue with demo_seed.php.', '2018-11-28 13:18:15'),
-(265, 'Xeor.OctoCart', 'comment', '2.0.10', 'Fixed some issues.', '2018-11-28 13:18:15'),
-(266, 'Xeor.OctoCart', 'comment', '2.0.11', 'Fixed some issues.', '2018-11-28 13:18:15'),
-(267, 'Xeor.OctoCart', 'comment', '2.0.12', '!!! Now you can edit orders. Updated billing_info & shipping_info fields. Updated the order component template.', '2018-11-28 13:18:15'),
-(268, 'Xeor.OctoCart', 'script', '2.0.13', 'create_orders_status.php', '2018-11-28 13:18:15'),
-(269, 'Xeor.OctoCart', 'comment', '2.0.13', 'Added the status column to the orders table.', '2018-11-28 13:18:15'),
-(270, 'Xeor.OctoCart', 'script', '2.0.14', 'create_orders_note.php', '2018-11-28 13:18:15'),
-(271, 'Xeor.OctoCart', 'comment', '2.0.14', 'Added the note column to the orders table.', '2018-11-28 13:18:15'),
-(272, 'Xeor.OctoCart', 'script', '2.0.15', 'create_orders_phone.php', '2018-11-28 13:18:15'),
-(273, 'Xeor.OctoCart', 'comment', '2.0.15', 'Added the phone column to the orders table.', '2018-11-28 13:18:15'),
-(274, 'Xeor.OctoCart', 'comment', '2.0.16', 'Fixed some issues.', '2018-11-28 13:18:15'),
-(275, 'Xeor.OctoCart', 'comment', '2.0.17', 'Added $order variable to mail template.', '2018-11-28 13:18:15'),
-(276, 'Xeor.OctoCart', 'script', '2.0.18', 'create_products_variations.php', '2018-11-28 13:18:15'),
-(277, 'Xeor.OctoCart', 'comment', '2.0.18', 'Added variations to product.', '2018-11-28 13:18:15'),
-(278, 'Xeor.OctoCart', 'script', '2.0.19', 'create_categories_active.php', '2018-11-28 13:18:15'),
-(279, 'Xeor.OctoCart', 'comment', '2.0.19', 'Added the active column to the categories table.', '2018-11-28 13:18:15'),
-(280, 'Xeor.OctoCart', 'script', '2.0.20', 'create_categories_external_id.php', '2018-11-28 13:18:15'),
-(281, 'Xeor.OctoCart', 'script', '2.0.20', 'create_categories_excerpt.php', '2018-11-28 13:18:16'),
-(282, 'Xeor.OctoCart', 'comment', '2.0.20', 'Added the external id and excerpt columns to the categories table.', '2018-11-28 13:18:16'),
-(283, 'Xeor.OctoCart', 'comment', '2.0.21', 'Added the images field to the category.', '2018-11-28 13:18:16'),
-(284, 'Xeor.OctoCart', 'script', '2018.6.1', 'create_products_external_id.php', '2018-11-28 13:18:16'),
-(285, 'Xeor.OctoCart', 'comment', '2018.6.1', 'Added the external id column to the products table.', '2018-11-28 13:18:16'),
-(286, 'Xeor.OctoCart', 'script', '2018.7.1', 'create_product_attributes_code.php', '2018-11-28 13:18:16'),
-(287, 'Xeor.OctoCart', 'comment', '2018.7.1', 'Added the code column to the product attributes table.', '2018-11-28 13:18:16'),
-(288, 'Xeor.OctoCart', 'comment', '2018.8.1', 'Added feature for sorting products.', '2018-11-28 13:18:16'),
-(289, 'Xeor.OctoCart', 'script', '2018.8.2', 'builder_table_update_xeor_octocart_products.php', '2018-11-28 13:18:16'),
-(290, 'Xeor.OctoCart', 'comment', '2018.8.2', 'Updated table xeor_octocart_products', '2018-11-28 13:18:16'),
-(291, 'Xeor.OctoCart', 'script', '2018.8.3', 'builder_table_update_xeor_octocart_products_2.php', '2018-11-28 13:18:16'),
-(292, 'Xeor.OctoCart', 'comment', '2018.8.3', 'Updated table xeor_octocart_products', '2018-11-28 13:18:16'),
-(293, 'Xeor.OctoCart', 'script', '2018.8.4', 'builder_table_update_xeor_octocart_products_3.php', '2018-11-28 13:18:16'),
-(294, 'Xeor.OctoCart', 'comment', '2018.8.4', 'Updated table xeor_octocart_products', '2018-11-28 13:18:16'),
-(295, 'OFFLINE.SiteSearch', 'comment', '1.0.1', 'First version of SiteSearch', '2018-11-28 13:18:16'),
-(296, 'OFFLINE.SiteSearch', 'comment', '1.0.2', 'Added experimental CMS pages results provider', '2018-11-28 13:18:16'),
-(297, 'OFFLINE.SiteSearch', 'comment', '1.0.3', 'Added missing component', '2018-11-28 13:18:16'),
-(298, 'OFFLINE.SiteSearch', 'comment', '1.0.4', 'Added support for RadiantWeb.ProBlog', '2018-11-28 13:18:16'),
-(299, 'OFFLINE.SiteSearch', 'comment', '1.0.5', 'Moved configuration to the backend', '2018-11-28 13:18:16'),
-(300, 'OFFLINE.SiteSearch', 'comment', '1.0.6', 'Fixed hardcoded url in pagination', '2018-11-28 13:18:16'),
-(301, 'OFFLINE.SiteSearch', 'comment', '1.0.7', 'Add function for getting last page number (Thanks to vojtasvoboda)', '2018-11-28 13:18:16'),
-(302, 'OFFLINE.SiteSearch', 'comment', '1.0.8', 'Add cs_CZ locale (Thanks to vojtasvoboda)', '2018-11-28 13:18:16'),
-(303, 'OFFLINE.SiteSearch', 'comment', '1.0.9', 'Added support for ArrizalAmin.Portfolio plugin', '2018-11-28 13:18:16'),
-(304, 'OFFLINE.SiteSearch', 'comment', '1.0.10', 'Removed unused component', '2018-11-28 13:18:16'),
-(305, 'OFFLINE.SiteSearch', 'script', '1.1.0', 'Fixed bug where RainLab.Pages results were displayed twice', '2018-11-28 13:18:16'),
-(306, 'OFFLINE.SiteSearch', 'script', '1.1.0', 'Honor disabled plugins setting', '2018-11-28 13:18:16'),
-(307, 'OFFLINE.SiteSearch', 'script', '1.1.0', 'Generate absolute URLs in search results by default', '2018-11-28 13:18:16'),
-(308, 'OFFLINE.SiteSearch', 'comment', '1.1.0', 'Added support for translated contents in RainLab.Pages, ArrizalAmin.Portfolio and RadiantWeb.ProBlog', '2018-11-28 13:18:16'),
-(309, 'OFFLINE.SiteSearch', 'comment', '1.1.1', 'Added optimized siteSearchInclude component for cms pages search', '2018-11-28 13:18:16'),
-(310, 'OFFLINE.SiteSearch', 'comment', '1.1.2', 'Fixed backend permissions', '2018-11-28 13:18:16'),
-(311, 'OFFLINE.SiteSearch', 'comment', '1.1.3', 'Added ru_RU locale (Thanks to mokeev1995)', '2018-11-28 13:18:16'),
-(312, 'OFFLINE.SiteSearch', 'script', '1.2.1', 'Refactored search providers and results page', '2018-11-28 13:18:16'),
-(313, 'OFFLINE.SiteSearch', 'comment', '1.2.1', 'Added support for Feegleweb.Octoshop (Thanks to billyzduke)', '2018-11-28 13:18:16'),
-(314, 'OFFLINE.SiteSearch', 'comment', '1.2.2', 'Minor bugfix in Feegleweb.Octoshop settings page translation', '2018-11-28 13:18:16'),
-(315, 'OFFLINE.SiteSearch', 'comment', '1.2.3', 'Fixed bug where the search results sometimes broke the page layout', '2018-11-28 13:18:16'),
-(316, 'OFFLINE.SiteSearch', 'comment', '1.2.4', 'Fixed bug where unavailable thumbnails lead to an error', '2018-11-28 13:18:16'),
-(317, 'OFFLINE.SiteSearch', 'comment', '1.2.5', 'Fixed bug where the provider badge is not displayed for custom search providers', '2018-11-28 13:18:16'),
-(318, 'OFFLINE.SiteSearch', 'comment', '1.2.6', 'Added support for Responsiv.Showcase (Thanks to MichiReich)', '2018-11-28 13:18:16'),
-(319, 'OFFLINE.SiteSearch', 'comment', '1.2.7', 'Fixed bug where custom url settings were ignored in search results for some providers', '2018-11-28 13:18:16'),
-(320, 'OFFLINE.SiteSearch', 'comment', '1.2.8', 'Added support for viewBag properties in RainLab.Pages', '2018-11-28 13:18:16'),
-(321, 'OFFLINE.SiteSearch', 'comment', '1.2.9', 'Added support for static page component hosts', '2018-11-28 13:18:16'),
-(322, 'OFFLINE.SiteSearch', 'comment', '1.2.10', 'Added support for multiple variables in Rainlab.Blog urls (Thanks to graker)', '2018-11-28 13:18:16'),
-(323, 'OFFLINE.SiteSearch', 'comment', '1.2.11', 'Optimized handling of multibyte strings', '2018-11-28 13:18:16'),
-(324, 'OFFLINE.SiteSearch', 'comment', '1.2.12', 'Added support for Jiri.Jkshop', '2018-11-28 13:18:16'),
-(325, 'OFFLINE.SiteSearch', 'comment', '1.2.13', 'Minor bugfixes for marked queries in search results and Rainlab.Blog provider (Thanks to graker)', '2018-11-28 13:18:16'),
-(326, 'OFFLINE.SiteSearch', 'comment', '1.2.14', 'Fixed bug in Jiri.JKShop provider', '2018-11-28 13:18:16'),
-(327, 'OFFLINE.SiteSearch', 'comment', '1.2.15', 'Added a new meta property for search results (thanks to cracki)', '2018-11-28 13:18:16'),
-(328, 'OFFLINE.SiteSearch', 'comment', '1.2.16', 'Added Persian (Farsi) translations (thanks to cracki)', '2018-11-28 13:18:16'),
-(329, 'OFFLINE.SiteSearch', 'comment', '1.2.17', 'Added support for Indikator.News (thanks to gergo85)', '2018-11-28 13:18:16'),
-(330, 'OFFLINE.SiteSearch', 'comment', '1.2.18', 'Fixed bug where titles of static pages where not searched (thanks to beenen445)', '2018-11-28 13:18:16'),
-(331, 'OFFLINE.SiteSearch', 'comment', '1.2.19', 'Added support for OFFLINE.SnipcartShop', '2018-11-28 13:18:16'),
-(332, 'OFFLINE.SiteSearch', 'comment', '1.2.20', 'Added support for VojtaSvoboda.Brands (thanks to vojtasvoboda)', '2018-11-28 13:18:16'),
-(333, 'OFFLINE.SiteSearch', 'comment', '1.2.21', 'Added Portuguese translations (thanks to ribsousa)', '2018-11-28 13:18:16'),
-(334, 'OFFLINE.SiteSearch', 'comment', '1.2.22', 'Fixed Portuguese translations', '2018-11-28 13:18:16'),
-(335, 'OFFLINE.SiteSearch', 'comment', '1.2.23', 'Fixed support for translated Rainlab.Blog contents', '2018-11-28 13:18:16'),
-(336, 'OFFLINE.SiteSearch', 'comment', '1.2.24', 'Added composer.json to allow loading plugin as dependency (thanks to adduc)', '2018-11-28 13:18:16'),
-(337, 'OFFLINE.SiteSearch', 'comment', '1.2.25', 'Fixed bug that sometimes lead to broken html in search results (thanks to graker)', '2018-11-28 13:18:16'),
-(338, 'OFFLINE.SiteSearch', 'comment', '1.2.26', 'Exclude hidden static pages from search results (thanks to plyusninva)', '2018-11-28 13:18:16'),
-(339, 'OFFLINE.SiteSearch', 'comment', '1.2.27', 'Added support for Graker.PhotoAlbums (thanks to graker)', '2018-11-28 13:18:16'),
-(340, 'OFFLINE.SiteSearch', 'comment', '1.2.28', 'Added new result.identifier property', '2018-11-28 13:18:16'),
-(341, 'OFFLINE.SiteSearch', 'comment', '1.2.29', 'Optimized thumbnail generation for Graker.PhotoAlbums results (thanks to graker)', '2018-11-28 13:18:16'),
-(342, 'OFFLINE.SiteSearch', 'comment', '1.2.30', 'The searchResults component\'s resultsCollection is now publically accessible', '2018-11-28 13:18:16'),
-(343, 'OFFLINE.SiteSearch', 'comment', '1.2.31', 'Added model property for each search result to retreive the original model the result was generated from', '2018-11-28 13:18:16'),
-(344, 'OFFLINE.SiteSearch', 'comment', '1.2.32', 'Added support for custom ResultsProvider classes', '2018-11-28 13:18:16'),
-(345, 'OFFLINE.SiteSearch', 'comment', '1.2.33', 'Fix the use of multiple custom ResultsProvider for a plugin', '2018-11-28 13:18:16'),
-(346, 'OFFLINE.SiteSearch', 'comment', '1.3.1', 'Added new searchInput component with search-as-you-type feature', '2018-11-28 13:18:16'),
-(347, 'OFFLINE.SiteSearch', 'comment', '1.3.2', 'Fixed bug in AutoCompleteComponent', '2018-11-28 13:18:16'),
-(348, 'OFFLINE.SiteSearch', 'comment', '1.3.3', '!!! All results are now returned with a relative URL to prevent problems with translated contents. Make sure to pass your result.url throught the \"app\" filter if you are using your own search result partials', '2018-11-28 13:18:16'),
-(349, 'OFFLINE.SiteSearch', 'comment', '1.3.4', 'Fixed undefined index error when a static page doesn\'t have a title set', '2018-11-28 13:18:16'),
-(350, 'OFFLINE.SiteSearch', 'comment', '1.3.5', 'Added ability to edit the user\'s query before searching', '2018-11-28 13:18:16'),
-(351, 'OFFLINE.SiteSearch', 'comment', '1.3.6', '!!! Using RadiantWeb.ProBlog\'s internal settings to get the correct parent page for a blog post result. This enables support for multiple blogs on the same website. If your blog search results have wrong URLs after this update make sure to configure your default page for rendering blog posts via the ProBlog backend settings.', '2018-11-28 13:18:16'),
-(352, 'OFFLINE.SiteSearch', 'comment', '1.3.7', 'Added the ability to add age penalties to search results. This can be used to show newer results higher up in your search results.', '2018-11-28 13:18:16'),
-(353, 'OFFLINE.SiteSearch', 'comment', '1.3.8', 'Optimized support for multiple SearchInput components on a single page.', '2018-11-28 13:18:16');
+(1, 'October.Demo', 'comment', '1.0.1', 'First version of Demo', '2018-12-07 06:39:36'),
+(2, 'RainLab.User', 'script', '1.0.1', 'create_users_table.php', '2018-12-07 06:41:35'),
+(3, 'RainLab.User', 'script', '1.0.1', 'create_throttle_table.php', '2018-12-07 06:41:35'),
+(4, 'RainLab.User', 'comment', '1.0.1', 'Initialize plugin.', '2018-12-07 06:41:35'),
+(5, 'RainLab.User', 'comment', '1.0.2', 'Seed tables.', '2018-12-07 06:41:35'),
+(6, 'RainLab.User', 'comment', '1.0.3', 'Translated hard-coded text to language strings.', '2018-12-07 06:41:35'),
+(7, 'RainLab.User', 'comment', '1.0.4', 'Improvements to user-interface for Location manager.', '2018-12-07 06:41:35'),
+(8, 'RainLab.User', 'comment', '1.0.5', 'Added contact details for users.', '2018-12-07 06:41:35'),
+(9, 'RainLab.User', 'script', '1.0.6', 'create_mail_blockers_table.php', '2018-12-07 06:41:35'),
+(10, 'RainLab.User', 'comment', '1.0.6', 'Added Mail Blocker utility so users can block specific mail templates.', '2018-12-07 06:41:35'),
+(11, 'RainLab.User', 'comment', '1.0.7', 'Add back-end Settings page.', '2018-12-07 06:41:35'),
+(12, 'RainLab.User', 'comment', '1.0.8', 'Updated the Settings page.', '2018-12-07 06:41:35'),
+(13, 'RainLab.User', 'comment', '1.0.9', 'Adds new welcome mail message for users and administrators.', '2018-12-07 06:41:35'),
+(14, 'RainLab.User', 'comment', '1.0.10', 'Adds administrator-only activation mode.', '2018-12-07 06:41:35'),
+(15, 'RainLab.User', 'script', '1.0.11', 'users_add_login_column.php', '2018-12-07 06:41:35'),
+(16, 'RainLab.User', 'comment', '1.0.11', 'Users now have an optional login field that defaults to the email field.', '2018-12-07 06:41:35'),
+(17, 'RainLab.User', 'script', '1.0.12', 'users_rename_login_to_username.php', '2018-12-07 06:41:35'),
+(18, 'RainLab.User', 'comment', '1.0.12', 'Create a dedicated setting for choosing the login mode.', '2018-12-07 06:41:35'),
+(19, 'RainLab.User', 'comment', '1.0.13', 'Minor fix to the Account sign in logic.', '2018-12-07 06:41:35'),
+(20, 'RainLab.User', 'comment', '1.0.14', 'Minor improvements to the code.', '2018-12-07 06:41:35'),
+(21, 'RainLab.User', 'script', '1.0.15', 'users_add_surname.php', '2018-12-07 06:41:35'),
+(22, 'RainLab.User', 'comment', '1.0.15', 'Adds last name column to users table (surname).', '2018-12-07 06:41:35'),
+(23, 'RainLab.User', 'comment', '1.0.16', 'Require permissions for settings page too.', '2018-12-07 06:41:35'),
+(24, 'RainLab.User', 'comment', '1.1.0', '!!! Profile fields and Locations have been removed.', '2018-12-07 06:41:35'),
+(25, 'RainLab.User', 'script', '1.1.1', 'create_user_groups_table.php', '2018-12-07 06:41:36'),
+(26, 'RainLab.User', 'script', '1.1.1', 'seed_user_groups_table.php', '2018-12-07 06:41:36'),
+(27, 'RainLab.User', 'comment', '1.1.1', 'Users can now be added to groups.', '2018-12-07 06:41:36'),
+(28, 'RainLab.User', 'comment', '1.1.2', 'A raw URL can now be passed as the redirect property in the Account component.', '2018-12-07 06:41:36'),
+(29, 'RainLab.User', 'comment', '1.1.3', 'Adds a super user flag to the users table, reserved for future use.', '2018-12-07 06:41:36'),
+(30, 'RainLab.User', 'comment', '1.1.4', 'User list can be filtered by the group they belong to.', '2018-12-07 06:41:36'),
+(31, 'RainLab.User', 'comment', '1.1.5', 'Adds a new permission to hide the User settings menu item.', '2018-12-07 06:41:36'),
+(32, 'RainLab.User', 'script', '1.2.0', 'users_add_deleted_at.php', '2018-12-07 06:41:36'),
+(33, 'RainLab.User', 'comment', '1.2.0', 'Users can now deactivate their own accounts.', '2018-12-07 06:41:36'),
+(34, 'RainLab.User', 'comment', '1.2.1', 'New feature for checking if a user is recently active/online.', '2018-12-07 06:41:36'),
+(35, 'RainLab.User', 'comment', '1.2.2', 'Add bulk action button to user list.', '2018-12-07 06:41:36'),
+(36, 'RainLab.User', 'comment', '1.2.3', 'Included some descriptive paragraphs in the Reset Password component markup.', '2018-12-07 06:41:36'),
+(37, 'RainLab.User', 'comment', '1.2.4', 'Added a checkbox for blocking all mail sent to the user.', '2018-12-07 06:41:36'),
+(38, 'RainLab.User', 'script', '1.2.5', 'update_timestamp_nullable.php', '2018-12-07 06:41:36'),
+(39, 'RainLab.User', 'comment', '1.2.5', 'Database maintenance. Updated all timestamp columns to be nullable.', '2018-12-07 06:41:36'),
+(40, 'RainLab.User', 'script', '1.2.6', 'users_add_last_seen.php', '2018-12-07 06:41:36'),
+(41, 'RainLab.User', 'comment', '1.2.6', 'Add a dedicated last seen column for users.', '2018-12-07 06:41:36'),
+(42, 'RainLab.User', 'comment', '1.2.7', 'Minor fix to user timestamp attributes.', '2018-12-07 06:41:36'),
+(43, 'RainLab.User', 'comment', '1.2.8', 'Add date range filter to users list. Introduced a logout event.', '2018-12-07 06:41:36'),
+(44, 'RainLab.User', 'comment', '1.2.9', 'Add invitation mail for new accounts created in the back-end.', '2018-12-07 06:41:36'),
+(45, 'RainLab.User', 'script', '1.3.0', 'users_add_guest_flag.php', '2018-12-07 06:41:36'),
+(46, 'RainLab.User', 'script', '1.3.0', 'users_add_superuser_flag.php', '2018-12-07 06:41:36'),
+(47, 'RainLab.User', 'comment', '1.3.0', 'Introduced guest user accounts.', '2018-12-07 06:41:36'),
+(48, 'RainLab.User', 'comment', '1.3.1', 'User notification variables can now be extended.', '2018-12-07 06:41:36'),
+(49, 'RainLab.User', 'comment', '1.3.2', 'Minor fix to the Auth::register method.', '2018-12-07 06:41:36'),
+(50, 'RainLab.User', 'comment', '1.3.3', 'Allow prevention of concurrent user sessions via the user settings.', '2018-12-07 06:41:36'),
+(51, 'RainLab.User', 'comment', '1.3.4', 'Added force secure protocol property to the account component.', '2018-12-07 06:41:36'),
+(52, 'RainLab.User', 'comment', '1.4.0', '!!! The Notifications tab in User settings has been removed.', '2018-12-07 06:41:36'),
+(53, 'RainLab.User', 'comment', '1.4.1', 'Added support for user impersonation.', '2018-12-07 06:41:36'),
+(54, 'RainLab.User', 'comment', '1.4.2', 'Fixes security bug in Password Reset component.', '2018-12-07 06:41:36'),
+(55, 'RainLab.User', 'comment', '1.4.3', 'Fixes session handling for AJAX requests.', '2018-12-07 06:41:36'),
+(56, 'RainLab.User', 'comment', '1.4.4', 'Fixes bug where impersonation touches the last seen timestamp.', '2018-12-07 06:41:36'),
+(57, 'RainLab.User', 'comment', '1.4.5', 'Added token fallback process to Account / Reset Password components when parameter is missing.', '2018-12-07 06:41:36'),
+(58, 'RainLab.User', 'comment', '1.4.6', 'Fixes Auth::register method signature mismatch with core OctoberCMS Auth library', '2018-12-07 06:41:36'),
+(59, 'RainLab.Blog', 'script', '1.0.1', 'create_posts_table.php', '2018-12-07 06:41:48'),
+(60, 'RainLab.Blog', 'script', '1.0.1', 'create_categories_table.php', '2018-12-07 06:41:48'),
+(61, 'RainLab.Blog', 'script', '1.0.1', 'seed_all_tables.php', '2018-12-07 06:41:48'),
+(62, 'RainLab.Blog', 'comment', '1.0.1', 'Initialize plugin.', '2018-12-07 06:41:48'),
+(63, 'RainLab.Blog', 'comment', '1.0.2', 'Added the processed HTML content column to the posts table.', '2018-12-07 06:41:48'),
+(64, 'RainLab.Blog', 'comment', '1.0.3', 'Category component has been merged with Posts component.', '2018-12-07 06:41:48'),
+(65, 'RainLab.Blog', 'comment', '1.0.4', 'Improvements to the Posts list management UI.', '2018-12-07 06:41:48'),
+(66, 'RainLab.Blog', 'comment', '1.0.5', 'Removes the Author column from blog post list.', '2018-12-07 06:41:48'),
+(67, 'RainLab.Blog', 'comment', '1.0.6', 'Featured images now appear in the Post component.', '2018-12-07 06:41:48'),
+(68, 'RainLab.Blog', 'comment', '1.0.7', 'Added support for the Static Pages menus.', '2018-12-07 06:41:48'),
+(69, 'RainLab.Blog', 'comment', '1.0.8', 'Added total posts to category list.', '2018-12-07 06:41:48'),
+(70, 'RainLab.Blog', 'comment', '1.0.9', 'Added support for the Sitemap plugin.', '2018-12-07 06:41:48'),
+(71, 'RainLab.Blog', 'comment', '1.0.10', 'Added permission to prevent users from seeing posts they did not create.', '2018-12-07 06:41:48'),
+(72, 'RainLab.Blog', 'comment', '1.0.11', 'Deprecate \"idParam\" component property in favour of \"slug\" property.', '2018-12-07 06:41:48'),
+(73, 'RainLab.Blog', 'comment', '1.0.12', 'Fixes issue where images cannot be uploaded caused by latest Markdown library.', '2018-12-07 06:41:48'),
+(74, 'RainLab.Blog', 'comment', '1.0.13', 'Fixes problem with providing pages to Sitemap and Pages plugins.', '2018-12-07 06:41:48'),
+(75, 'RainLab.Blog', 'comment', '1.0.14', 'Add support for CSRF protection feature added to core.', '2018-12-07 06:41:48'),
+(76, 'RainLab.Blog', 'comment', '1.1.0', 'Replaced the Post editor with the new core Markdown editor.', '2018-12-07 06:41:48'),
+(77, 'RainLab.Blog', 'comment', '1.1.1', 'Posts can now be imported and exported.', '2018-12-07 06:41:48'),
+(78, 'RainLab.Blog', 'comment', '1.1.2', 'Posts are no longer visible if the published date has not passed.', '2018-12-07 06:41:48'),
+(79, 'RainLab.Blog', 'comment', '1.1.3', 'Added a New Post shortcut button to the blog menu.', '2018-12-07 06:41:48'),
+(80, 'RainLab.Blog', 'script', '1.2.0', 'categories_add_nested_fields.php', '2018-12-07 06:41:48'),
+(81, 'RainLab.Blog', 'comment', '1.2.0', 'Categories now support nesting.', '2018-12-07 06:41:48'),
+(82, 'RainLab.Blog', 'comment', '1.2.1', 'Post slugs now must be unique.', '2018-12-07 06:41:48'),
+(83, 'RainLab.Blog', 'comment', '1.2.2', 'Fixes issue on new installs.', '2018-12-07 06:41:48'),
+(84, 'RainLab.Blog', 'comment', '1.2.3', 'Minor user interface update.', '2018-12-07 06:41:48'),
+(85, 'RainLab.Blog', 'script', '1.2.4', 'update_timestamp_nullable.php', '2018-12-07 06:41:48'),
+(86, 'RainLab.Blog', 'comment', '1.2.4', 'Database maintenance. Updated all timestamp columns to be nullable.', '2018-12-07 06:41:48'),
+(87, 'RainLab.Blog', 'comment', '1.2.5', 'Added translation support for blog posts.', '2018-12-07 06:41:48'),
+(88, 'RainLab.Blog', 'comment', '1.2.6', 'The published field can now supply a time with the date.', '2018-12-07 06:41:48'),
+(89, 'RainLab.Blog', 'comment', '1.2.7', 'Introduced a new RSS feed component.', '2018-12-07 06:41:48'),
+(90, 'RainLab.Blog', 'comment', '1.2.8', 'Fixes issue with translated `content_html` attribute on blog posts.', '2018-12-07 06:41:48'),
+(91, 'RainLab.Blog', 'comment', '1.2.9', 'Added translation support for blog categories.', '2018-12-07 06:41:48'),
+(92, 'RainLab.Blog', 'comment', '1.2.10', 'Added translation support for post slugs.', '2018-12-07 06:41:48'),
+(93, 'RainLab.Blog', 'comment', '1.2.11', 'Fixes bug where excerpt is not translated.', '2018-12-07 06:41:48'),
+(94, 'RainLab.Blog', 'comment', '1.2.12', 'Description field added to category form.', '2018-12-07 06:41:48'),
+(95, 'RainLab.Blog', 'comment', '1.2.13', 'Improved support for Static Pages menus, added a blog post and all blog posts.', '2018-12-07 06:41:48'),
+(96, 'RainLab.Blog', 'comment', '1.2.14', 'Added post exception property to the post list component, useful for showing related posts.', '2018-12-07 06:41:48'),
+(97, 'RainLab.Blog', 'comment', '1.2.15', 'Back-end navigation sort order updated.', '2018-12-07 06:41:48'),
+(98, 'RainLab.Blog', 'comment', '1.2.16', 'Added `nextPost` and `previousPost` to the blog post component.', '2018-12-07 06:41:48'),
+(99, 'RainLab.Blog', 'comment', '1.2.17', 'Improved the next and previous logic to sort by the published date.', '2018-12-07 06:41:48'),
+(100, 'RainLab.Blog', 'comment', '1.2.18', 'Minor change to internals.', '2018-12-07 06:41:48'),
+(101, 'RainLab.Blog', 'comment', '1.2.19', 'Improved support for Build 420+', '2018-12-07 06:41:48'),
+(102, 'RainLab.Translate', 'script', '1.0.1', 'create_messages_table.php', '2018-12-07 06:42:19'),
+(103, 'RainLab.Translate', 'script', '1.0.1', 'create_attributes_table.php', '2018-12-07 06:42:19'),
+(104, 'RainLab.Translate', 'script', '1.0.1', 'create_locales_table.php', '2018-12-07 06:42:19'),
+(105, 'RainLab.Translate', 'comment', '1.0.1', 'First version of Translate', '2018-12-07 06:42:19'),
+(106, 'RainLab.Translate', 'comment', '1.0.2', 'Languages and Messages can now be deleted.', '2018-12-07 06:42:19'),
+(107, 'RainLab.Translate', 'comment', '1.0.3', 'Minor updates for latest October release.', '2018-12-07 06:42:19'),
+(108, 'RainLab.Translate', 'comment', '1.0.4', 'Locale cache will clear when updating a language.', '2018-12-07 06:42:19'),
+(109, 'RainLab.Translate', 'comment', '1.0.5', 'Add Spanish language and fix plugin config.', '2018-12-07 06:42:19'),
+(110, 'RainLab.Translate', 'comment', '1.0.6', 'Minor improvements to the code.', '2018-12-07 06:42:19'),
+(111, 'RainLab.Translate', 'comment', '1.0.7', 'Fixes major bug where translations are skipped entirely!', '2018-12-07 06:42:19'),
+(112, 'RainLab.Translate', 'comment', '1.0.8', 'Minor bug fixes.', '2018-12-07 06:42:19'),
+(113, 'RainLab.Translate', 'comment', '1.0.9', 'Fixes an issue where newly created models lose their translated values.', '2018-12-07 06:42:19'),
+(114, 'RainLab.Translate', 'comment', '1.0.10', 'Minor fix for latest build.', '2018-12-07 06:42:19'),
+(115, 'RainLab.Translate', 'comment', '1.0.11', 'Fix multilingual rich editor when used in stretch mode.', '2018-12-07 06:42:19'),
+(116, 'RainLab.Translate', 'comment', '1.1.0', 'Introduce compatibility with RainLab.Pages plugin.', '2018-12-07 06:42:19'),
+(117, 'RainLab.Translate', 'comment', '1.1.1', 'Minor UI fix to the language picker.', '2018-12-07 06:42:19'),
+(118, 'RainLab.Translate', 'comment', '1.1.2', 'Add support for translating Static Content files.', '2018-12-07 06:42:19'),
+(119, 'RainLab.Translate', 'comment', '1.1.3', 'Improved support for the multilingual rich editor.', '2018-12-07 06:42:19'),
+(120, 'RainLab.Translate', 'comment', '1.1.4', 'Adds new multilingual markdown editor.', '2018-12-07 06:42:19'),
+(121, 'RainLab.Translate', 'comment', '1.1.5', 'Minor update to the multilingual control API.', '2018-12-07 06:42:19'),
+(122, 'RainLab.Translate', 'comment', '1.1.6', 'Minor improvements in the message editor.', '2018-12-07 06:42:19'),
+(123, 'RainLab.Translate', 'comment', '1.1.7', 'Fixes bug not showing content when first loading multilingual textarea controls.', '2018-12-07 06:42:19'),
+(124, 'RainLab.Translate', 'comment', '1.2.0', 'CMS pages now support translating the URL.', '2018-12-07 06:42:19'),
+(125, 'RainLab.Translate', 'comment', '1.2.1', 'Minor update in the rich editor and code editor language control position.', '2018-12-07 06:42:19'),
+(126, 'RainLab.Translate', 'comment', '1.2.2', 'Static Pages now support translating the URL.', '2018-12-07 06:42:19'),
+(127, 'RainLab.Translate', 'comment', '1.2.3', 'Fixes Rich Editor when inserting a page link.', '2018-12-07 06:42:19'),
+(128, 'RainLab.Translate', 'script', '1.2.4', 'create_indexes_table.php', '2018-12-07 06:42:19'),
+(129, 'RainLab.Translate', 'comment', '1.2.4', 'Translatable attributes can now be declared as indexes.', '2018-12-07 06:42:19'),
+(130, 'RainLab.Translate', 'comment', '1.2.5', 'Adds new multilingual repeater form widget.', '2018-12-07 06:42:19'),
+(131, 'RainLab.Translate', 'comment', '1.2.6', 'Fixes repeater usage with static pages plugin.', '2018-12-07 06:42:19'),
+(132, 'RainLab.Translate', 'comment', '1.2.7', 'Fixes placeholder usage with static pages plugin.', '2018-12-07 06:42:19'),
+(133, 'RainLab.Translate', 'comment', '1.2.8', 'Improvements to code for latest October build compatibility.', '2018-12-07 06:42:19'),
+(134, 'RainLab.Translate', 'comment', '1.2.9', 'Fixes context for translated strings when used with Static Pages.', '2018-12-07 06:42:19'),
+(135, 'RainLab.Translate', 'comment', '1.2.10', 'Minor UI fix to the multilingual repeater.', '2018-12-07 06:42:19'),
+(136, 'RainLab.Translate', 'comment', '1.2.11', 'Fixes translation not working with partials loaded via AJAX.', '2018-12-07 06:42:19'),
+(137, 'RainLab.Translate', 'comment', '1.2.12', 'Add support for translating the new grouped repeater feature.', '2018-12-07 06:42:19'),
+(138, 'RainLab.Translate', 'comment', '1.3.0', 'Added search to the translate messages page.', '2018-12-07 06:42:19'),
+(139, 'RainLab.Translate', 'script', '1.3.1', 'builder_table_update_rainlab_translate_locales.php', '2018-12-07 06:42:19'),
+(140, 'RainLab.Translate', 'script', '1.3.1', 'seed_all_tables.php', '2018-12-07 06:42:19'),
+(141, 'RainLab.Translate', 'comment', '1.3.1', 'Added reordering to languages', '2018-12-07 06:42:19'),
+(142, 'RainLab.Translate', 'comment', '1.3.2', 'Improved compatibility with RainLab.Pages, added ability to scan Mail Messages for translatable variables.', '2018-12-07 06:42:19'),
+(143, 'RainLab.Translate', 'comment', '1.3.3', 'Fix to the locale picker session handling in Build 420 onwards.', '2018-12-07 06:42:19'),
+(144, 'RainLab.Translate', 'comment', '1.3.4', 'Add alternate hreflang elements and adds prefixDefaultLocale setting.', '2018-12-07 06:42:19'),
+(145, 'RainLab.Translate', 'comment', '1.3.5', 'Fix MLRepeater bug when switching locales.', '2018-12-07 06:42:19'),
+(146, 'RainLab.Translate', 'comment', '1.3.6', 'Fix Middleware to use the prefixDefaultLocale setting introduced in 1.3.4', '2018-12-07 06:42:19'),
+(147, 'RainLab.Translate', 'comment', '1.3.7', 'Fix config reference in LocaleMiddleware', '2018-12-07 06:42:19'),
+(148, 'RainLab.Translate', 'comment', '1.3.8', 'Keep query string when switching locales', '2018-12-07 06:42:19'),
+(149, 'RainLab.Translate', 'comment', '1.4.0', 'Add importer and exporter for messages', '2018-12-07 06:42:19'),
+(150, 'RainLab.Translate', 'comment', '1.4.1', 'Updated Hungarian translation. Added Arabic translation. Fixed issue where default texts are overwritten by import. Fixed issue where the language switcher for repeater fields would overlap with the first repeater row.', '2018-12-07 06:42:19'),
+(151, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_products.php', '2018-12-07 06:42:19'),
+(152, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_product_variants.php', '2018-12-07 06:42:19'),
+(153, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_product_custom_fields.php', '2018-12-07 06:42:19'),
+(154, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_product_custom_field_options.php', '2018-12-07 06:42:19'),
+(155, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_product_variant_custom_field_option.php', '2018-12-07 06:42:19'),
+(156, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_categories.php', '2018-12-07 06:42:19'),
+(157, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_category_product.php', '2018-12-07 06:42:19'),
+(158, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_orders.php', '2018-12-07 06:42:19'),
+(159, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_order_items.php', '2018-12-07 06:42:19'),
+(160, 'OFFLINE.SnipcartShop', 'script', '1.0.1', 'builder_table_create_offline_snipcartshop_discounts.php', '2018-12-07 06:42:19'),
+(161, 'OFFLINE.SnipcartShop', 'comment', '1.0.1', 'Initial release.', '2018-12-07 06:42:19'),
+(162, 'OFFLINE.SnipcartShop', 'script', '1.0.2', 'builder_table_update_offline_snipcartshop_products.php', '2018-12-07 06:42:19'),
+(163, 'OFFLINE.SnipcartShop', 'comment', '1.0.2', 'Added support for product attributes, downloads and links // Optimized price validation', '2018-12-07 06:42:19'),
+(164, 'OFFLINE.SnipcartShop', 'script', '1.0.3', 'builder_table_create_offline_snipcartshop_product_accessory.php', '2018-12-07 06:42:19'),
+(165, 'OFFLINE.SnipcartShop', 'comment', '1.0.3', 'Added support for product accessories', '2018-12-07 06:42:19'),
+(166, 'OFFLINE.SnipcartShop', 'comment', '1.0.4', 'Fixed incorrect database schema generation (thanks to abhi1693)', '2018-12-07 06:42:19'),
+(167, 'OFFLINE.SnipcartShop', 'comment', '1.0.5', 'Enable support on Windows systems and make Rainlab.Translate dependency optional', '2018-12-07 06:42:19'),
+(168, 'OFFLINE.SnipcartShop', 'script', '1.0.6', 'set_sort_order_defaults.php', '2018-12-07 06:42:20'),
+(169, 'OFFLINE.SnipcartShop', 'comment', '1.0.6', 'Fixed issues with MySQL instances that run in strict mode', '2018-12-07 06:42:20'),
+(170, 'OFFLINE.SnipcartShop', 'comment', '1.0.7', 'Prevent generation of empty sub-category lists', '2018-12-07 06:42:20'),
+(171, 'OFFLINE.SnipcartShop', 'comment', '1.0.8', 'Fixed price handling with product variants and generation of category slugs', '2018-12-07 06:42:20'),
+(172, 'OFFLINE.SnipcartShop', 'comment', '1.0.9', 'Use category slug in sub categories directly', '2018-12-07 06:42:20'),
+(173, 'OFFLINE.SnipcartShop', 'comment', '1.0.10', 'Added missing categoryPage param', '2018-12-07 06:42:20'),
+(174, 'OFFLINE.SnipcartShop', 'comment', '1.0.11', 'Added is_accessory_of relationship to articles', '2018-12-07 06:42:20'),
+(175, 'OFFLINE.SnipcartShop', 'comment', '1.0.12', 'Added new Snipcart Webhook fields', '2018-12-07 06:42:20'),
+(176, 'OFFLINE.SnipcartShop', 'comment', '1.0.13', 'Fixed generation of quantitiy attributes in product markup', '2018-12-07 06:42:20'),
+(177, 'OFFLINE.SnipcartShop', 'comment', '1.0.14', 'Added workaround to make translation of product attributes work as expected', '2018-12-07 06:42:20'),
+(178, 'OFFLINE.SnipcartShop', 'comment', '1.0.15', 'Added maximum number of usages field to discouts', '2018-12-07 06:42:20'),
+(179, 'OFFLINE.SnipcartShop', 'comment', '1.0.16', 'Fixed invalid relationship column in products list', '2018-12-07 06:42:20'),
+(180, 'OFFLINE.SnipcartShop', 'comment', '1.0.17', 'Prevent a bug with discounts where the trigger type gets ignored by Snipcart', '2018-12-07 06:42:20'),
+(181, 'OFFLINE.SnipcartShop', 'comment', '1.0.18', 'Added option to display custom fields directly on the product page', '2018-12-07 06:42:20'),
+(182, 'OFFLINE.SnipcartShop', 'comment', '1.0.19', 'Implemented category images', '2018-12-07 06:42:20'),
+(183, 'OFFLINE.SnipcartShop', 'script', '1.0.20', 'builder_table_update_offline_snipcartshop_categories.php', '2018-12-07 06:42:20'),
+(184, 'OFFLINE.SnipcartShop', 'comment', '1.0.20', 'Added unique code field to better identify categories in frontend partials', '2018-12-07 06:42:20'),
+(185, 'OFFLINE.SnipcartShop', 'comment', '1.0.21', 'Added options for continue shopping button and split first and last name fields', '2018-12-07 06:42:20'),
+(186, 'OFFLINE.SnipcartShop', 'comment', '1.0.22', 'Fixed backend search and made components work without categories', '2018-12-07 06:42:20'),
+(187, 'OFFLINE.SnipcartShop', 'comment', '1.0.23', 'Calculating new price immediately after changing custom fields on the product page', '2018-12-07 06:42:20'),
+(188, 'OFFLINE.SnipcartShop', 'script', '1.0.24', 'make_order_fields_nullable.php', '2018-12-07 06:42:20'),
+(189, 'OFFLINE.SnipcartShop', 'comment', '1.0.24', 'Made order fields nullable', '2018-12-07 06:42:20'),
+(190, 'OFFLINE.SnipcartShop', 'comment', '1.0.25', 'Fixed \"show all products\" option on products component', '2018-12-07 06:42:20'),
+(191, 'OFFLINE.SnipcartShop', 'script', '1.0.26', 'make_order_items_fields_nullable.php', '2018-12-07 06:42:20'),
+(192, 'OFFLINE.SnipcartShop', 'comment', '1.0.26', 'Made order items fields nullable', '2018-12-07 06:42:20'),
+(193, 'OFFLINE.SnipcartShop', 'comment', '1.0.27', 'Fixed custom attribute dropdowns when using SQLite', '2018-12-07 06:42:20'),
+(194, 'OFFLINE.SnipcartShop', 'comment', '1.0.28', 'Added category filter to products list', '2018-12-07 06:42:20'),
+(195, 'OFFLINE.SnipcartShop', 'comment', '1.0.29', 'Moved frontend price calculation into a separate partial', '2018-12-07 06:42:20'),
+(196, 'OFFLINE.SnipcartShop', 'script', '1.0.30', 'builder_table_update_offline_snipcartshop_orders.php', '2018-12-07 06:42:20'),
+(197, 'OFFLINE.SnipcartShop', 'comment', '1.0.30', 'Tracking used discount codes for orders', '2018-12-07 06:42:20'),
+(198, 'OFFLINE.SnipcartShop', 'comment', '1.0.31', 'Implemented new Snipcart Webhook fields', '2018-12-07 06:42:20'),
+(199, 'OFFLINE.SnipcartShop', 'comment', '1.0.32', 'Added orders export functionality', '2018-12-07 06:42:20'),
+(200, 'OFFLINE.SnipcartShop', 'comment', '1.0.33', 'Implemented custom currency formats', '2018-12-07 06:42:20'),
+(201, 'OFFLINE.SnipcartShop', 'comment', '1.0.34', 'Added dependency on Rainlab.Translate', '2018-12-07 06:42:20'),
+(202, 'OFFLINE.SnipcartShop', 'comment', '1.0.35', 'Added support for new October Build 420 on Laravel 5.5', '2018-12-07 06:42:20'),
+(203, 'OFFLINE.SnipcartShop', 'comment', '1.0.36', 'Fixed compatibility with new Snipcart Webhook fields', '2018-12-07 06:42:20'),
+(204, 'OFFLINE.SnipcartShop', 'comment', '1.0.37', 'Fixed bugs when receiving Snipcart webhooks', '2018-12-07 06:42:20'),
+(205, 'OFFLINE.SnipcartShop', 'comment', '1.0.38', 'Fixed dependency definition on RainLab.Translate', '2018-12-07 06:42:20'),
+(206, 'OFFLINE.SnipcartShop', 'comment', '1.0.39', 'Changed json column types to text for new installations since it is causing problems with old MySQL versions', '2018-12-07 06:42:20'),
+(207, 'OFFLINE.SnipcartShop', 'comment', '1.0.40', 'Added single product menu type (thanks to alxy)', '2018-12-07 06:42:20'),
+(208, 'RainLab.Builder', 'comment', '1.0.1', 'Initialize plugin.', '2018-12-07 06:50:06'),
+(209, 'RainLab.Builder', 'comment', '1.0.2', 'Fixes the problem with selecting a plugin. Minor localization corrections. Configuration files in the list and form behaviors are now autocomplete.', '2018-12-07 06:50:06'),
+(210, 'RainLab.Builder', 'comment', '1.0.3', 'Improved handling of the enum data type.', '2018-12-07 06:50:06'),
+(211, 'RainLab.Builder', 'comment', '1.0.4', 'Added user permissions to work with the Builder.', '2018-12-07 06:50:06'),
+(212, 'RainLab.Builder', 'comment', '1.0.5', 'Fixed permissions registration.', '2018-12-07 06:50:06'),
+(213, 'RainLab.Builder', 'comment', '1.0.6', 'Fixed front-end record ordering in the Record List component.', '2018-12-07 06:50:06'),
+(214, 'RainLab.Builder', 'comment', '1.0.7', 'Builder settings are now protected with user permissions. The database table column list is scrollable now. Minor code cleanup.', '2018-12-07 06:50:06'),
+(215, 'RainLab.Builder', 'comment', '1.0.8', 'Added the Reorder Controller behavior.', '2018-12-07 06:50:06'),
+(216, 'RainLab.Builder', 'comment', '1.0.9', 'Minor API and UI updates.', '2018-12-07 06:50:06'),
+(217, 'RainLab.Builder', 'comment', '1.0.10', 'Minor styling update.', '2018-12-07 06:50:06'),
+(218, 'RainLab.Builder', 'comment', '1.0.11', 'Fixed a bug where clicking placeholder in a repeater would open Inspector. Fixed a problem with saving forms with repeaters in tabs. Minor style fix.', '2018-12-07 06:50:06'),
+(219, 'RainLab.Builder', 'comment', '1.0.12', 'Added support for the Trigger property to the Media Finder widget configuration. Names of form fields and list columns definition files can now contain underscores.', '2018-12-07 06:50:06'),
+(220, 'RainLab.Builder', 'comment', '1.0.13', 'Minor styling fix on the database editor.', '2018-12-07 06:50:06'),
+(221, 'RainLab.Builder', 'comment', '1.0.14', 'Added support for published_at timestamp field', '2018-12-07 06:50:06'),
+(222, 'RainLab.Builder', 'comment', '1.0.15', 'Fixed a bug where saving a localization string in Inspector could cause a JavaScript error. Added support for Timestamps and Soft Deleting for new models.', '2018-12-07 06:50:06'),
+(223, 'RainLab.Builder', 'comment', '1.0.16', 'Fixed a bug when saving a form with the Repeater widget in a tab could create invalid fields in the form\'s outside area. Added a check that prevents creating localization strings inside other existing strings.', '2018-12-07 06:50:06'),
+(224, 'RainLab.Builder', 'comment', '1.0.17', 'Added support Trigger attribute support for RecordFinder and Repeater form widgets.', '2018-12-07 06:50:06'),
+(225, 'RainLab.Builder', 'comment', '1.0.18', 'Fixes a bug where \'::class\' notations in a model class definition could prevent the model from appearing in the Builder model list. Added emptyOption property support to the dropdown form control.', '2018-12-07 06:50:06'),
+(226, 'RainLab.Builder', 'comment', '1.0.19', 'Added a feature allowing to add all database columns to a list definition. Added max length validation for database table and column names.', '2018-12-07 06:50:06'),
+(227, 'RainLab.Builder', 'comment', '1.0.20', 'Fixes a bug where form the builder could trigger the \"current.hasAttribute is not a function\" error.', '2018-12-07 06:50:06'),
+(228, 'RainLab.Builder', 'comment', '1.0.21', 'Back-end navigation sort order updated.', '2018-12-07 06:50:06'),
+(229, 'RainLab.Builder', 'comment', '1.0.22', 'Added scopeValue property to the RecordList component.', '2018-12-07 06:50:06'),
+(230, 'RainLab.Builder', 'comment', '1.0.23', 'Added support for balloon-selector field type, added Brazilian Portuguese translation, fixed some bugs', '2018-12-07 06:50:06'),
+(231, 'RainLab.Sitemap', 'comment', '1.0.1', 'First version of Sitemap', '2018-12-07 07:32:19'),
+(232, 'RainLab.Sitemap', 'script', '1.0.2', 'create_definitions_table.php', '2018-12-07 07:32:20'),
+(233, 'RainLab.Sitemap', 'comment', '1.0.2', 'Create definitions table', '2018-12-07 07:32:20'),
+(234, 'RainLab.Sitemap', 'comment', '1.0.3', 'Minor improvements to the code.', '2018-12-07 07:32:20'),
+(235, 'RainLab.Sitemap', 'comment', '1.0.4', 'Fixes issue where correct headers not being sent.', '2018-12-07 07:32:20'),
+(236, 'RainLab.Sitemap', 'comment', '1.0.5', 'Minor back-end styling fix.', '2018-12-07 07:32:20'),
+(237, 'RainLab.Sitemap', 'comment', '1.0.6', 'Minor fix to internal API.', '2018-12-07 07:32:20'),
+(238, 'RainLab.Sitemap', 'comment', '1.0.7', 'Added access premissions.', '2018-12-07 07:32:20'),
+(239, 'RainLab.Sitemap', 'comment', '1.0.8', 'Minor styling updates.', '2018-12-07 07:32:20'),
+(240, 'AnandPatel.SeoExtension', 'script', '1.0.1', 'create_blog_posts_table.php', '2018-12-07 07:32:45'),
+(241, 'AnandPatel.SeoExtension', 'comment', '1.0.1', 'First version of Seo Extension', '2018-12-07 07:32:45'),
+(242, 'AnandPatel.SeoExtension', 'comment', '1.0.2', 'Bug fixes', '2018-12-07 07:32:45'),
+(243, 'AnandPatel.SeoExtension', 'comment', '1.0.3', 'Backend Settings added to configure meta tags & Open Graph tags added', '2018-12-07 07:32:45'),
+(244, 'AnandPatel.SeoExtension', 'comment', '1.0.4', 'Code clean up and change path naming in settings model', '2018-12-07 07:32:45'),
+(245, 'AnandPatel.SeoExtension', 'comment', '1.0.5', 'Add Turkish, Russian, cs_CZ locale', '2018-12-07 07:32:45'),
+(246, 'AnandPatel.SeoExtension', 'comment', '1.0.6', 'Fix issue of SEO Settings Errors', '2018-12-07 07:32:45'),
+(247, 'OFFLINE.SnipcartShop', 'script', '1.0.41', 'builder_table_update_offline_snipcartshop_products_2.php', '2018-12-07 07:41:03'),
+(248, 'OFFLINE.SnipcartShop', 'comment', '1.0.41', 'Updated table offline_snipcartshop_products', '2018-12-07 07:41:03'),
+(249, 'OFFLINE.SnipcartShop', 'script', '1.0.42', 'builder_table_update_offline_snipcartshop_products_3.php', '2018-12-07 07:41:39'),
+(250, 'OFFLINE.SnipcartShop', 'comment', '1.0.42', 'Updated table offline_snipcartshop_products', '2018-12-07 07:41:39');
 
 -- --------------------------------------------------------
 
@@ -1110,15 +1266,14 @@ CREATE TABLE `system_plugin_versions` (
 --
 
 INSERT INTO `system_plugin_versions` (`id`, `code`, `version`, `created_at`, `is_disabled`, `is_frozen`) VALUES
-(1, 'October.Demo', '1.0.1', '2018-11-28 13:18:11', 0, 0),
-(2, 'RainLab.Translate', '1.3.8', '2018-11-28 13:18:11', 0, 0),
-(3, 'RainLab.User', '1.4.6', '2018-11-28 13:18:12', 0, 0),
-(4, 'RainLab.Blog', '1.2.19', '2018-11-28 13:18:13', 0, 0),
-(5, 'RainLab.Forum', '1.1.1', '2018-11-28 13:18:14', 0, 0),
-(6, 'RainLab.Builder', '1.0.22', '2018-11-28 13:18:14', 0, 0),
-(7, 'RainLab.Pages', '1.2.18', '2018-11-28 13:18:14', 0, 0),
-(8, 'Xeor.OctoCart', '2018.8.4', '2018-11-28 13:18:16', 0, 0),
-(9, 'OFFLINE.SiteSearch', '1.3.8', '2018-11-28 13:18:16', 0, 0);
+(1, 'October.Demo', '1.0.1', '2018-12-07 06:39:36', 0, 0),
+(2, 'RainLab.User', '1.4.6', '2018-12-07 06:41:36', 0, 0),
+(3, 'RainLab.Blog', '1.2.19', '2018-12-07 06:41:48', 0, 0),
+(4, 'RainLab.Translate', '1.4.1', '2018-12-07 06:42:19', 0, 0),
+(5, 'OFFLINE.SnipcartShop', '1.0.42', '2018-12-07 07:41:39', 0, 0),
+(6, 'RainLab.Builder', '1.0.23', '2018-12-07 06:50:06', 0, 0),
+(7, 'RainLab.Sitemap', '1.0.8', '2018-12-07 07:32:20', 0, 0),
+(8, 'AnandPatel.SeoExtension', '1.0.6', '2018-12-07 07:32:45', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1166,6 +1321,13 @@ CREATE TABLE `system_settings` (
   `item` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `value` mediumtext COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `system_settings`
+--
+
+INSERT INTO `system_settings` (`id`, `item`, `value`) VALUES
+(1, 'offline_snipcartshop_settings', '{\"webhookUrl\":\"Ke4Nd8eARaoJQeyYHVhr22vFAYGq7U\",\"currencies\":[{\"code\":\"VN\\u0110\",\"format\":\"\"}]}');
 
 -- --------------------------------------------------------
 
@@ -1226,8 +1388,8 @@ CREATE TABLE `user_groups` (
 --
 
 INSERT INTO `user_groups` (`id`, `name`, `code`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Guest', 'guest', 'Default group for guest users.', '2018-11-28 13:18:12', '2018-11-28 13:18:12'),
-(2, 'Registered', 'registered', 'Default group for registered users.', '2018-11-28 13:18:12', '2018-11-28 13:18:12');
+(1, 'Guest', 'guest', 'Default group for guest users.', '2018-12-07 06:41:36', '2018-12-07 06:41:36'),
+(2, 'Registered', 'registered', 'Default group for registered users.', '2018-12-07 06:41:36', '2018-12-07 06:41:36');
 
 -- --------------------------------------------------------
 
@@ -1246,178 +1408,6 @@ CREATE TABLE `user_throttle` (
   `is_banned` tinyint(1) NOT NULL DEFAULT '0',
   `banned_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xeor_octocart_categories`
---
-
-CREATE TABLE `xeor_octocart_categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `external_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `parent_id` int(10) UNSIGNED DEFAULT NULL,
-  `nest_left` int(11) DEFAULT NULL,
-  `nest_right` int(11) DEFAULT NULL,
-  `nest_depth` int(11) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `xeor_octocart_categories`
---
-
-INSERT INTO `xeor_octocart_categories` (`id`, `title`, `slug`, `external_id`, `excerpt`, `description`, `active`, `parent_id`, `nest_left`, `nest_right`, `nest_depth`, `created_at`, `updated_at`) VALUES
-(1, 'Clothes', 'clothes', NULL, NULL, 'Find your personal style!', 1, NULL, 1, 6, 0, '2018-11-28 13:18:14', '2018-11-28 13:18:14'),
-(2, 'T-Shirts', 't-shirts', NULL, NULL, 'High quality T-Shirts & Hoodies by independent artists and designers from around the world.', 1, 1, 2, 3, 1, '2018-11-28 13:18:14', '2018-11-28 13:18:14'),
-(3, 'Shoes', 'shoes', NULL, NULL, 'Step into the season in style, with a new pair of women\'s shoes from our latest online collections.', 1, 1, 4, 5, 1, '2018-11-28 13:18:14', '2018-11-28 13:18:14');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xeor_octocart_orders`
---
-
-CREATE TABLE `xeor_octocart_orders` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'processing',
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `items` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `billing_info` text COLLATE utf8mb4_unicode_ci,
-  `shipping_info` text COLLATE utf8mb4_unicode_ci,
-  `note` text COLLATE utf8mb4_unicode_ci,
-  `vat` decimal(7,2) NOT NULL,
-  `total` decimal(7,2) NOT NULL,
-  `currency` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xeor_octocart_products`
---
-
-CREATE TABLE `xeor_octocart_products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `external_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'simple',
-  `sku` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `price` decimal(7,2) NOT NULL DEFAULT '0.00',
-  `sale_price` decimal(7,2) DEFAULT NULL,
-  `published` tinyint(1) NOT NULL DEFAULT '1',
-  `published_at` timestamp NULL DEFAULT NULL,
-  `promote` tinyint(1) NOT NULL DEFAULT '0',
-  `manage_stock` tinyint(1) NOT NULL DEFAULT '0',
-  `quantity` int(10) UNSIGNED DEFAULT NULL,
-  `backorders` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stock_status` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sold_individually` tinyint(1) NOT NULL DEFAULT '0',
-  `weight` double DEFAULT NULL,
-  `length` double DEFAULT NULL,
-  `width` double DEFAULT NULL,
-  `height` double DEFAULT NULL,
-  `up_sells` longtext COLLATE utf8mb4_unicode_ci,
-  `cross_sells` longtext COLLATE utf8mb4_unicode_ci,
-  `variations` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `xuatxu` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `thuonghieu` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `namsx` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mota` text COLLATE utf8mb4_unicode_ci,
-  `video` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `xeor_octocart_products`
---
-
-INSERT INTO `xeor_octocart_products` (`id`, `user_id`, `title`, `slug`, `external_id`, `type`, `sku`, `excerpt`, `description`, `price`, `sale_price`, `published`, `published_at`, `promote`, `manage_stock`, `quantity`, `backorders`, `stock_status`, `sold_individually`, `weight`, `length`, `width`, `height`, `up_sells`, `cross_sells`, `variations`, `created_at`, `updated_at`, `xuatxu`, `thuonghieu`, `namsx`, `mota`, `video`) VALUES
-(1, 1, 'Long Sleeve Henley', 'long-sleeve-henley', NULL, 'simple', NULL, NULL, '<p>Product Description for Long Sleeve Henley - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '37.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(2, 1, 'Polo', 'polo', NULL, 'simple', NULL, NULL, '<p>Product Description for Polo - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '25.00', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(3, 1, 'Ready for the Beach', 'ready-for-the-beach', NULL, 'simple', NULL, NULL, '<p>Product Description for Ready for the Beach - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '6.99', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(4, 1, 'Ready for the Court', 'ready-for-the-court', NULL, 'simple', NULL, NULL, '<p>Product Description for Ready for the Court - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '8.99', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(5, 1, 'Product 1', 'product-1', NULL, 'variable', NULL, NULL, '<p>Product Description for Product-1 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '10.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(6, 1, 'Product 2', 'product-2', NULL, 'product_variation', NULL, NULL, '<p>Product Description for Product-2 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '20.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(7, 1, 'Product 3', 'product-3', NULL, 'product_variation', NULL, NULL, '<p>Product Description for Product-3 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '30.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(8, 1, 'Product 4', 'product-4', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-4 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '40.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(9, 1, 'Product 5', 'product-5', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-5 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '50.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(10, 1, 'Product 6', 'product-6', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-6 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '60.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(11, 1, 'Product 7', 'product-7', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-7 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '70.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(12, 1, 'Product 8', 'product-8', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-8 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '80.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(13, 1, 'Product 9', 'product-9', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-9 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '90.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL),
-(14, 1, 'Product 10', 'product-10', NULL, 'simple', NULL, NULL, '<p>Product Description for Product-10 - Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eu dui. Phasellus eget orci volutpat sem accumsan condimentum. Etiam lobortis facilisis sem. Aliquam...</p>', '100.98', NULL, 1, '2018-11-28 13:18:15', 0, 0, NULL, NULL, 'instock', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-28 13:18:15', '2018-11-28 13:18:15', NULL, NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xeor_octocart_products_categories`
---
-
-CREATE TABLE `xeor_octocart_products_categories` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `xeor_octocart_products_categories`
---
-
-INSERT INTO `xeor_octocart_products_categories` (`product_id`, `category_id`) VALUES
-(1, 2),
-(2, 2),
-(3, 3),
-(4, 3),
-(5, 2),
-(6, 2),
-(7, 2),
-(8, 2),
-(9, 2),
-(10, 2),
-(11, 2),
-(12, 2),
-(13, 2),
-(14, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `xeor_octocart_product_attributes`
---
-
-CREATE TABLE `xeor_octocart_product_attributes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED DEFAULT NULL,
-  `code` text COLLATE utf8mb4_unicode_ci,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `xeor_octocart_product_attributes`
---
-
-INSERT INTO `xeor_octocart_product_attributes` (`id`, `product_id`, `code`, `name`, `value`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, 'Size', 'S', '2018-11-28 13:18:14', '2018-11-28 13:18:14'),
-(2, 1, NULL, 'Size', 'M', '2018-11-28 13:18:14', '2018-11-28 13:18:14'),
-(3, 1, NULL, 'Color', 'Green', '2018-11-28 13:18:14', '2018-11-28 13:18:14');
 
 --
 -- Indexes for dumped tables
@@ -1530,6 +1520,75 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `offline_snipcartshop_categories`
+--
+ALTER TABLE `offline_snipcartshop_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `offline_snipcartshop_categories_slug_unique` (`slug`);
+
+--
+-- Indexes for table `offline_snipcartshop_category_product`
+--
+ALTER TABLE `offline_snipcartshop_category_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_discounts`
+--
+ALTER TABLE `offline_snipcartshop_discounts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_orders`
+--
+ALTER TABLE `offline_snipcartshop_orders`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `offline_snipcartshop_orders_token_unique` (`token`);
+
+--
+-- Indexes for table `offline_snipcartshop_order_items`
+--
+ALTER TABLE `offline_snipcartshop_order_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_products`
+--
+ALTER TABLE `offline_snipcartshop_products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `offline_snipcartshop_products_slug_unique` (`slug`);
+
+--
+-- Indexes for table `offline_snipcartshop_product_accessory`
+--
+ALTER TABLE `offline_snipcartshop_product_accessory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_product_custom_fields`
+--
+ALTER TABLE `offline_snipcartshop_product_custom_fields`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_product_custom_field_options`
+--
+ALTER TABLE `offline_snipcartshop_product_custom_field_options`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_product_variants`
+--
+ALTER TABLE `offline_snipcartshop_product_variants`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `offline_snipcartshop_product_variant_custom_field_option`
+--
+ALTER TABLE `offline_snipcartshop_product_variant_custom_field_option`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rainlab_blog_categories`
 --
 ALTER TABLE `rainlab_blog_categories`
@@ -1552,54 +1611,11 @@ ALTER TABLE `rainlab_blog_posts_categories`
   ADD PRIMARY KEY (`post_id`,`category_id`);
 
 --
--- Indexes for table `rainlab_forum_channels`
+-- Indexes for table `rainlab_sitemap_definitions`
 --
-ALTER TABLE `rainlab_forum_channels`
+ALTER TABLE `rainlab_sitemap_definitions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `rainlab_forum_channels_slug_unique` (`slug`),
-  ADD KEY `rainlab_forum_channels_parent_id_index` (`parent_id`),
-  ADD KEY `rainlab_forum_channels_embed_code_index` (`embed_code`);
-
---
--- Indexes for table `rainlab_forum_members`
---
-ALTER TABLE `rainlab_forum_members`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `rainlab_forum_members_user_id_index` (`user_id`),
-  ADD KEY `rainlab_forum_members_count_posts_index` (`count_posts`),
-  ADD KEY `rainlab_forum_members_count_topics_index` (`count_topics`),
-  ADD KEY `rainlab_forum_members_last_active_at_index` (`last_active_at`),
-  ADD KEY `rainlab_forum_members_is_moderator_index` (`is_moderator`);
-
---
--- Indexes for table `rainlab_forum_posts`
---
-ALTER TABLE `rainlab_forum_posts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `rainlab_forum_posts_topic_id_index` (`topic_id`),
-  ADD KEY `rainlab_forum_posts_member_id_index` (`member_id`);
-
---
--- Indexes for table `rainlab_forum_topics`
---
-ALTER TABLE `rainlab_forum_topics`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `rainlab_forum_topics_slug_unique` (`slug`),
-  ADD KEY `sticky_post_time` (`is_sticky`,`last_post_at`),
-  ADD KEY `rainlab_forum_topics_channel_id_index` (`channel_id`),
-  ADD KEY `rainlab_forum_topics_start_member_id_index` (`start_member_id`),
-  ADD KEY `rainlab_forum_topics_last_post_at_index` (`last_post_at`),
-  ADD KEY `rainlab_forum_topics_is_private_index` (`is_private`),
-  ADD KEY `rainlab_forum_topics_is_locked_index` (`is_locked`),
-  ADD KEY `rainlab_forum_topics_count_posts_index` (`count_posts`),
-  ADD KEY `rainlab_forum_topics_count_views_index` (`count_views`),
-  ADD KEY `rainlab_forum_topics_embed_code_index` (`embed_code`);
-
---
--- Indexes for table `rainlab_forum_topic_followers`
---
-ALTER TABLE `rainlab_forum_topic_followers`
-  ADD PRIMARY KEY (`topic_id`,`member_id`);
+  ADD KEY `rainlab_sitemap_definitions_theme_index` (`theme`);
 
 --
 -- Indexes for table `rainlab_translate_attributes`
@@ -1762,44 +1778,6 @@ ALTER TABLE `user_throttle`
   ADD KEY `user_throttle_ip_address_index` (`ip_address`);
 
 --
--- Indexes for table `xeor_octocart_categories`
---
-ALTER TABLE `xeor_octocart_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `xeor_octocart_categories_slug_unique` (`slug`),
-  ADD KEY `xeor_octocart_categories_title_index` (`title`),
-  ADD KEY `xeor_octocart_categories_parent_id_index` (`parent_id`);
-
---
--- Indexes for table `xeor_octocart_orders`
---
-ALTER TABLE `xeor_octocart_orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `xeor_octocart_orders_user_id_index` (`user_id`);
-
---
--- Indexes for table `xeor_octocart_products`
---
-ALTER TABLE `xeor_octocart_products`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `xeor_octocart_products_slug_unique` (`slug`),
-  ADD KEY `xeor_octocart_products_user_id_index` (`user_id`),
-  ADD KEY `xeor_octocart_products_title_index` (`title`);
-
---
--- Indexes for table `xeor_octocart_products_categories`
---
-ALTER TABLE `xeor_octocart_products_categories`
-  ADD PRIMARY KEY (`product_id`,`category_id`);
-
---
--- Indexes for table `xeor_octocart_product_attributes`
---
-ALTER TABLE `xeor_octocart_product_attributes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `xeor_octocart_product_attributes_product_id_index` (`product_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1807,7 +1785,7 @@ ALTER TABLE `xeor_octocart_product_attributes`
 -- AUTO_INCREMENT for table `backend_access_log`
 --
 ALTER TABLE `backend_access_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `backend_users`
@@ -1837,7 +1815,7 @@ ALTER TABLE `backend_user_roles`
 -- AUTO_INCREMENT for table `backend_user_throttle`
 --
 ALTER TABLE `backend_user_throttle`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cms_theme_data`
@@ -1855,7 +1833,7 @@ ALTER TABLE `cms_theme_logs`
 -- AUTO_INCREMENT for table `deferred_bindings`
 --
 ALTER TABLE `deferred_bindings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1876,39 +1854,87 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
+-- AUTO_INCREMENT for table `offline_snipcartshop_categories`
+--
+ALTER TABLE `offline_snipcartshop_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_category_product`
+--
+ALTER TABLE `offline_snipcartshop_category_product`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_discounts`
+--
+ALTER TABLE `offline_snipcartshop_discounts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_orders`
+--
+ALTER TABLE `offline_snipcartshop_orders`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_order_items`
+--
+ALTER TABLE `offline_snipcartshop_order_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_products`
+--
+ALTER TABLE `offline_snipcartshop_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_product_accessory`
+--
+ALTER TABLE `offline_snipcartshop_product_accessory`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_product_custom_fields`
+--
+ALTER TABLE `offline_snipcartshop_product_custom_fields`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_product_custom_field_options`
+--
+ALTER TABLE `offline_snipcartshop_product_custom_field_options`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_product_variants`
+--
+ALTER TABLE `offline_snipcartshop_product_variants`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `offline_snipcartshop_product_variant_custom_field_option`
+--
+ALTER TABLE `offline_snipcartshop_product_variant_custom_field_option`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `rainlab_blog_categories`
 --
 ALTER TABLE `rainlab_blog_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rainlab_blog_posts`
 --
 ALTER TABLE `rainlab_blog_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `rainlab_forum_channels`
+-- AUTO_INCREMENT for table `rainlab_sitemap_definitions`
 --
-ALTER TABLE `rainlab_forum_channels`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `rainlab_forum_members`
---
-ALTER TABLE `rainlab_forum_members`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `rainlab_forum_posts`
---
-ALTER TABLE `rainlab_forum_posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `rainlab_forum_topics`
---
-ALTER TABLE `rainlab_forum_topics`
+ALTER TABLE `rainlab_sitemap_definitions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -1945,13 +1971,13 @@ ALTER TABLE `rainlab_user_mail_blockers`
 -- AUTO_INCREMENT for table `system_event_logs`
 --
 ALTER TABLE `system_event_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `system_files`
 --
 ALTER TABLE `system_files`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `system_mail_layouts`
@@ -1975,19 +2001,19 @@ ALTER TABLE `system_mail_templates`
 -- AUTO_INCREMENT for table `system_parameters`
 --
 ALTER TABLE `system_parameters`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `system_plugin_history`
 --
 ALTER TABLE `system_plugin_history`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=354;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `system_plugin_versions`
 --
 ALTER TABLE `system_plugin_versions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `system_request_logs`
@@ -2005,7 +2031,7 @@ ALTER TABLE `system_revisions`
 -- AUTO_INCREMENT for table `system_settings`
 --
 ALTER TABLE `system_settings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -2024,30 +2050,6 @@ ALTER TABLE `user_groups`
 --
 ALTER TABLE `user_throttle`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `xeor_octocart_categories`
---
-ALTER TABLE `xeor_octocart_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `xeor_octocart_orders`
---
-ALTER TABLE `xeor_octocart_orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `xeor_octocart_products`
---
-ALTER TABLE `xeor_octocart_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `xeor_octocart_product_attributes`
---
-ALTER TABLE `xeor_octocart_product_attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,4 +1,4 @@
-1536266634a:1:{s:30:"gioi-thieu-dong-ho-nha-kho.htm";a:12:{s:8:"fileName";s:30:"gioi-thieu-dong-ho-nha-kho.htm";s:7:"content";s:9396:"title = "Giới thiệu đồng hồ Nhakho.vn"
+1544195340a:1:{s:30:"gioi-thieu-dong-ho-nha-kho.htm";a:12:{s:8:"fileName";s:30:"gioi-thieu-dong-ho-nha-kho.htm";s:7:"content";s:9463:"title = "Giới thiệu đồng hồ Nhakho.vn"
 url = "/gioi-thieu-dong-ho-nha-kho"
 layout = "nhakholayout"
 description = "Trang giới thiệu đồng hồ Nhakho.vn và các dịch vụ Nhakho.vn cung cấp"
@@ -14,14 +14,14 @@ is_hidden = 0
 
 				<div class="banner-text light style-modern">
 					<h1 class="page-title">Giới thiệu Nhakho.vn</h1>
-					<p>Bằng tất cả nhiệt huyết - đam mê và trách nhiệm nghề nghiệp, Nhakho.vn phấn đấu mang đến cho khách hàng những sản phẩm đạt gần đến sự hoàn thiện nhất</p>
+					<p>Bằng tất cả nhiệt huyết - đam mê và trách nhiệm nghề nghiệp, đội Nhakho.vn phấn đấu mang đến cho khách hàng những sản phẩm đạt gần đến sự hoàn thiện nhất</p>
 				</div>
 
 			</div>
 		</div>
 	</div>
 	<div class="banner-bg imagebg">
-		<img src="image/banner-inner.jpg" alt="">
+		<img src="{{ 'assets/nhakho/image/about-nha-kho.jpg'|theme }}" alt="">
 	</div>
 </div>
 <!-- End Banner -->
@@ -39,14 +39,13 @@ is_hidden = 0
 					<p>
 						Thương hiệu Nhakho.vn đã và đang trở thành địa chỉ quen thuộc của nhiều người khi muốn tìm mua cho mình những sản phẩm đồng hồ cổ.<br>
 						Với đội ngũ nhân viên là những kỹ sư trẻ nhưng am hiểu sâu sắc về nghiệp vụ, chuyên môn cao, tốt nghiệp các trường Đại học lớn trong lĩnh vực kỹ thuật và cơ khí chính xác. Chúng tôi tự tin đáp ứng những yêu cầu khắt khe nhất của khách hàng.<br>
-						Không những thế, đội ngũ nhân viên Nhakho.vn còn là những người đầy lòng nhiệt tình và có thái độ niềm nở trong cung cách phục vụ khách hàng. <br>
+						Đội ngũ Nhakho.vn còn là những người đầy lòng nhiệt tình và có thái độ niềm nở trong cung cách phục vụ khách hàng. <br>
 						Nhakho.vn cam kết duy trì mối quan hệ lâu dài, tận tụy với khách hàng. Sự tín nhiệm lâu dài của khách hàng là thành công của chúng tôi.
-
 					</p>
 
 				</div>
 				<div class="col-sm-6 pad-l">
-					<img src="image/photo-md-a.jpg" alt="">
+					<img src="{{ 'assets/nhakho/image/thuong-hieu-nhakho.jpg'|theme }}" alt="">
 				</div>
 			</div>
 			<!-- // -->
@@ -104,7 +103,7 @@ is_hidden = 0
 					<p>Có bất kỳ thắc mắc hãy gọi cho chúng tôi. Bằng tất cả khả năng và hiểu biết chúng tôi sẵn sàng chia sẻ.</p>
 				</div>
 				<div class="col-md-5 pad-l">
-					<img src="image/photo-a.jpg" alt="" />
+					<img src="{{ 'assets/nhakho/image/goi-neu-qt.jpg'|theme }}" alt="" />
 				</div>
 			</div>
 
@@ -248,7 +247,7 @@ is_hidden = 0
 			</div>
 		</div>
 	</div>
-	<!-- End Section -->";s:5:"mtime";i:1536266010;s:6:"markup";s:8996:"<!-- Banner -->
+	<!-- End Section -->";s:5:"mtime";i:1543842779;s:6:"markup";s:9063:"<!-- Banner -->
 <div class="banner banner-static banner-medium has-bg lighter-filter">
 	<div class="banner-cpn">
 		<div class="container">
@@ -256,14 +255,14 @@ is_hidden = 0
 
 				<div class="banner-text light style-modern">
 					<h1 class="page-title">Giới thiệu Nhakho.vn</h1>
-					<p>Bằng tất cả nhiệt huyết - đam mê và trách nhiệm nghề nghiệp, Nhakho.vn phấn đấu mang đến cho khách hàng những sản phẩm đạt gần đến sự hoàn thiện nhất</p>
+					<p>Bằng tất cả nhiệt huyết - đam mê và trách nhiệm nghề nghiệp, đội Nhakho.vn phấn đấu mang đến cho khách hàng những sản phẩm đạt gần đến sự hoàn thiện nhất</p>
 				</div>
 
 			</div>
 		</div>
 	</div>
 	<div class="banner-bg imagebg">
-		<img src="image/banner-inner.jpg" alt="">
+		<img src="{{ 'assets/nhakho/image/about-nha-kho.jpg'|theme }}" alt="">
 	</div>
 </div>
 <!-- End Banner -->
@@ -281,14 +280,13 @@ is_hidden = 0
 					<p>
 						Thương hiệu Nhakho.vn đã và đang trở thành địa chỉ quen thuộc của nhiều người khi muốn tìm mua cho mình những sản phẩm đồng hồ cổ.<br>
 						Với đội ngũ nhân viên là những kỹ sư trẻ nhưng am hiểu sâu sắc về nghiệp vụ, chuyên môn cao, tốt nghiệp các trường Đại học lớn trong lĩnh vực kỹ thuật và cơ khí chính xác. Chúng tôi tự tin đáp ứng những yêu cầu khắt khe nhất của khách hàng.<br>
-						Không những thế, đội ngũ nhân viên Nhakho.vn còn là những người đầy lòng nhiệt tình và có thái độ niềm nở trong cung cách phục vụ khách hàng. <br>
+						Đội ngũ Nhakho.vn còn là những người đầy lòng nhiệt tình và có thái độ niềm nở trong cung cách phục vụ khách hàng. <br>
 						Nhakho.vn cam kết duy trì mối quan hệ lâu dài, tận tụy với khách hàng. Sự tín nhiệm lâu dài của khách hàng là thành công của chúng tôi.
-
 					</p>
 
 				</div>
 				<div class="col-sm-6 pad-l">
-					<img src="image/photo-md-a.jpg" alt="">
+					<img src="{{ 'assets/nhakho/image/thuong-hieu-nhakho.jpg'|theme }}" alt="">
 				</div>
 			</div>
 			<!-- // -->
@@ -346,7 +344,7 @@ is_hidden = 0
 					<p>Có bất kỳ thắc mắc hãy gọi cho chúng tôi. Bằng tất cả khả năng và hiểu biết chúng tôi sẵn sàng chia sẻ.</p>
 				</div>
 				<div class="col-md-5 pad-l">
-					<img src="image/photo-a.jpg" alt="" />
+					<img src="{{ 'assets/nhakho/image/goi-neu-qt.jpg'|theme }}" alt="" />
 				</div>
 			</div>
 
